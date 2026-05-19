@@ -1,0 +1,282 @@
+---
+const listAvesTarget = [
+  {
+    nombreComun: "Tangara azuleja",
+    nombreCientifico: "Thraupis episcopus",
+    Estado: "LC",
+    Imagen: "../../public/imgs/aves/tangaraazuleja.webp",
+  },
+  {
+    nombreComun: "Barranquero",
+    nombreCientifico: "Momotus momota",
+    Estado: "LC",
+    Imagen: "../../public/imgs/aves/momotobarranquero.webp",
+  },
+  {
+    nombreComun: "Tirano tropical",
+    nombreCientifico: "Tyrannus melancholicus",
+    Estado: "LC",
+    Imagen: "../../public/imgs/aves/tiranotropical.webp",
+  },
+  {
+    nombreComun: "Tangara dorsirroja",
+    nombreCientifico: "Ramphocelus dimidiatus",
+    Estado: "LC",
+    Imagen: "../../public/imgs/aves/tangaradorsirroja.webp",
+  },
+  {
+    nombreComun: "Canario",
+    nombreCientifico: "Sicalis flaveola",
+    Estado: "LC",
+    Imagen: "../../public/imgs/aves/canario.webp",
+  },
+  {
+    nombreComun: "Tangara cabeciazul",
+    nombreCientifico: "Stilpnia cyanicollis",
+    Estado: "LC",
+    Imagen: "../../public/imgs/aves/tangaracabeciazul.webp",
+  },
+  {
+    nombreComun: "Gavilán caminero",
+    nombreCientifico: "Rupornis magnirostris",
+    Estado: "LC",
+    Imagen: "../../public/imgs/aves/gavilancaminero.webp",
+  },
+  {
+    nombreComun: "Bienteveo común",
+    nombreCientifico: "Pitangus sulphuratus",
+    Estado: "LC",
+    Imagen: "../../public/imgs/aves/tiranotropical.webp",
+  },
+  {
+    nombreComun: "Ibis afeitado",
+    nombreCientifico: "Phimosus infuscatus",
+    Estado: "LC",
+    Imagen: "../../public/imgs/aves/ibisafeitaido.webp",
+  },
+  {
+    nombreComun: "Guacharaca colombiana",
+    nombreCientifico: "Ortalis columbiana",
+    Estado: "LC",
+    Imagen: "../../public/imgs/aves/guacharacacolombiana.webp",
+  },
+  {
+    nombreComun: "Gallinazo negro",
+    nombreCientifico: "Coragyps atratus",
+    Estado: "LC",
+    Imagen: "../../public/imgs/aves/gallinazonegro.webp",
+  },
+  {
+    nombreComun: "Tangara palmera",
+    nombreCientifico: "Thraupis palmarum",
+    Estado: "LC",
+    Imagen: "../../public/imgs/aves/tangarapalmera.webp",
+  },
+  {
+    nombreComun: "Eufonia piquigruesa",
+    nombreCientifico: "Euphonia laniirostris",
+    Estado: "LC",
+    Imagen: "../../public/imgs/aves/eufoniapiquigruesa.webp",
+  },
+  {
+    nombreComun: "Colibrí colirrufo",
+    nombreCientifico: "Amazilia tzacatl",
+    Estado: "LC",
+    Imagen: "../../public/imgs/aves/colibricolirrufo.webp",
+  },
+  {
+    nombreComun: "Colibrí capirotado",
+    nombreCientifico: "Amazilia cyanifrons",
+    Estado: "LC",
+    Imagen: "../../public/imgs/aves/colibricapirotado.webp",
+  },
+  {
+    nombreComun: "Tortolita rojiza",
+    nombreCientifico: "Columbina talpacoti",
+    Estado: "LC",
+    Imagen: "../../public/imgs/aves/tortolitarojiza.webp",
+  },
+  {
+    nombreComun: "Tangara rastrojera",
+    nombreCientifico: "Stilpnia vitriolina",
+    Estado: "LC",
+    Imagen: "../../public/imgs/aves/tangararastrojera.webp",
+  },
+  {
+    nombreComun: "Paloma tolimense",
+    nombreCientifico: "Leptotila conoveri",
+    Estado: "EN",
+    Imagen: "../../public/imgs/aves/palomatolimense.webp",
+  },
+  {
+    nombreComun: "Colibrí del Tolima",
+    nombreCientifico: "Anthocephala berlepschi",
+    Estado: "VU",
+    Imagen: "../../public/imgs/aves/colibrideltolima.webp",
+  },
+  {
+    nombreComun: "Buco bigotudo",
+    nombreCientifico: "Malacoptila panamensis",
+    Estado: "LC",
+    Imagen: "../../public/imgs/aves/bucobigotudo.webp",
+  },
+  {
+    nombreComun: "Tangara luctuosa",
+    nombreCientifico: "Loriotus luctuosus",
+    Estado: "LC",
+    Imagen: "../../public/imgs/aves/tangarahombriblanca.webp",
+  },
+  {
+    nombreComun: "Tangara dorada",
+    nombreCientifico: "Tangara arthus",
+    Estado: "LC",
+    Imagen: "../../public/imgs/aves/tangaradorada.webp",
+  },
+  {
+    nombreComun: "Piranga abejera",
+    nombreCientifico: "Piranga rubra",
+    Estado: "LC",
+    Imagen: "../../public/imgs/aves/pirangaroja.webp",
+  },
+  {
+    nombreComun: "Oropéndola crestada",
+    nombreCientifico: "Psarocolius decumanus",
+    Estado: "LC",
+    Imagen: "../../public/imgs/aves/oropendolacrestada.webp",
+  },
+  {
+    nombreComun: "Garcita bueyera",
+    nombreCientifico: "Bubulcus ibis",
+    Estado: "LC",
+    Imagen: "../../public/imgs/aves/garcitabueyera.webp",
+  },
+  {
+    nombreComun: "Carpintero bellotero",
+    nombreCientifico: "Melanerpes formicivorus",
+    Estado: "LC",
+    Imagen: "../../public/imgs/aves/carpinterobellotero.webp",
+  },
+  {
+    nombreComun: "Tangara flamígera",
+    nombreCientifico: "Ramphocelus flammigerus",
+    Estado: "LC",
+    Imagen: "../../public/imgs/aves/tangaraflamigera.webp",
+  },
+  {
+    nombreComun: "Loro orejiamarillo",
+    nombreCientifico: "Ognorhynchus icterotis",
+    Estado: "VU",
+    Imagen: "../../public/imgs/aves/loroorejiamarillo.webp",
+  },
+  {
+    nombreComun: "Saltarín cabecidorado",
+    nombreCientifico: "Ceratopipra erythrocephala",
+    Estado: "LC",
+    Imagen: "../../public/imgs/aves/saltarincabecidorado.webp",
+  }
+];
+---
+
+<div class="galeria">
+  {
+    listAvesTarget.map((target) => (
+      <div
+        class="tarjetaAves"
+        style={{
+          backgroundImage: `linear-gradient(to bottom, rgba(0,0,0,0.0), rgba(0,0,0,0.6)), url(${target.Imagen})`,
+        }}
+      >
+        <div class="info">
+            <div class="nombres">
+
+          <p class="nombre">{target.nombreComun}</p>
+          <i class="nombreCientifico">{target.nombreCientifico}</i>
+            </div>
+          <div class="estado">
+         <p class:list={["estado-logo", `estado-${target.Estado.toLowerCase()}`]}>
+  {target.Estado}
+</p>
+          </div>
+        </div>
+      </div>
+    ))
+  }
+</div>
+
+<style>
+  .galeria {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 1rem;
+    margin-bottom: 12rem;
+  }
+  .tarjetaAves {
+    width: 100%;
+    height: auto;
+    background-position: center;
+    background-size: cover;
+    border-radius: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+    color: #fff;
+    padding: 1rem;
+  }
+
+  .nombre,
+  .nombreCientifico {
+    padding-left: 2rem;
+  }
+  .nombre {
+    margin: 0;
+    font-size: 1.3rem;
+  }
+  .nombreCientifico {
+    font-size: 1rem;
+    margin: 0;
+
+  }
+ 
+  .info{
+    display: flex;
+    justify-content: space-between;
+    height: fit-content;
+  }
+  .estado{
+display: flex;
+align-items: center;
+padding-right: 1rem;
+}
+.estado-logo{
+    padding: .3rem;
+    border-radius: 50%;
+    font-weight: bold;
+}
+.estado-lc{
+        background-color: green ;
+
+}
+.estado-nt{
+        background-color: rgb(21, 248, 21) ;
+        color:black;
+
+
+}
+.estado-vu{
+        background-color: #e6ff04 ;
+        color:black;
+}
+.estado-en{
+        background-color: rgb(255, 102, 0) ;
+        color:black;
+
+
+}
+.estado-cr{
+        background-color: rgb(255, 0, 0) ;
+
+}
+
+
+
+</style>

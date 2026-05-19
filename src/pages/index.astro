@@ -1,0 +1,59 @@
+---
+import Header from "../componentes/Header.astro";
+import Btnendemica from "../componentes/btn-endemica.astro";
+import Btnaves from "../componentes/btn-aves.astro";
+import Ruta from "../componentes/rutas-targ.astro";
+import Footer from "../componentes/footer.astro";
+---
+
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" href="/favicon.ico" />
+    <meta name="viewport" content="width=device-width initial-scale=1.0" />
+    <meta name="generator" content={Astro.generator} />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Google+Sans+Flex:opsz,wght@6..144,1..1000&family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Lexend:wght@100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="../../src/styles/style.css" />
+    <title>Inventario de Aves del Cañon del Combeima</title>
+  </head>
+  <body>
+    <!-- Usamos el componente como si fuera una etiqueta HTML personalizada -->
+    <Header />
+
+    <main>
+      <section class="seccion-principal imagen-fondo">
+        <div class="contenedor-principal contenido">
+          <Btnendemica />
+
+          <h1>Inventario de Aves del Cañon del Combeima</h1>
+          <i>Anthocephala berlepschi</i>
+        </div>
+      </section>
+
+      <section class="contenedor-principal rutas">
+        <Btnaves />
+
+        <div class="rutas-titulo">
+          <h2>Rutas de avistamiento</h2>
+          <a href="#">Ver Todas</a>
+        </div>
+        <div class="rutas">
+          <Ruta />
+        </div>
+      </section>
+      <footer>
+
+        <Footer />
+      </footer>
+    </main>
+  </body>
+<script src="../../src/scrips/app.js"></script>
+</html>

@@ -1,0 +1,160 @@
+---
+// Lógica del componente (Frontmatter)
+// Aquí definimos variables que podemos usar en el HTML
+
+const navLinks = [
+  { text: "Nosotros", url: "/nosotros/" },
+  { text: "Contacto", url: "/contacto/" },
+  { text: "Blog", url: "/blog" },
+];
+---
+
+<!-- HTML del componente -->
+<header class="main-header">
+  <div class="logo">
+    <img src="public/icons/logo.png" alt="Imagen logo" />
+  </div>
+  <div class="titulo google-sans-300">
+    <a href="/">Inventario de Aves <br> del Cañon del Combeima</a>
+  </a>
+  </div>
+  <nav class="navegacion navList" id="navList">
+    <ul class="estilos-ventana">
+      {/* Usamos JavaScript para iterar sobre los enlaces y generar el HTML dinámicamente */
+      }
+      {
+        navLinks.map((link) => (
+          <li>
+            <a class="google-sans-300" href={link.url}>{link.text}</a>
+          </li>
+        ))
+      }
+    </ul>
+  </nav>
+  <div class="hamburguesa">
+    <button class="hamburger" id="hamburger">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </div>
+
+</header>
+<!-- FIN DE HTML DEL COMPONENTE -->
+
+<!-- Estilos del componente -->
+<style>
+  /* Estilo básico */
+  .hamburger {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 30px;
+    height: 25px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+  }
+  .hamburger span {
+    width: 100%;
+    height: 3px;
+    background-color: rgb(0, 0, 0);
+    transition: all 0.3s ease;
+  }
+
+  /* Estado transformado en X */
+  .hamburger.open span:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+  }
+  .hamburger.open span:nth-child(2) {
+    opacity: 0;
+  }
+  .hamburger.open span:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+  }
+
+  .hamburger {
+    display: none;
+  } 
+
+
+  .main-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    background-color: #CCCCCC;
+    width: 100%;
+  }
+  .logo img {
+    width: 5rem;
+    height: 5rem;
+    border-radius: 50%;
+  }
+  nav ul {
+    list-style: none;
+    display: flex;
+    gap: 1.5rem;
+  }
+  a {
+    color: rgb(0, 0, 0);
+    text-decoration: none;
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;;
+  }
+  nav a:hover {
+  border-bottom: 2px solid white; /* O el estilo que prefieras */
+
+    
+  }
+
+  @media screen and (max-width: 414px) {
+     .estilos-ventana {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+  }
+    .hamburger {
+      display: flex;
+    }
+
+    .navList {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: fit-content;
+      background-color: #00cc99;
+      padding-top: 5rem;
+      border-bottom-left-radius: 50px;
+      border-bottom-right-radius: 50px;
+
+      transform: translateY(-100%); /* Lo escondemos empujándolo 100% hacia afuera de la pantalla */
+      transition: transform 0.3s ease-in-out; /* Hace que el deslizamiento sea suave en vez de instantáneo */
+    }
+    .abierta {
+      transform: translateX(0px);
+    }
+  }
+  nav a:focus {
+  outline: none;
+}
+ 
+</style>
+
+<script>
+  const navegacion = document.getElementById("navList");
+  const hamburger = document.getElementById("hamburger");
+  const links = document.querySelectorAll(".navegacion a");
+
+  hamburger?.addEventListener("click", () => {
+    hamburger.classList.toggle("open");
+    navegacion?.classList.toggle("abierta");
+  });
+</script>

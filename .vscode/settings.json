@@ -1,0 +1,22 @@
+{
+    "editor.quickSuggestions": {
+        "other": true,
+        "comments": false,
+        "strings": false
+    },
+    "editor.suggestOnTriggerCharacters": true,
+    "editor.inlineSuggest.enabled": false,
+    "editor.acceptSuggestionOnEnter": "on",
+    "github.copilot.inlineSuggest.enable": false,
+    "github.copilot.enable": false,
+    "[astro]": {
+        "editor.quickSuggestions": {
+            "other": true,
+            "comments": false,
+            "strings": false
+        },
+        "editor.inlineSuggest.enabled": false,
+        "editor.suggestOnTriggerCharacters": true
+    },
+    "editor.quickSuggestionsDelay": 1
+}

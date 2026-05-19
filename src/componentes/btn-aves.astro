@@ -1,0 +1,131 @@
+   <div class="btn-aves-wrapper">
+      <div class="interaction-container" id="mainBtn">
+        <!-- Texto que desaparecerá -->
+        <span class="button-text" id="btnText">Conoce más aves</span>
+
+        <!-- El Colibrí siempre presente -->
+        <div class="bird-box" id="birdContainer">
+            <svg viewBox="0 0 100 100" width="60" height="60">
+                <!-- Pico -->
+                <path d="M70 48 L95 50 L70 52" fill="#333" />
+                <!-- Cuerpo -->
+                <path d="M25 40 C25 40 40 30 60 45 C75 55 60 70 40 65 C25 60 25 40 25 40Z" fill="var(--color-bird-body)" />
+                <!-- Cabeza -->
+                <circle cx="62" cy="48" r="7" fill="var(--color-accent)" />
+                <!-- Ojo -->
+                <circle cx="65" cy="47" r="1.5" fill="white" />
+                <!-- Ala Superior -->
+                <path class="wing" d="M45 45 C45 45 30 5 50 5 C65 5 45 45 45 45Z" fill="var(--color-bird-wing)" opacity="0.8" />
+                <!-- Ala Inferior -->
+                <path class="wing" style="animation-delay: 0.04s" d="M45 55 C45 55 30 95 50 95 C65 95 45 55 45 55Z" fill="var(--color-bird-body)" opacity="0.6" />
+                <!-- Cola -->
+                <path d="M25 50 L5 40 L10 50 L5 60 L25 50" fill="var(--color-accent)" />
+            </svg>
+        </div>
+      </div>
+    </div>
+
+ <style>
+        :root {
+            --color-bg: #e8f5e9;
+            --color-bird-body: #00897b;
+            --color-bird-wing: #4db6ac;
+            --color-accent: #00695c;
+            --font-main: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .btn-aves-wrapper {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            padding: 2rem 0;
+            font-family: var(--font-main);
+        }
+
+        .interaction-container {
+            position: relative;
+            background: white;
+            padding: 15px 40px;
+            border-radius: 50px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            cursor: pointer;
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            user-select: none;
+            border: 2px solid transparent;
+        }
+
+        .interaction-container:hover {
+            box-shadow: 0 15px 35px rgba(0,137,123,0.15);
+            border-color: var(--color-bird-wing);
+            transform: translateY(-2px);
+        }
+
+        .button-text {
+            color: var(--color-accent);
+            font-size: 1.9rem;
+            font-weight: 600;
+            transition: all 0.4s ease;
+            white-space: nowrap;
+        }
+
+        /* Clase para eliminar el texto */
+        .text-hidden {
+            opacity: 0;
+            transform: translateX(-20px);
+            pointer-events: none;
+            width: 0;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+
+        @keyframes flap {
+            0%, 100% { transform: rotateX(0deg); }
+            50% { transform: rotateX(75deg); }
+        }
+
+        @keyframes hover-float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-8px); }
+        }
+
+        .bird-box {
+            width: 60px;
+            height: 60px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            animation: hover-float 2s infinite ease-in-out;
+        }
+
+        .wing {
+            transform-origin: center;
+            animation: flap 0.08s infinite ease-in-out;
+        }
+
+        .nectar {
+            position: absolute;
+            width: 6px;
+            height: 6px;
+            background: #00cc99;
+            border-radius: 50%;
+            pointer-events: none;
+            opacity: 0;
+        }
+
+        .container-expanded {
+            padding: 30px;
+            border-radius: 50%;
+            background: #ffffff;
+        }
+    </style>
+
+
+  
+
+
