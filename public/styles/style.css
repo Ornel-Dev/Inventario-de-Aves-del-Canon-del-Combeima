@@ -34,7 +34,7 @@ body {
 .seccion-principal {
   background-image:
     linear-gradient(rgba(0, 0, 0, 0), rgba(2, 0, 0, 0.226)),
-    url("../../public/imgs/colibricabecicastaño.jpg");
+    url("/imgs/colibricabecicastano.jpg");
   background-size: cover;
   background-position: center;
 }
