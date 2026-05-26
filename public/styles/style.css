@@ -1,4 +1,8 @@
 /* apply a natural box layout model to all elements, but allowing components to change */
+:root{
+  --verde-oliva:  #00cc99;
+}
+
 html {
   box-sizing: border-box;
 }

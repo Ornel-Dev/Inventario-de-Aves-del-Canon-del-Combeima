@@ -1,0 +1,84 @@
+---
+import { listAvesTarget } from "../../componentes/aves-listado.astro";
+import Header from "../../componentes/Header.astro";
+import Footer from "../../componentes/footer.astro";
+import Volver from "../../componentes/btn-volver.astro";
+
+export async function getStaticPaths() {
+  return listAvesTarget.map((ave) => ({
+    params: { slug: ave.slug }, // El parámetro 'slug' debe coincidir con [slug].astro
+    props: { ave }, // Pasamos los datos del ave como propiedades (props)
+  }));
+}
+
+const { ave } = Astro.props;
+console.log(ave);
+---
+
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <title>{ave.nombreComun} - Detalles</title>
+
+    <meta name="viewport" content="width=device-width initial-scale=1.0" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Google+Sans+Flex:opsz,wght@6..144,1..1000&family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Lexend:wght@100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="/styles/style.css" />
+  </head>
+
+  <body>
+    <Header />
+    <div class="contenedor-principal">
+      <Volver />
+    </div>
+
+    <main class="detalle-ave contenedor-principal">
+      <div class="contenedor-foto">
+        <img src={ave.Imagen} alt="Imagen del ave {ave.nombreComun} " />
+      </div>
+      <h1>{ave.nombreComun}</h1>
+      <p><i>{ave.nombreCientifico}</i></p>
+      <span class={`estado ${ave.Estado.toLowerCase()}`}>{ave.Estado}</span>
+
+      {/* Volvemos a aprovechar el componente Image optimizado de Astro */}
+
+      <section class="informacion-adicional">
+        <p>
+          Más información detallada sobre el {ave.nombreComun} próximamente...
+        </p>
+      </section>
+    </main>
+    <Footer />
+  </body>
+</html>
+
+<style>
+  /* Tus estilos específicos para la página de detalle */
+  .detalle-ave {
+    max-width: 90%;
+  }
+  .detalle-ave img{
+    width: 100%;
+    border-radius: 2rem;
+  }
+  .estado {
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+    font-weight: bold;
+  }
+  .estado.lc {
+    background-color: #d4edda;
+    color: #155724;
+  }
+  .contenedor-foto {
+    width: 100%;
+    overflow: hidden;
+  }
+</style>

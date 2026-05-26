@@ -1,196 +1,228 @@
 ---
-const listAvesTarget = [
+
+export const listAvesTarget = [
   {
+    slug: "tangara-azuleja",
     nombreComun: "Tangara azuleja",
     nombreCientifico: "Thraupis episcopus",
     Estado: "LC",
     Imagen: "/imgs/aves/tangaraazuleja.webp",
   },
   {
+    slug: "barranquero",
     nombreComun: "Barranquero",
     nombreCientifico: "Momotus momota",
     Estado: "LC",
     Imagen: "/imgs/aves/momotobarranquero.webp",
   },
   {
+    slug: "tirano-tropical",
     nombreComun: "Tirano tropical",
     nombreCientifico: "Tyrannus melancholicus",
     Estado: "LC",
     Imagen: "/imgs/aves/tiranotropical.webp",
   },
   {
+    slug: "tangara-dorsirroja",
     nombreComun: "Tangara dorsirroja",
     nombreCientifico: "Ramphocelus dimidiatus",
     Estado: "LC",
     Imagen: "/imgs/aves/tangaradorsirroja.webp",
   },
   {
+    slug: "canario",
     nombreComun: "Canario",
     nombreCientifico: "Sicalis flaveola",
     Estado: "LC",
     Imagen: "/imgs/aves/canario.webp",
   },
   {
+    slug: "tangara-cabeciazul",
     nombreComun: "Tangara cabeciazul",
     nombreCientifico: "Stilpnia cyanicollis",
     Estado: "LC",
     Imagen: "/imgs/aves/tangaracabeciazul.webp",
   },
   {
+    slug: "gavilan-caminero",
     nombreComun: "Gavilán caminero",
     nombreCientifico: "Rupornis magnirostris",
     Estado: "LC",
     Imagen: "/imgs/aves/gavilancaminero.webp",
   },
   {
+    slug: "bienteveo-comun",
     nombreComun: "Bienteveo común",
     nombreCientifico: "Pitangus sulphuratus",
     Estado: "LC",
-    Imagen: "/imgs/aves/tiranotropical.webp",
+    Imagen: "/imgs/aves/bienteveocomun.webp",
   },
   {
+    slug: "ibis-afeitado",
     nombreComun: "Ibis afeitado",
     nombreCientifico: "Phimosus infuscatus",
     Estado: "LC",
     Imagen: "/imgs/aves/ibisafeitaido.webp",
   },
   {
+    slug: "guacharaca-colombiana",
     nombreComun: "Guacharaca colombiana",
     nombreCientifico: "Ortalis columbiana",
     Estado: "LC",
     Imagen: "/imgs/aves/guacharacacolombiana.webp",
   },
   {
+    slug: "gallinazo-negro",
     nombreComun: "Gallinazo negro",
     nombreCientifico: "Coragyps atratus",
     Estado: "LC",
     Imagen: "/imgs/aves/gallinazonegro.webp",
   },
   {
+    slug: "tangara-palmera",
     nombreComun: "Tangara palmera",
     nombreCientifico: "Thraupis palmarum",
     Estado: "LC",
     Imagen: "/imgs/aves/tangarapalmera.webp",
   },
   {
+    slug: "eufonia-piquigruesa",
     nombreComun: "Eufonia piquigruesa",
     nombreCientifico: "Euphonia laniirostris",
     Estado: "LC",
     Imagen: "/imgs/aves/eufoniapiquigruesa.webp",
   },
   {
+    slug: "colibri-colirrufo",
     nombreComun: "Colibrí colirrufo",
     nombreCientifico: "Amazilia tzacatl",
     Estado: "LC",
     Imagen: "/imgs/aves/colibricolirrufo.webp",
   },
   {
+    slug: "colibri-capirotado",
     nombreComun: "Colibrí capirotado",
     nombreCientifico: "Amazilia cyanifrons",
     Estado: "LC",
     Imagen: "/imgs/aves/colibricapirotado.webp",
   },
   {
+    slug: "tortolita-rojiza",
     nombreComun: "Tortolita rojiza",
     nombreCientifico: "Columbina talpacoti",
     Estado: "LC",
     Imagen: "/imgs/aves/tortolitarojiza.webp",
   },
   {
+    slug: "tangara-rastrojera",
     nombreComun: "Tangara rastrojera",
     nombreCientifico: "Stilpnia vitriolina",
     Estado: "LC",
     Imagen: "/imgs/aves/tangararastrojera.webp",
   },
   {
+    slug: "paloma-tolimense",
     nombreComun: "Paloma tolimense",
     nombreCientifico: "Leptotila conoveri",
     Estado: "EN",
     Imagen: "/imgs/aves/palomatolimense.webp",
   },
   {
+    slug: "colibri-del-tolima",
     nombreComun: "Colibrí del Tolima",
     nombreCientifico: "Anthocephala berlepschi",
     Estado: "VU",
     Imagen: "/imgs/aves/colibrideltolima.webp",
   },
   {
+    slug: "buco-bigotudo",
     nombreComun: "Buco bigotudo",
     nombreCientifico: "Malacoptila panamensis",
     Estado: "LC",
     Imagen: "/imgs/aves/bucobigotudo.webp",
   },
   {
+    slug: "tangara-luctuosa",
     nombreComun: "Tangara luctuosa",
     nombreCientifico: "Loriotus luctuosus",
     Estado: "LC",
     Imagen: "/imgs/aves/tangarahombriblanca.webp",
   },
   {
+    slug: "tangara-dorada",
     nombreComun: "Tangara dorada",
     nombreCientifico: "Tangara arthus",
     Estado: "LC",
     Imagen: "/imgs/aves/tangaradorada.webp",
   },
   {
+    slug: "piranga-abejera",
     nombreComun: "Piranga abejera",
     nombreCientifico: "Piranga rubra",
     Estado: "LC",
     Imagen: "/imgs/aves/pirangaroja.webp",
   },
   {
+    slug: "oropendola-crestada",
     nombreComun: "Oropéndola crestada",
     nombreCientifico: "Psarocolius decumanus",
     Estado: "LC",
     Imagen: "/imgs/aves/oropendolacrestada.webp",
   },
   {
+    slug: "garcita-bueyera",
     nombreComun: "Garcita bueyera",
     nombreCientifico: "Bubulcus ibis",
     Estado: "LC",
     Imagen: "/imgs/aves/garcitabueyera.webp",
   },
   {
+    slug: "carpintero-bellotero",
     nombreComun: "Carpintero bellotero",
     nombreCientifico: "Melanerpes formicivorus",
     Estado: "LC",
     Imagen: "/imgs/aves/carpinterobellotero.webp",
   },
   {
+    slug: "tangara-flamigera",
     nombreComun: "Tangara flamígera",
     nombreCientifico: "Ramphocelus flammigerus",
     Estado: "LC",
     Imagen: "/imgs/aves/tangaraflamigera.webp",
   },
   {
+    slug: "loro-orejiamarillo",
     nombreComun: "Loro orejiamarillo",
     nombreCientifico: "Ognorhynchus icterotis",
     Estado: "VU",
     Imagen: "/imgs/aves/loroorejiamarillo.webp",
   },
   {
+    slug: "saltarin-cabecidorado",
     nombreComun: "Saltarín cabecidorado",
     nombreCientifico: "Ceratopipra erythrocephala",
     Estado: "LC",
     Imagen: "/imgs/aves/saltarincabecidorado.webp",
   }
 ];
+
 ---
+
 
 <div class="galeria">
   {
     listAvesTarget.map((target) => (
-      <div
-        class="tarjetaAves"
-        style={{
-          backgroundImage: `linear-gradient(to bottom, rgba(0,0,0,0.0), rgba(0,0,0,0.6)), url(${target.Imagen})`,
-        }}
-      >
+      <a href={`/aves/${target.slug}`}>
+        <div
+          class="tarjetaAves"
+          style={`background-image: linear-gradient(to bottom, rgba(0,0,0,0.0), rgba(0,0,0,0.6)), url(${target.Imagen})`}
+        >
         <div class="info">
             <div class="nombres">
 
           <p class="nombre">{target.nombreComun}</p>
           <i class="nombreCientifico">{target.nombreCientifico}</i>
+
             </div>
           <div class="estado">
          <p class:list={["estado-logo", `estado-${target.Estado.toLowerCase()}`]}>
@@ -198,7 +230,11 @@ const listAvesTarget = [
 </p>
           </div>
         </div>
+
+
       </div>
+      </a>
+
     ))
   }
 </div>
@@ -221,6 +257,7 @@ const listAvesTarget = [
     justify-content: end;
     color: #fff;
     padding: 1rem;
+    
   }
 
   .nombre,
@@ -276,7 +313,10 @@ padding-right: 1rem;
         background-color: rgb(255, 0, 0) ;
 
 }
-
+.galeria>a{
+  text-decoration: none;
+  cursor: pointer;
+}
 
 
 </style>
