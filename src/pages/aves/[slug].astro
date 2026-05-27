@@ -35,24 +35,61 @@ console.log(ave);
 
   <body>
     <Header />
-    <div class="contenedor-principal">
-      <Volver />
-    </div>
 
     <main class="detalle-ave contenedor-principal">
+      <Volver />
+
       <div class="contenedor-foto">
         <img src={ave.Imagen} alt="Imagen del ave {ave.nombreComun} " />
+
+        <span class={`estado estado-${ave.Estado.toLowerCase()}`}
+          >{ave.Estado}</span >
       </div>
       <h1>{ave.nombreComun}</h1>
-      <p><i>{ave.nombreCientifico}</i></p>
-      <span class={`estado ${ave.Estado.toLowerCase()}`}>{ave.Estado}</span>
+      <p ><i>{ave.nombreCientifico}</i></p>
+      <p class="nombreIngles">{ave.nombreIngles}</p>
 
       {/* Volvemos a aprovechar el componente Image optimizado de Astro */}
 
-      <section class="informacion-adicional">
-        <p>
-          Más información detallada sobre el {ave.nombreComun} próximamente...
-        </p>
+      <section class="target t-habitat">
+        <div class="contenido-target">
+          <p class="T-habitat">Habitat y Distribución</p>
+          <p>{ave.Habitat}  </p>
+          <div class="piso">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="200"
+              height="200"
+              viewBox="0 0 48 48"
+              fill="#0066cc"
+              ><g
+                fill="none"
+                stroke="#0066cc"
+                stroke-linejoin="round"
+                stroke-width="4"
+                ><path d="m18 10l14 28H4l14-28Z"></path><path
+                  stroke-linecap="round"
+                  d="m28 29l5.647-7L44 38H32M12 22h12m-10-4l-4 8m12-8l4 8"
+                ></path></g
+              ></svg
+            >
+            <span>Piso Termico: {ave.Piso}</span>
+          </div>
+        </div>
+      </section>
+
+      {  /* Estilo para la tarjeta DE ESTADO */
+}
+      <section class= {`target t-estado fondo-${ave.Estado.toLowerCase()}`}>
+        <div class="contenido-target content-estado">
+          <span class={`big-estado estado-${ave.Estado.toLowerCase()}`}
+          >{ave.Estado}</span >
+          <p class="titulo-uicn">ESTADO UICN</p>
+          <p class="contenido-uicn">{ave.Uicn}</p>
+    
+
+          
+        </div>
       </section>
     </main>
     <Footer />
@@ -60,25 +97,161 @@ console.log(ave);
 </html>
 
 <style>
-  /* Tus estilos específicos para la página de detalle */
+  main{
+    margin-bottom: 30rem; 
+
+  }
+  /*Globales  */
   .detalle-ave {
     max-width: 90%;
   }
-  .detalle-ave img{
+  h1 {
+    font-size: 3rem;
+    margin-bottom: 0rem;
+    line-height: 0.4;
+  }
+  i {
+    font-size: 2rem;
+  }
+  p{
+    font-size: 1.6rem    ;
+  }
+  .nombreIngles {
+    font-size: 1.8rem;
+    margin: 0;
+    line-height: .3;
+
+  }
+
+  /* Contenedor de la foto */
+
+  .detalle-ave img {
     width: 100%;
     border-radius: 2rem;
   }
-  .estado {
-    padding: 0.25rem 0.5rem;
-    border-radius: 4px;
-    font-weight: bold;
-  }
-  .estado.lc {
-    background-color: #d4edda;
-    color: #155724;
-  }
+
   .contenedor-foto {
+    position: relative;
+    height: auto;
     width: 100%;
-    overflow: hidden;
   }
+
+  /*  Estilos para el incono de estado*/
+
+  .estado {
+    padding: 0.7rem;
+    border-radius: 50%;
+    font-weight: bold;
+    font-size: 1.2rem;
+    position: absolute;
+    top: 83%;
+    right: 1rem;
+  }
+  .estado-lc {
+    background-color: rgb(1, 145, 1);
+    color: #ffff;
+  }
+    .fondo-lc{
+    background-color: rgb(210, 255, 210);
+
+  }
+  .estado-nt {
+    background-color: rgb(21, 248, 21);
+    color: black;
+  }
+  .estado-vu {
+    background-color: #ffe600;
+    color: black;
+  }
+  .fondo-vu{
+    background-color: hsl(68, 100%, 89%);
+
+  }
+  .estado-en {
+    background-color: rgb(255, 102, 0);
+    color: black;
+  }
+     .fondo-en{
+    background-color: rgb(255, 220, 197);
+
+  }
+  .estado-cr {
+    background-color: rgb(255, 0, 0);
+  }
+
+  /* Estilo para la tarjeta */
+  .target {
+    margin-top: 3rem;
+    border: 0.1rem solid #615e5e;
+    border-radius: 2rem;
+    height: auto;
+  /* ELIMINAR */
+  }
+  .contenido-target{
+    padding: 2rem;
+    margin: 0 auto;
+  }
+.piso{
+display: flex;
+align-items: center;
+font-size: 1.2rem;
+}
+
+   .piso svg {
+    width: 2.4rem;
+    height: 2.4rem;
+  }
+  /* especificos */
+
+.T-habitat {
+  margin: 0;
+font-size: 1.3rem;
+font-weight: bold;
+
+}
+.t-habitat{
+    background-color: #e0e0e0;
+
+}
+  /* Estilo para la tarjeta de ESTADO*/
+.big-estado{
+  font-size: 2.5rem;
+  font-weight: 900;
+  padding: 1rem;
+  border-radius: 50%;
+  margin-bottom: 1rem;
+}
+.t-estado{
+  width: 100%;
+
+
+}
+.content-estado{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+}
+.content-estado p{
+  margin: 0.3rem;
+}
+.titulo-uicn{
+  font-size: 1.2rem;
+}
+.contenido-uicn{
+    font-weight: 800;
+
+}
+
+.big-estado-vu{
+  background-color: red;
+}
+
+
+
+
+
+
+ 
 </style>
