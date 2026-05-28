@@ -3,6 +3,7 @@ import { listAvesTarget } from "../../componentes/aves-listado.astro";
 import Header from "../../componentes/Header.astro";
 import Footer from "../../componentes/footer.astro";
 import Volver from "../../componentes/btn-volver.astro";
+import CodigoQR from '../../componentes/Qrcode.astro';
 
 export async function getStaticPaths() {
   return listAvesTarget.map((ave) => ({
@@ -43,10 +44,11 @@ console.log(ave);
         <img src={ave.Imagen} alt="Imagen del ave {ave.nombreComun} " />
 
         <span class={`estado estado-${ave.Estado.toLowerCase()}`}
-          >{ave.Estado}</span >
+          >{ave.Estado}</span
+        >
       </div>
       <h1>{ave.nombreComun}</h1>
-      <p ><i>{ave.nombreCientifico}</i></p>
+      <p><i>{ave.nombreCientifico}</i></p>
       <p class="nombreIngles">{ave.nombreIngles}</p>
 
       {/* Volvemos a aprovechar el componente Image optimizado de Astro */}
@@ -54,7 +56,7 @@ console.log(ave);
       <section class="target t-habitat">
         <div class="contenido-target">
           <p class="T-habitat">Habitat y Distribución</p>
-          <p>{ave.Habitat}  </p>
+          <p>{ave.Habitat}</p>
           <div class="piso">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -78,28 +80,68 @@ console.log(ave);
         </div>
       </section>
 
-      {  /* Estilo para la tarjeta DE ESTADO */
-}
-      <section class= {`target t-estado fondo-${ave.Estado.toLowerCase()}`}>
+      {/* Estilo para la tarjeta DE ESTADO */}
+      <section class={`target t-estado fondo-${ave.Estado.toLowerCase()}`}>
         <div class="contenido-target content-estado">
           <span class={`big-estado estado-${ave.Estado.toLowerCase()}`}
-          >{ave.Estado}</span >
+            >{ave.Estado}</span
+          >
           <p class="titulo-uicn">ESTADO UICN</p>
           <p class="contenido-uicn">{ave.Uicn}</p>
-    
-
-          
         </div>
       </section>
+
+      {/* Estilo para la tarjeta DE DESCRIPCION*/}
+      <section class={`target `}>
+        <div class="contenido-target content-description">
+          <div class="description">
+
+            <h1>
+
+              <span>
+                <svg
+                  height="200"
+                  width="200"
+                  viewBox="0 0 48 48"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="m4.5 25.445l27.908 5.49l5.317 4.372m2.36-1.561l-2.36 1.561l-3.299 2.183M20.588 10.51l-5.669 3.232l.032.85l-1.894 1.462l2.81.46v4.648l2.433 2.989l3.85 3.617l8.03-.778l1.261.025L43.5 33.869l-10.136-8.186l3.892.396l-2.83-2.459l4.303-.268l-17.499-9.563Zm.547 16.43l-.83 1.49m5.435-.896l-1.246 1.664"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"></path>
+                  <path
+                    d="m29.068 20.312l-7.715-.26l-.501-3.858Z"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"></path>
+                </svg>
+              </span> <span>Descrición Interpretativa</span>
+            </h1>
+
+            <p>{ave.Descripcion}</p>
+
+          </div>
+
+          <div class="dato">
+            <p>{ave.Dato}</p>
+          </div>
+
+        </div>
+      </section>
+      <div class="mi-seccion-qr">
+      <CodigoQR size={150} />
+    </div>
     </main>
     <Footer />
   </body>
 </html>
 
 <style>
-  main{
-    margin-bottom: 30rem; 
-
+  main {
+    margin-bottom: 30rem;
   }
   /*Globales  */
   .detalle-ave {
@@ -113,14 +155,13 @@ console.log(ave);
   i {
     font-size: 2rem;
   }
-  p{
-    font-size: 1.6rem    ;
+  p {
+    font-size: 1.6rem;
   }
   .nombreIngles {
     font-size: 1.8rem;
     margin: 0;
-    line-height: .3;
-
+    line-height: 0.3;
   }
 
   /* Contenedor de la foto */
@@ -151,9 +192,8 @@ console.log(ave);
     background-color: rgb(1, 145, 1);
     color: #ffff;
   }
-    .fondo-lc{
+  .fondo-lc {
     background-color: rgb(210, 255, 210);
-
   }
   .estado-nt {
     background-color: rgb(21, 248, 21);
@@ -163,17 +203,15 @@ console.log(ave);
     background-color: #ffe600;
     color: black;
   }
-  .fondo-vu{
+  .fondo-vu {
     background-color: hsl(68, 100%, 89%);
-
   }
   .estado-en {
     background-color: rgb(255, 102, 0);
     color: black;
   }
-     .fondo-en{
+  .fondo-en {
     background-color: rgb(255, 220, 197);
-
   }
   .estado-cr {
     background-color: rgb(255, 0, 0);
@@ -185,73 +223,87 @@ console.log(ave);
     border: 0.1rem solid #615e5e;
     border-radius: 2rem;
     height: auto;
-  /* ELIMINAR */
+    /* ELIMINAR */
   }
-  .contenido-target{
+  .contenido-target {
     padding: 2rem;
     margin: 0 auto;
   }
-.piso{
-display: flex;
-align-items: center;
-font-size: 1.2rem;
-}
+  .piso {
+    display: flex;
+    align-items: center;
+    font-size: 1.2rem;
+  }
 
-   .piso svg {
+  .piso svg {
     width: 2.4rem;
     height: 2.4rem;
   }
   /* especificos */
 
-.T-habitat {
-  margin: 0;
-font-size: 1.3rem;
-font-weight: bold;
-
-}
-.t-habitat{
+  .T-habitat {
+    margin: 0;
+    font-size: 1.3rem;
+    font-weight: bold;
+  }
+  .t-habitat {
     background-color: #e0e0e0;
-
-}
+  }
   /* Estilo para la tarjeta de ESTADO*/
-.big-estado{
-  font-size: 2.5rem;
-  font-weight: 900;
-  padding: 1rem;
-  border-radius: 50%;
-  margin-bottom: 1rem;
-}
-.t-estado{
-  width: 100%;
-
-
-}
-.content-estado{
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-
-}
-.content-estado p{
-  margin: 0.3rem;
-}
-.titulo-uicn{
-  font-size: 1.2rem;
-}
-.contenido-uicn{
+  .big-estado {
+    font-size: 2.5rem;
+    font-weight: 900;
+    padding: 1rem;
+    border-radius: 50%;
+    margin-bottom: 1rem;
+  }
+  .t-estado {
+    width: 100%;
+  }
+  .content-estado {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .content-estado p {
+    margin: 0.3rem;
+  }
+  .titulo-uicn {
+    font-size: 1.2rem;
+  }
+  .contenido-uicn {
     font-weight: 800;
+  }
 
-}
+  .big-estado-vu {
+    background-color: red;
+  }
+  /* Estilo para la tarjeta de DESCRICIÓN*/
+  .description{
+  
+  }
+  .description svg{
+    width: 2.4rem;
+    height: inherit;
+  }
+  .description h1{
+    font-size: 2rem;
+    display: flex;
+    align-items: center;
 
-.big-estado-vu{
-  background-color: red;
-}
+  }
+  .dato{
+    border: .1rem solid rgb(211, 211, 211) ;
+    border-radius: 1rem;
+    border-left: .3rem solid #ff6600;
+    background-color: #fce4d5;
 
 
+  }
+  .dato p{
+    padding: 1rem;
+    margin: 0;
+  }
 
-
-
-
- 
 </style>

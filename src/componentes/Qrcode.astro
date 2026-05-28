@@ -1,0 +1,62 @@
+---
+// src/components/CodigoQR.astro
+interface Props {
+  size?: number;
+}
+
+const { size = 200 } = Astro.props;
+---
+
+<div class="qr-container">
+  <canvas id="qr-canvas" width={size} height={size}></canvas>
+  <p>Escanea para compartir esta página</p>
+</div>
+
+<script>
+  // Importamos la librería dentro del script del cliente
+  import QRCode from 'qrcode';
+
+  function generarQR() {
+    const canvas = document.getElementById('qr-canvas') as HTMLCanvasElement;
+    
+    if (canvas) {
+      // Obtenemos la URL exacta de la página actual en el navegador
+      const urlActual = window.location.href;
+
+      // Generamos el QR en el canvas
+      QRCode.toCanvas(canvas, urlActual, {
+        width: canvas.width,
+        margin: 2,
+        color: {
+          dark: '#000000',  // Color del QR
+          light: '#ffffff' // Color de fondo
+        }
+      }, function (error) {
+        if (error) console.error('Error generando el código QR:', error);
+      });
+    }
+  }
+
+  // Ejecutar cuando la página carga
+  generarQR();
+
+  // Si usas ViewTransitions de Astro, descomenta la siguiente línea 
+  // para que vuelva a generar el QR al navegar entre páginas:
+  // document.addEventListener('astro:page-load', generarQR);
+</script>
+
+<style>
+  .qr-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: sans-serif;
+  }
+  canvas {
+    max-width: 100%;
+    height: auto;
+    border: 1px solid #eaeaea;
+    border-radius: 8px;
+  }
+</style>
