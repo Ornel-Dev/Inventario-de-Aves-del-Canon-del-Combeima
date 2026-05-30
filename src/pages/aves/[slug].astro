@@ -3,7 +3,7 @@ import { listAvesTarget } from "../../componentes/aves-listado.astro";
 import Header from "../../componentes/Header.astro";
 import Footer from "../../componentes/footer.astro";
 import Volver from "../../componentes/btn-volver.astro";
-import CodigoQR from '../../componentes/Qrcode.astro';
+import CodigoQR from "../../componentes/Qrcode.astro";
 
 export async function getStaticPaths() {
   return listAvesTarget.map((ave) => ({
@@ -51,11 +51,9 @@ console.log(ave);
       <p><i>{ave.nombreCientifico}</i></p>
       <p class="nombreIngles">{ave.nombreIngles}</p>
 
-      {/* Volvemos a aprovechar el componente Image optimizado de Astro */}
-
       <section class="target t-habitat">
         <div class="contenido-target">
-          <p class="T-habitat">Habitat y Distribución</p>
+          <h2 class="T-habitat">Habitat y Distribución</h2>
           <p>{ave.Habitat}</p>
           <div class="piso">
             <svg
@@ -95,9 +93,7 @@ console.log(ave);
       <section class={`target `}>
         <div class="contenido-target content-description">
           <div class="description">
-
-            <h1>
-
+            <h2>
               <span>
                 <svg
                   height="200"
@@ -118,23 +114,153 @@ console.log(ave);
                     stroke-linecap="round"
                     stroke-linejoin="round"></path>
                 </svg>
-              </span> <span>Descrición Interpretativa</span>
-            </h1>
+              </span>
+              <span>Descrición Interpretativa</span>
+            </h2>
 
             <p>{ave.Descripcion}</p>
-
           </div>
 
           <div class="dato">
             <p>{ave.Dato}</p>
           </div>
-
         </div>
       </section>
-      
-      <div class="mi-seccion-qr">
-      <CodigoQR size={150} />
-    </div>
+
+      <section class="target t-audio">
+        <div class="contenido-target">
+          <div class="header-audio">
+            <svg
+              height="200"
+              width="200"
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M10.565 2.075a3.33 3.33 0 0 1 2.87 0c.394.189.755.497 1.26.928l.079.066c.48.41.939.604 1.58.655l.102.008c.662.053 1.135.09 1.547.236a3.33 3.33 0 0 1 2.03 2.029c.145.412.182.885.235 1.547l.008.102c.051.641.246 1.1.655 1.58l.066.078c.431.506.74.867.928 1.261a3.33 3.33 0 0 1 0 2.87c-.189.394-.497.755-.928 1.26l-.066.079c-.418.49-.605.951-.655 1.58l-.008.102c-.053.662-.09 1.135-.236 1.547a3.33 3.33 0 0 1-2.029 2.03c-.412.145-.885.182-1.547.235l-.102.008c-.641.051-1.1.246-1.58.655l-.079.066c-.505.431-.866.74-1.26.928a3.33 3.33 0 0 1-2.87 0c-.394-.189-.755-.497-1.26-.928l-.079-.066a2.56 2.56 0 0 0-1.58-.655l-.102-.008c-.662-.053-1.135-.09-1.547-.236a3.33 3.33 0 0 1-2.03-2.029c-.145-.412-.182-.885-.235-1.547l-.008-.102a2.56 2.56 0 0 0-.655-1.58l-.066-.079c-.431-.505-.74-.866-.928-1.26a3.33 3.33 0 0 1 0-2.87c.189-.394.497-.755.928-1.26l.066-.079a2.56 2.56 0 0 0 .655-1.58l.008-.102c.053-.662.09-1.135.236-1.547a3.33 3.33 0 0 1 2.029-2.03c.412-.145.885-.182 1.547-.235l.102-.008a2.56 2.56 0 0 0 1.58-.655l.078-.066c.506-.431.867-.74 1.261-.928M9.75 10.5a.75.75 0 0 0-1.5 0v3a.75.75 0 0 0 1.5 0zM12 8.25a.75.75 0 0 0-.75.75v6a.75.75 0 0 0 1.5 0V9a.75.75 0 0 0-.75-.75m3.75 2.25a.75.75 0 0 0-1.5 0v3a.75.75 0 0 0 1.5 0z"
+                fill="currentColor"></path>
+            </svg>
+            <div class="titulo-canto">
+              <h2>Canto y LLamado</h2>
+              <p>Fuente: XENO-CANTO #{ave.AudioCode}</p>
+            </div>
+
+            <div class="contenedor-audio">
+              <audio id="audio-ave" preload="metadata">
+                <source src={ave.Audiosrc} type="audio/mpeg" />
+              </audio>
+
+              <button
+                id="btn-reproducir"
+                class="btn-audio"
+                aria-label="Reproducir canto"
+              >
+                <span class="icono">▶</span>
+              </button>
+            </div>
+          </div>
+          <div class="iconos-audio">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 292 84"
+              width="100%"
+              height="100%"
+            >
+              <g transform="translate(-10, -8)">
+                <rect x="10" y="74" width="22" height="16" rx="8" fill="#385647"
+                ></rect>
+                <rect
+                  x="40"
+                  y="48"
+                  width="22"
+                  height="42"
+                  rx="11"
+                  fill="#385647"></rect>
+                <rect
+                  x="70"
+                  y="22"
+                  width="22"
+                  height="68"
+                  rx="11"
+                  fill="#385647"></rect>
+                <rect
+                  x="100"
+                  y="8"
+                  width="22"
+                  height="82"
+                  rx="11"
+                  fill="#7b9788"></rect>
+                <rect
+                  x="130"
+                  y="38"
+                  width="22"
+                  height="52"
+                  rx="11"
+                  fill="#9bb3a6"></rect>
+                <rect
+                  x="160"
+                  y="68"
+                  width="22"
+                  height="22"
+                  rx="11"
+                  fill="#385647"></rect>
+                <rect
+                  x="190"
+                  y="10"
+                  width="22"
+                  height="80"
+                  rx="11"
+                  fill="#7b9788"></rect>
+                <rect
+                  x="220"
+                  y="48"
+                  width="22"
+                  height="42"
+                  rx="11"
+                  fill="#385647"></rect>
+                <rect
+                  x="250"
+                  y="16"
+                  width="22"
+                  height="74"
+                  rx="11"
+                  fill="#7b9788"></rect>
+                <rect
+                  x="280"
+                  y="74"
+                  width="22"
+                  height="16"
+                  rx="8"
+                  fill="#385647"></rect>
+              </g>
+            </svg>
+          </div>
+          <div class="advertencia-audio">
+            <svg
+              height="200"
+              width="200"
+              viewBox="0 0 16 16"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M8 1L0 15h16L8 1zm0 12c-.6 0-1-.4-1-1s.4-1 1-1s1 .4 1 1s-.4 1-1 1zm-1-3V6h2v4H7z"
+                fill="currentColor"></path>
+            </svg>
+            <p>
+              Uso responsable del audio: No realizar playback invasivo. El uso
+              excesivo puede estresar a la especie en su hábitat natural.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section class="target">
+        <div class="contenido-target">
+          <div class="mi-seccion-qr">
+            <CodigoQR size={150} />
+          </div>
+        </div>
+      </section>
     </main>
     <Footer />
   </body>
@@ -281,30 +407,145 @@ console.log(ave);
     background-color: red;
   }
   /* Estilo para la tarjeta de DESCRICIÓN*/
-  .description{
-  
+  .description {
   }
-  .description svg{
+  .description svg {
     width: 2.4rem;
     height: inherit;
   }
-  .description h1{
+  .description h1 {
     font-size: 2rem;
     display: flex;
     align-items: center;
-
   }
-  .dato{
-    border: .1rem solid rgb(211, 211, 211) ;
+  .dato {
+    border: 0.1rem solid rgb(211, 211, 211);
     border-radius: 1rem;
-    border-left: .3rem solid #ff6600;
+    border-left: 0.3rem solid #ff6600;
     background-color: #fce4d5;
-
-
   }
-  .dato p{
+  .dato p {
     padding: 1rem;
     margin: 0;
   }
 
+  /* Estilo para la tarjeta de Audio*/
+  /* header  Audio*/
+  .t-audio{
+    background-color: rgb(27, 67, 50);
+
+  }
+  .header-audio {
+    display: flex;
+    justify-content: space-between;
+    color: #ffff;
+
+      }
+  .header-audio svg {
+    width: 4.8rem;
+    height: 4.8rem;
+  }
+  .header-audio h2 {
+    font-size: 2rem;
+    margin: 0;
+  }
+  .header-audio p{
+    font-size: 1.2rem;
+    margin-top: .5rem;
+    margin-bottom: 0;
+    color: #bed4c0;
+  }
+
+  .iconos-audio{
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+  }
+
+
+
+  /* ESTILOS DEL DIV ADVERTENCIA */
+  .advertencia-audio{
+   display: flex;
+  align-content: flex-start;
+  column-gap: 1rem;
+  border: .1rem solid rgb(69, 92, 82);
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 1rem;
+  padding: 1rem;
+
+  }
+  .advertencia-audio svg{
+    
+width: 9.4rem;
+height: 4rem;
+color: rgb(218, 15, 15);
+  }
+
+  .advertencia-audio p{
+    margin: 0;
+    color: #d3e4d4;
+
+  }
+
+
+  /* 4. Dale el estilo que quieras a tu botón */
+
+  .btn-audio {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.5rem;
+    background-color: #2e7d32; /* Un verde ecológico */
+    color: white;
+    border: none;
+    width: 4.8rem;
+    height: 4.8rem;
+    border-radius: 50%;
+    font-weight: bold;
+    cursor: pointer;
+    transition:
+      background-color 0.2s,
+      transform 0.1s;
+  }
+
+  .btn-audio:hover {
+    background-color: #1b5e20;
+  }
+
+  .btn-audio:active {
+    transform: scale(0.98);
+  }
+
+  /* Estilo opcional por si quieres cambiar el color al estar activo */
+  .btn-audio.reproduciendo {
+    background-color: #ff0000; /* Rojo al pausar, por ejemplo */
+  }
 </style>
+
+<script>
+  // 3. Lógica para controlar el reproductor
+  const audio = document.getElementById("audio-ave") as HTMLAudioElement;
+  const boton = document.getElementById("btn-reproducir");
+  const icono = boton?.querySelector(".icono");
+
+  if (audio && boton && icono) {
+    boton.addEventListener("click", () => {
+      if (audio.paused) {
+        audio.play();
+        icono.textContent = "⏸"; // Cambia el icono a Pausa
+        boton.classList.add("reproduciendo");
+      } else {
+        audio.pause();
+        icono.textContent = "▶"; // Cambia el icono a Play
+        boton.classList.remove("reproduciendo");
+      }
+    });
+
+    // Resetear el botón automáticamente si el audio termina de reproducirse
+    audio.addEventListener("ended", () => {
+      icono.textContent = "▶";
+      boton.classList.remove("reproduciendo");
+    });
+  }
+</script>
