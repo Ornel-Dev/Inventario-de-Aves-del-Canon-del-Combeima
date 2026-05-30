@@ -41,7 +41,6 @@ const { ave } = Astro.props;
       <Volver />
 
       <div class="contenedor-foto">
-        <img src={ave.Imagen} alt="Imagen del ave {ave.nombreComun} " />
         <img src={ave.Imagen} alt={`Imagen del ave ${ave.nombreComun}`} />
 
         <span class={`estado estado-${ave.Estado.toLowerCase()}`}
