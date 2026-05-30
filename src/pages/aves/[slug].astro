@@ -13,7 +13,7 @@ export async function getStaticPaths() {
 }
 
 const { ave } = Astro.props;
-console.log(ave);
+
 ---
 
 <!doctype html>
@@ -42,6 +42,7 @@ console.log(ave);
 
       <div class="contenedor-foto">
         <img src={ave.Imagen} alt="Imagen del ave {ave.nombreComun} " />
+        <img src={ave.Imagen} alt={`Imagen del ave ${ave.nombreComun}`} />
 
         <span class={`estado estado-${ave.Estado.toLowerCase()}`}
           >{ave.Estado}</span
@@ -147,6 +148,7 @@ console.log(ave);
 
             <div class="contenedor-audio">
               <audio id="audio-ave" preload="metadata">
+                <source src={ave.Audiosrc} type="audio/mpeg" />
                 <source src={ave.Audiosrc} type="audio/mpeg" />
               </audio>
 
