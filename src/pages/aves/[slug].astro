@@ -13,7 +13,6 @@ export async function getStaticPaths() {
 }
 
 const { ave } = Astro.props;
-
 ---
 
 <!doctype html>
@@ -64,7 +63,7 @@ const { ave } = Astro.props;
               fill="#0066cc"
               ><g
                 fill="none"
-                stroke="#0066cc"
+                stroke="#000000"
                 stroke-linejoin="round"
                 stroke-width="4"
                 ><path d="m18 10l14 28H4l14-28Z"></path><path
@@ -90,7 +89,7 @@ const { ave } = Astro.props;
       </section>
 
       {/* Estilo para la tarjeta DE DESCRIPCION*/}
-      <section class={`target `}>
+      <section class={`target t-descripcion`}>
         <div class="contenido-target content-description">
           <div class="description">
             <h2>
@@ -256,10 +255,19 @@ const { ave } = Astro.props;
       </section>
 
       <section class="target">
-        <div class="contenido-target">
+        <div class="contenido-target contenido-qr">
           <div class="mi-seccion-qr">
             <CodigoQR size={150} />
           </div>
+          <h3>Compartir Ficha</h3>
+          <p>Escanea el código para llevar esta información en tu dispositivo o compartir con otras personas.</p>
+          <button id="btn-compartir" class="btn-compartir">
+            <svg height="200" width="200" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+	<path d="M15.815 0C17.575 0 19 1.45 19 3.235s-1.424 3.234-3.185 3.234a3.155 3.155 0 0 1-2.378-1.084l-6.284 3.44c.14.364.216.76.216 1.175c0 .542-.13 1.052-.363 1.501l6.008 3.725a3.177 3.177 0 0 1 2.801-1.695c1.76 0 3.185 1.45 3.185 3.234C19 18.55 17.576 20 15.815 20c-1.76 0-3.184-1.45-3.184-3.235l.003-.138l-6.53-4.046a3.138 3.138 0 0 1-1.92.654C2.425 13.235 1 11.785 1 10s1.424-3.235 3.185-3.235c.852 0 1.626.34 2.197.893l6.382-3.493a3.282 3.282 0 0 1-.133-.93C12.63 1.45 14.055 0 15.815 0Zm0 14.926c-.992 0-1.8.822-1.8 1.84c0 1.017.808 1.839 1.8 1.839c.993 0 1.8-.822 1.8-1.84c0-1.017-.807-1.839-1.8-1.839ZM4.185 8.161c-.993 0-1.8.822-1.8 1.839s.807 1.84 1.8 1.84c.992 0 1.8-.823 1.8-1.84c0-1.017-.808-1.84-1.8-1.84Zm11.63-6.766c-.992 0-1.8.822-1.8 1.84c0 1.017.808 1.839 1.8 1.839c.993 0 1.8-.822 1.8-1.84c0-1.017-.807-1.839-1.8-1.839Z" fill="currentColor"/>
+</svg>
+COMPARTIR FICHA
+          </button>
+
         </div>
       </section>
     </main>
@@ -269,9 +277,10 @@ const { ave } = Astro.props;
 
 <style>
   main {
-    margin-bottom: 30rem;
+    margin-bottom: 8rem;
   }
   /*Globales  */
+
   .detalle-ave {
     max-width: 90%;
   }
@@ -320,26 +329,29 @@ const { ave } = Astro.props;
     background-color: rgb(1, 145, 1);
     color: #ffff;
   }
-  .fondo-lc {
+  section.fondo-lc {
     background-color: rgb(210, 255, 210);
+    border-color: rgb(1, 145, 1);
   }
   .estado-nt {
     background-color: rgb(21, 248, 21);
     color: black;
   }
   .estado-vu {
-    background-color: #ffe600;
+    background-color: #ffd000;
     color: black;
   }
-  .fondo-vu {
-    background-color: hsl(68, 100%, 89%);
+  section.fondo-vu {
+    background-color: #fff0ac;
+    border-color: #ffd000;
   }
   .estado-en {
-    background-color: rgb(255, 102, 0);
+    background-color: rgb(255, 51, 0);
     color: black;
   }
-  .fondo-en {
-    background-color: rgb(255, 220, 197);
+  section.fondo-en {
+    background-color: rgb(248, 175, 157);
+    border-color: rgb(255, 51, 0);
   }
   .estado-cr {
     background-color: rgb(255, 0, 0);
@@ -347,8 +359,8 @@ const { ave } = Astro.props;
 
   /* Estilo para la tarjeta */
   .target {
-    margin-top: 3rem;
-    border: 0.1rem solid #615e5e;
+    margin-top: 1.5rem;
+    border: 0.1rem solid rgb(193, 200, 194);
     border-radius: 2rem;
     height: auto;
     /* ELIMINAR */
@@ -357,26 +369,34 @@ const { ave } = Astro.props;
     padding: 2rem;
     margin: 0 auto;
   }
+
   .piso {
     display: flex;
     align-items: center;
     font-size: 1.2rem;
+    font-weight: bold;
   }
 
   .piso svg {
-    width: 2.4rem;
-    height: 2.4rem;
+    width: 2rem;
+    height: 2rem;
   }
   /* especificos */
 
   .T-habitat {
     margin: 0;
-    font-size: 1.3rem;
+    font-size: 1.6rem;
+    color: rgb(101, 62, 0);
+
     font-weight: bold;
   }
   .t-habitat {
-    background-color: #e0e0e0;
+    background-color: rgb(243, 244, 239);
+    color: rgb(61, 61, 61);
+
   }
+  
+
   /* Estilo para la tarjeta de ESTADO*/
   .big-estado {
     font-size: 2.5rem;
@@ -408,19 +428,28 @@ const { ave } = Astro.props;
     background-color: red;
   }
   /* Estilo para la tarjeta de DESCRICIÓN*/
-  .description {
+
+  .t-descripcion{
+    background-color: rgb(243, 244, 239);
+
+  }
+  .description p {
+    color: rgb(61, 61, 61);
+
   }
   .description svg {
-    width: 2.4rem;
+    width: 2.5rem;
     height: inherit;
   }
-  .description h1 {
+  .description h2 {
     font-size: 2rem;
     display: flex;
     align-items: center;
+    color: rgb(26, 28, 25)
+ ;
   }
   .dato {
-    border: 0.1rem solid rgb(211, 211, 211);
+    border: 0.1rem solid #ffc39b;
     border-radius: 1rem;
     border-left: 0.3rem solid #ff6600;
     background-color: #fce4d5;
@@ -432,16 +461,14 @@ const { ave } = Astro.props;
 
   /* Estilo para la tarjeta de Audio*/
   /* header  Audio*/
-  .t-audio{
+  .t-audio {
     background-color: rgb(27, 67, 50);
-
   }
   .header-audio {
     display: flex;
     justify-content: space-between;
     color: #ffff;
-
-      }
+  }
   .header-audio svg {
     width: 4.8rem;
     height: 4.8rem;
@@ -450,44 +477,38 @@ const { ave } = Astro.props;
     font-size: 2rem;
     margin: 0;
   }
-  .header-audio p{
+  .header-audio p {
     font-size: 1.2rem;
-    margin-top: .5rem;
+    margin-top: 0.5rem;
     margin-bottom: 0;
     color: #bed4c0;
   }
 
-  .iconos-audio{
+  .iconos-audio {
     margin-top: 2rem;
     margin-bottom: 2rem;
   }
 
-
-
   /* ESTILOS DEL DIV ADVERTENCIA */
-  .advertencia-audio{
-   display: flex;
-  align-content: flex-start;
-  column-gap: 1rem;
-  border: .1rem solid rgb(69, 92, 82);
-  background-color: rgba(255, 255, 255, 0.1);
-  border-radius: 1rem;
-  padding: 1rem;
-
+  .advertencia-audio {
+    display: flex;
+    align-content: flex-start;
+    column-gap: 1rem;
+    border: 0.1rem solid rgb(69, 92, 82);
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 1rem;
+    padding: 1rem;
   }
-  .advertencia-audio svg{
-    
-width: 9.4rem;
-height: 4rem;
-color: rgb(218, 15, 15);
+  .advertencia-audio svg {
+    width: 9.4rem;
+    height: 4rem;
+    color: rgb(218, 15, 15);
   }
 
-  .advertencia-audio p{
+  .advertencia-audio p {
     margin: 0;
     color: #d3e4d4;
-
   }
-
 
   /* 4. Dale el estilo que quieras a tu botón */
 
@@ -522,6 +543,45 @@ color: rgb(218, 15, 15);
   .btn-audio.reproduciendo {
     background-color: #ff0000; /* Rojo al pausar, por ejemplo */
   }
+
+
+
+
+
+  /*  SECCION DE COMPARTIR*/
+  .contenido-qr{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .contenido-qr h3{
+    font-size: 2rem;
+    margin: 1rem 0 0 0 ;
+  }
+  .contenido-qr p{
+    font-size: 1.6rem;
+    color: rgb(61, 61, 61);
+    text-align: center;
+    margin-top: 1rem;
+  }
+  .btn-compartir {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    column-gap: 1rem;
+    padding: 1rem;
+    width: 100%;
+    border-radius: 3rem ;
+    background-color:  rgb(27, 67, 50);
+    border:none ;
+    color: #ffff;
+    font-weight: bold;
+  }
+  .btn-compartir svg{
+width: 2.4rem;
+height: 2.4rem;
+  }
 </style>
 
 <script>
@@ -549,4 +609,36 @@ color: rgb(218, 15, 15);
       boton.classList.remove("reproduciendo");
     });
   }
+
+  const shareButton = document.getElementById('btn-compartir');
+
+shareButton?.addEventListener('click', async () => {
+  // Datos que deseas compartir
+  const shareData = {
+    title: 'Inventario de aves del Cañon del Combeima',
+    text: 'Echa un vistazo a la ficha de esta ave:',
+    url: window.location.href // O puedes poner una URL fija como 
+  };
+
+  // 1. Validar si el navegador soporta la Web Share API
+  if (navigator.share) {
+    try {
+      // 2. Ejecutar la acción
+      await navigator.share(shareData);
+      console.log('¡Contenido compartido con éxito!');
+    } catch (error) {
+      // Si el usuario cancela la acción, caerá en este error
+      console.log('El usuario canceló la acción de compartir o hubo un error:', error);
+    }
+  } else {
+    // 3. Fallback (Plan B)
+    // Qué hacer si el navegador no lo soporta (ej. copiar al portapapeles)
+    navigator.clipboard.writeText(shareData.url).then(() => {
+      alert('Enlace copiado al portapapeles. ¡Pégalo donde quieras compartirlo!');
+    }).catch(err => {
+      console.error('No se pudo copiar el enlace', err);
+    });
+  }
+});
+
 </script>
