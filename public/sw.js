@@ -16,11 +16,6 @@ const MEDIA_ASSETS = [
 
     // Páginas Principales
 
-    '/nosotros/',
-
-    '/contacto/',
-
-    '/blog',
 
     '/aves',
 
@@ -262,7 +257,7 @@ self.addEventListener('install', event => {
 self.addEventListener('install', event => {
     event.waitUntil(
         caches.open(CACHE_NAME)
-            .then(cache => cache.addAll(urlsToCache))
+            .then(cache => cache.addAll(CORE_ASSETS))
     );
 });
 
