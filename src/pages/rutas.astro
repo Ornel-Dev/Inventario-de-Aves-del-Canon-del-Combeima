@@ -4,6 +4,7 @@ import Btnendemica from "../componentes/btn-endemica.astro";
 import Btnaves from "../componentes/btn-aves.astro";
 import Ruta from "../componentes/rutas-targ.astro";
 import Footer from "../componentes/footer.astro";
+import BtnEspecies from "../componentes/ConteoEspecies.astro"
 
 ---
 
@@ -28,8 +29,14 @@ import Footer from "../componentes/footer.astro";
   </head>
 
     <body>
-        <main>
-<Header/>
+      <Header/>
+        <main class="contenedor-principal">
+          <h1>Rutas de Avistamiento</h1>
+<BtnEspecies/>
+
+<h2>Conoce las rutas de avistamiento en el Cañon del Combeima:</h2>
+<Ruta/>
+
         </main>
         <footer>
             <Footer />
@@ -39,4 +46,15 @@ import Footer from "../componentes/footer.astro";
 
     </html>
 
-    
+    <style>
+      main{
+        margin-bottom: 9rem;
+      }
+      h1{
+        color: rgb(27, 67, 50) ;
+        text-align: center;
+      }
+      h2{
+        color: rgb(61, 61, 61);
+      }
+    </style>

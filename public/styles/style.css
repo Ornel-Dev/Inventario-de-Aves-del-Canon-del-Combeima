@@ -1,6 +1,8 @@
 /* apply a natural box layout model to all elements, but allowing components to change */
 :root{
   --verde-oliva:  #00cc99;
+  --verde-oscuro: rgb(27, 67, 50) ;
+  --gris-parrafos: rgb(61, 61, 61) ;
 }
 
 html {
@@ -92,3 +94,8 @@ i{
   border-radius: 1rem;
 
 }
+
+.active .items-footer svg{
+  color: #d8f3e8 ;
+}
+

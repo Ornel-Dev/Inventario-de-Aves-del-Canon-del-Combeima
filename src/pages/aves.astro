@@ -5,12 +5,7 @@ import Btnaves from "../componentes/btn-aves.astro";
 import Ruta from "../componentes/rutas-targ.astro";
 import Footer from "../componentes/footer.astro";
 import TargetAves from "../componentes/aves-listado.astro";
-
-
-
-
 ---
-
 
 <html lang="es">
   <head>
@@ -31,18 +26,31 @@ import TargetAves from "../componentes/aves-listado.astro";
     <title>Inventario de Aves</title>
   </head>
 
-    <body>
-      <Header/>
-        <main class="contenedor-principal">
-<h1>Galeria de Aves</h1>
-<TargetAves/>
+  <body>
+    <Header />
+    <main class="contenedor-principal">
+      <h1>Galeria de Aves</h1>
+      <p>
+        Te presentamos el listado completo de especies registradas en nuestra
+        plataforma:
+      </p>
+      <TargetAves />
+    </main>
+    <footer>
+      <Footer />
+    </footer>
+  </body>
+  <script src="/scrips/app.js" is:inline></script>
+</html>
 
-        </main>
-        <footer>
-            <Footer />
-        </footer>
-    </body>
-<script src="/scrips/app.js" is:inline></script>
-//comentario desde git
-    </html>
-
+<style>
+  h1 {
+    text-align: center;
+    color: rgb(27, 67, 50);
+  }
+  p {
+    font-size: 1.6rem;
+    color: rgb(61, 61, 61);
+    margin-bottom: 2rem;
+  }
+</style>

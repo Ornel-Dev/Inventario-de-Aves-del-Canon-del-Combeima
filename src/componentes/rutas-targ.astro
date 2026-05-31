@@ -1,38 +1,55 @@
 ---
-const rutaInfo = [
+export const rutaInfo = [
   {
+    slug: "cascada-la-plata",
     name: "Cascada La Plata",
     altura: "2.200 msnm",
     img: "/imgs/cascadalaplata.avif",
+    href: "/rutas/cascada-la-plata",
+    descripcion:
+      "Este recorrido lleva a uno de los atractivos naturales más impresionantes del Tolima, que presume de ser la cascada más alta del departamento con una caída aproximada de 490 metros. La ruta arranca en el corregimiento de Pastales (vereda Plata El Brillante).  Tras caminar cerca de 30 minutos hasta la entrada del Parque Ecoturístico La Plata, se emprende un trekking de una hora por senderos de alta exigencia física, cruzando puentes colgantes y vegetación densa, con la posibilidad de visitar la Cueva Ibanasca.",
+      mapa: "https://www.google.com/maps/d/u/1/embed?mid=1qM-n_xG-L5Rz0v5gQhuE0jVyRLWNmtM&ehbc=2E312F&noprof=1",
   },
   {
-    name: "Ruta de la Fruta",
+    slug: "ruta-de-la-fruta",
+    code: 12,
+    name: "Finca la Esperanza(Ruta de la Fruta)",
     altura: "1.800 msnm",
     img: "/imgs/rutafruta.avif",
+    href: "/rutas/ruta-de-la-fruta",
+    descripcion:
+      "Esta experiencia de turismo rural y agroturismo se desarrolla en el entorno natural del Cañón del Combeima. El recorrido tiene como destino la finca cafetera La Esperanza, un espacio diseñado para conectar a los visitantes de manera interactiva con la vocación agrícola y las tradiciones campesinas de la zona. El núcleo de la visita gira en torno a la cultura del café, permitiendo a los turistas conocer de cerca el paisaje, el proceso de cultivo y la importancia de este grano en la economía local. La caminata guiada transita por senderos vivos rodeados de plantaciones de mora y maracuyá. ",
+      mapa: "https://www.google.com/maps/d/u/1/embed?mid=1-qXo64sybwD9Evkb37nEnLA03_uAPsM&ehbc=2E312F&noprof=1",
   },
   {
+    slug: "termales-el-rancho",
     name: "Termales el Rancho",
     altura: "2.800 msnm",
     img: "/imgs/ranchotermales.avif",
+    href: "/rutas/termales-el-rancho",
+    descripcion:
+      "Esta travesía es un pilar del ecoturismo en el Cañón del Combeima, en la zona de amortiguación del Parque Nacional Natural Los Nevados. El punto de partida es el corregimiento de Juntas. Desde el puesto de control El Palmar, se inicia un ascenso de aproximadamente dos horas y   media por senderos de herradura y paisajes de bosque de niebla hasta llegar a los pozos artesanales de aguas termales, ubicados a unos 2.800 m.s.n.m",
+      mapa: "https://www.google.com/maps/d/u/1/embed?mid=1uSppCwnbh5EqhSKFBH1DgFZSDOHgsIM&ehbc=2E312F&noprof=1",
+
   },
 ];
 ---
 
 {
   rutaInfo.map((ruta) => (
-<div
-  class="ruta"
-  style={{
-    backgroundImage: `linear-gradient(to bottom, rgba(0,0,0,0.0), rgba(0,0,0,0.6)), url(${ruta.img})`
-  }}
->
-<div class="info">
-
-      <h3>{ruta.name}</h3>
-      <p>Altura: {ruta.altura}</p>
+    <a href={ruta.href}>
+      <div
+        class="ruta"
+        style={{
+          backgroundImage: `linear-gradient(to bottom, rgba(0,0,0,0.0), rgba(0,0,0,0.6)), url(${ruta.img})`,
+        }}
+      >
+        <div class="info">
+          <h3>{ruta.name}</h3>
+          <p>Altura: {ruta.altura}</p>
         </div>
-    </div>
-
+      </div>
+    </a>
   ))
 }
 
@@ -46,31 +63,26 @@ const rutaInfo = [
     border-radius: 1rem;
     margin-bottom: 2rem;
     display: flex;
-    box-shadow: -2px 18px 35px -7px rgba(0,0,0,0.36);
-
+    box-shadow: -2px 18px 35px -7px rgba(0, 0, 0, 0.36);
   }
   .info {
     display: flex;
     flex-direction: column;
     justify-content: end;
     margin-left: 2rem;
-
-    
   }
 
-  h3{
+  h3 {
     font-size: 2rem;
-    margin-bottom: .5rem;
+    margin-bottom: 0.5rem;
   }
-
 
   .ruta .info p {
     font-size: 1.2rem;
     font-weight: 400;
     margin: 0rem 0rem 2rem;
-
-
   }
-
-
+  a {
+    text-decoration: none;
+  }
 </style>

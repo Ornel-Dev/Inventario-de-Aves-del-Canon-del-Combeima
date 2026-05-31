@@ -1,0 +1,240 @@
+---
+import { rutaInfo } from "../../componentes/rutas-targ.astro";
+import { listAvesTarget } from "../../componentes/aves-listado.astro";
+
+import Header from "../../componentes/Header.astro";
+import Footer from "../../componentes/footer.astro";
+import Volver from "../../componentes/btn-volver.astro";
+import CodigoQR from "../../componentes/Qrcode.astro";
+
+export async function getStaticPaths() {
+  return rutaInfo.map((ruta) => ({
+    params: { slug: ruta.slug }, // El parámetro 'slug' debe coincidir con [slug].astro
+    props: { ruta }, // Pasamos los datos del ave como propiedades (props)
+  }));
+}
+const { ruta } = Astro.props;
+
+const avesFiltradas12 = listAvesTarget.filter(
+  (ave) => ave.Piso && ave.Piso.includes("Cálido"),
+);
+
+
+const avesFiltradas3 = listAvesTarget.filter((ave) => 
+  ave.Piso && (ave.Piso.includes("Frío") || ave.Piso.includes("Templado"))
+);
+
+
+
+---
+
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" href="/favicon.ico" />
+    <meta name="viewport" content="width=device-width initial-scale=1.0" />
+    <meta name="generator" content={Astro.generator} />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Google+Sans+Flex:opsz,wght@6..144,1..1000&family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Lexend:wght@100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/styles/style.css" />
+    <title>Ruta: {ruta.name}</title>
+  </head>
+  <body>
+    <Header />
+    <div class="contenedor-principal">
+      <main class="Info-ruta">
+        <h1>Ruta: {ruta.name}</h1>
+        <img src={ruta.img} alt={`Imagen de la ruta ${ruta.name}`} />
+        <p>{ruta.descripcion}</p>
+      </main>
+      <div class="mapa">
+        <h2>Mapa de la ruta</h2>
+        <iframe src={ruta.mapa}></iframe>
+      </div>
+      <div class="listado-aves">
+        <h2>Aves que puedes ver en esta ruta:</h2>
+
+    
+<div class="galeria">
+  {/* 1. La condición completa debe ir entre paréntesis */}
+  {(ruta.slug === "ruta-de-la-fruta" || ruta.slug === "cascada-la-plata") ? (
+    
+    // 2. IF VERDADERO (Usamos ?): Se renderiza avesFiltradas12
+    avesFiltradas12.map((ave) => (
+      <a href={`/aves/${ave.slug}`}>
+        <div
+          class="tarjetaAves"
+          style={`background-image: linear-gradient(to bottom, rgba(0,0,0,0.0), rgba(0,0,0,0.6)), url(${ave.Imagen})`}
+        >
+          <div class="info">
+            <div class="nombres">
+              <p class="nombre">{ave.nombreComun}</p>
+              <i class="nombreCientifico">{ave.nombreCientifico}</i>
+            </div>
+            <div class="estado">
+              <p class:list={["estado-logo", `estado-${ave.Estado.toLowerCase()}`]}>
+                {ave.Estado}
+              </p>
+            </div>
+          </div>
+        </div>
+      </a>
+    ))
+
+  ) : (
+
+    // 3. ELSE (Usamos :): Se renderiza tu otra lista (ej. otraListaDeAves)
+    avesFiltradas3.map((ave) => (
+      <a href={`/aves/${ave.slug}`}>
+        <div
+          class="tarjetaAves"
+          style={`background-image: linear-gradient(to bottom, rgba(0,0,0,0.0), rgba(0,0,0,0.6)), url(${ave.Imagen})`}
+        >
+          <div class="info">
+            <div class="nombres">
+              <p class="nombre">{ave.nombreComun}</p>
+              <i class="nombreCientifico">{ave.nombreCientifico}</i>
+            </div>
+            <div class="estado">
+              <p class:list={["estado-logo", `estado-${ave.Estado.toLowerCase()}`]}>
+                {ave.Estado}
+              </p>
+            </div>
+          </div>
+        </div>
+      </a>
+    ))
+
+  )}
+</div>
+      </div>
+    </div>
+  </body>
+
+  <Footer />
+</html>
+
+<style>
+  .Info-ruta {
+  }
+  .Info-ruta img {
+    margin-top: 2rem;
+    width: 100%;
+    height: 50rem;
+    border-radius: 2rem;
+  }
+  .Info-ruta h1 {
+    font-size: 2.4rem;
+    color: var(--verde-oscuro);
+    margin-bottom: 0;
+  }
+
+  .Info-ruta p {
+    font-size: 1.6rem;
+    color: var(--gris-parrafos);
+  }
+  h2 {
+    font-size: 2rem;
+    color: var(--verde-oscuro);
+  }
+  .listado-aves h2 {
+    text-align: center;
+  }
+
+  .mapa iframe {
+    width: 100%;
+    height: 90vh;
+    border: none;
+  }
+
+
+
+
+
+  
+  .galeria {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 1rem;
+    margin-bottom: 12rem;
+  }
+  .tarjetaAves {
+    width: 100%;
+    height: 20rem;
+    background-position: center;
+    background-size: cover;
+    border-radius: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+    color: #fff;
+    padding: 1rem;
+    
+  }
+
+  .nombre,
+  .nombreCientifico {
+    padding-left: 2rem;
+  }
+  .nombre {
+    margin: 0;
+    font-size: 1.3rem;
+  }
+  .nombreCientifico {
+    font-size: 1rem;
+    margin: 0;
+
+  }
+ 
+  .info{
+    display: flex;
+    justify-content: space-between;
+    height: fit-content;
+  }
+  .estado{
+display: flex;
+align-items: center;
+padding-right: 1rem;
+}
+.estado-logo{
+    padding: .3rem;
+    border-radius: 50%;
+    font-weight: bold;
+}
+.estado-lc{
+        background-color: green ;
+
+}
+.estado-nt{
+        background-color: rgb(21, 248, 21) ;
+        color:black;
+
+
+}
+.estado-vu{
+        background-color: #e6ff04 ;
+        color:black;
+}
+.estado-en{
+        background-color: rgb(255, 102, 0) ;
+        color:black;
+
+
+}
+.estado-cr{
+        background-color: rgb(255, 0, 0) ;
+
+}
+.galeria>a{
+  text-decoration: none;
+  cursor: pointer;
+}
+
+</style>
