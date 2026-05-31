@@ -1,6 +1,4 @@
-const CACHE_NAME = 'aves-tolima-v2';
-
-// Archivos esenciales que se descargan apenas se abre la app
+const CACHE_NAME = 'aves-tolima-v3'; // Incrementamos la versión
 
 const CORE_ASSETS = [
     '/',
@@ -236,52 +234,47 @@ const MEDIA_ASSETS = [
 
 ];
 
+
+
+
+
+
+// 1. UNIFICAMOS EL EVENTO INSTALL
 self.addEventListener('install', event => {
     event.waitUntil(
         caches.open(CACHE_NAME).then(async (cache) => {
-            // 1. Primero aseguramos lo básico (Si esto falla, la app no instala)
+            // Guardamos lo básico primero
             await cache.addAll(CORE_ASSETS);
 
-            // 2. Intentamos descargar el resto uno por uno (Si uno falla, los demás siguen)
+            // Intentamos descargar el resto uno por uno para evitar bloqueos
             MEDIA_ASSETS.forEach(async (url) => {
                 try {
                     await cache.add(url);
                 } catch (error) {
-                    console.error(`Fallo al precargar: ${url}`, error);
+                    console.warn(`No se pudo precargar: ${url}`);
                 }
             });
         })
     );
 });
-// Instalación: Guarda el esqueleto de la app
-self.addEventListener('install', event => {
-    event.waitUntil(
-        caches.open(CACHE_NAME)
-            .then(cache => cache.addAll(CORE_ASSETS))
-    );
-});
 
-// Interceptor de peticiones (El que hace la magia offline)
+// 2. INTERCEPTOR MEJORADO PARA ESTILOS DE ASTRO
 self.addEventListener('fetch', event => {
     event.respondWith(
-        caches.match(event.request)
-            .then(response => {
-                // 1. Si la foto, audio o página ya está en el celular, la muestra al instante.
-                if (response) {
-                    return response;
-                }
+        caches.match(event.request).then(response => {
+            // Si está en caché, lo devolvemos
+            if (response) return response;
 
-                // 2. Si no está guardada, la busca en internet...
-                return fetch(event.request).then(networkResponse => {
-                    // ... y la guarda en la caché automáticamente para tu próxima visita al campo.
-                    return caches.open(CACHE_NAME).then(cache => {
-                        // Se excluyen extensiones de Chrome u otros requests raros
-                        if (event.request.url.startsWith('http')) {
-                            cache.put(event.request, networkResponse.clone());
-                        }
-                        return networkResponse;
-                    });
+            // Si no está, lo buscamos en internet
+            return fetch(event.request).then(networkResponse => {
+                return caches.open(CACHE_NAME).then(cache => {
+                    // REGLA DE ORO: Si es un archivo de Astro (CSS/JS dinámico), lo guardamos
+                    if (event.request.url.includes('/_astro/') || event.request.url.startsWith('http')) {
+                        cache.put(event.request, networkResponse.clone());
+                    }
+                    return networkResponse;
                 });
-            })
+            });
+        })
     );
 });
