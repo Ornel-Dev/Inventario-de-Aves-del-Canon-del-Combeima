@@ -23,6 +23,7 @@ import TargetAves from "../componentes/aves-listado.astro";
     />
 
     <link rel="stylesheet" href="/styles/style.css" />
+    <link rel="manifest" href="/manifest.json" />
     <title>Inventario de Aves</title>
   </head>
 
@@ -39,8 +40,17 @@ import TargetAves from "../componentes/aves-listado.astro";
     <footer>
       <Footer />
     </footer>
+    <script src="/scrips/app.js" is:inline></script>
+    <script is:inline>
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register('/sw.js')
+        .then(registration => console.log('SW registrado correctamente'))
+        .catch(err => console.log('Error en SW: ', err));
+    });
+  }
+</script>
   </body>
-  <script src="/scrips/app.js" is:inline></script>
 </html>
 
 <style>

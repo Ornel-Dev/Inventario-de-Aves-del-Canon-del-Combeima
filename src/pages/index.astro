@@ -19,6 +19,7 @@ import Footer from "../componentes/footer.astro";
     <link href="https://fonts.googleapis.com/css2?family=Google+Sans+Flex:opsz,wght@6..144,1..1000&family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Lexend:wght@100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
       rel="stylesheet"/>
     <link rel="stylesheet" href="/styles/style.css" />
+    <link rel="manifest" href="/manifest.json" />
     <title>Inventario de Aves del Cañon del Combeima</title>
   </head>
   <body>
@@ -51,6 +52,15 @@ import Footer from "../componentes/footer.astro";
         <Footer />
       </footer>
     </main>
+    <script src="/scrips/app.js" is:inline></script>
+    <script is:inline>
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register('/sw.js')
+        .then(registration => console.log('SW registrado correctamente'))
+        .catch(err => console.log('Error en SW: ', err));
+    });
+  }
+</script>
   </body>
-<script src="/scrips/app.js" is:inline></script>
 </html>

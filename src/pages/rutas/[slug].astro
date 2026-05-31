@@ -44,6 +44,7 @@ const avesFiltradas3 = listAvesTarget.filter((ave) =>
       rel="stylesheet"
     />
     <link rel="stylesheet" href="/styles/style.css" />
+    <link rel="manifest" href="/manifest.json" />
     <title>Ruta: {ruta.name}</title>
   </head>
   <body>
@@ -116,6 +117,15 @@ const avesFiltradas3 = listAvesTarget.filter((ave) =>
 </div>
       </div>
     </div>
+    <script is:inline>
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register('/sw.js')
+        .then(registration => console.log('SW registrado correctamente'))
+        .catch(err => console.log('Error en SW: ', err));
+    });
+  }
+</script>
   </body>
 
   <Footer />
