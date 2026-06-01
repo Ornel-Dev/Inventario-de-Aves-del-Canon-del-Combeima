@@ -1,4 +1,4 @@
-const CACHE_NAME = 'aves-tolima-v3'; // Incrementamos la versión
+const CACHE_NAME = 'aves-tolima-v3.0.1'; // Incrementamos la versión
 
 const CORE_ASSETS = [
     '/',
