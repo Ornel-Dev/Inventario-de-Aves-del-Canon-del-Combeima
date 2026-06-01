@@ -10,6 +10,11 @@ import vercel from '@astrojs/vercel';
     export default defineConfig({
   adapter: vercel(),
   
-  trailingSlash: 'always',
+ build: {
+    // Astro creará nosotros.html en lugar de nosotros/index.html
+    format: 'file' 
+  },
+  // Opcional: le dice a Astro que nunca genere rutas con '/'
+  trailingSlash: 'never'
 
     });
