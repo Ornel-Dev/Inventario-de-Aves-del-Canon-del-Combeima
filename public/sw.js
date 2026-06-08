@@ -1,5 +1,5 @@
 const CACHE_NAME = 'aves-tolima-v3.0.2'; // Incrementamos la versión para forzar la limpieza en los celulares
-//...2.2
+//...2.2.1
 const CORE_ASSETS = [
     '/',
     '/manifest.json',
@@ -16,6 +16,13 @@ const MEDIA_ASSETS = [
     '/aves/',
     '/rutas',
     '/rutas/',
+    '/nosotros',
+    '/nosotros/',
+
+    '/blog',
+    '/blog/',
+
+
     '/aves/tangara-azuleja',
     '/aves/barranquero',
  
