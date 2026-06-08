@@ -18,7 +18,7 @@ const navLinks = [
     <img src="/icons/logo.png" alt="Imagen logo" />
   </div>
   <div class="titulo google-sans-300">
-    <a href="/">Inventario de Aves <br> del Cañon del Combeima</a>
+    <a href="/">Aúrea</a>
   </a>
   </div>
   <nav class="navegacion navList" id="navList">
@@ -82,24 +82,42 @@ const navLinks = [
     display: none;
   } 
 
-.contenedor-header{
-  margin: 0 auto;
-  width: 90%;
-   display: flex;
-    justify-content: space-evenly;
-    align-items: center;
-    padding: 1rem 2rem;
-}
+
 
   .main-header {
-   
+   display: flex;
+   justify-content: center;
+
     background-color: #CCCCCC;
     width: 100%;
   }
+.contenedor-header{
+  margin: 0 auto;
+  width: 80%;
+   display: grid;
+grid-template-columns: 1fr auto 1fr;
+   align-items: center;
+    padding: 1rem 2rem;
+
+}
+.logo{
+  justify-self: start;
+}
+.titulo{
+  justify-self: center;
+}
+.navegacion{
+  justify-self: end;
+}
+.hamburger{
+  justify-self: end;
+}
+
   .logo img {
     width: 5rem;
     height: 5rem;
     border-radius: 50%;
+
   }
   nav ul {
     list-style: none;
