@@ -274,7 +274,8 @@ COMPARTIR FICHA
     </main>
     <Footer />
     <script is:inline>
-  if ('serviceWorker' in navigator) {
+  const isDev = ['localhost', '127.0.0.1', '::1'].includes(location.hostname);
+  if (!isDev && 'serviceWorker' in navigator) {
     window.addEventListener('load', () => {
       navigator.serviceWorker.register('/sw.js')
         .then(registration => console.log('SW registrado correctamente'))
