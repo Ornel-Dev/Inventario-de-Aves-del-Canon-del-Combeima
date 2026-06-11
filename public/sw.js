@@ -1,6 +1,6 @@
 const CACHE_NAME = 'aves-tolima-v3.0.2'; // Incrementamos la versión para forzar la limpieza en los celulares
 //Comentario de version aumentada
-//2412562112.wew
+//1006.3
 const CORE_ASSETS = [
     '/',
     '/manifest.json',

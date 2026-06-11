@@ -17,9 +17,8 @@ const navLinks = [
   <div class="logo">
     <img src="/icons/logo.png" alt="Imagen logo" />
   </div>
-  <div class="titulo google-sans-300">
-    <a href="/">Aúrea</a>
-  </a>
+  <div class="titulo name">
+    <a href="/">Áurea</a>
   </div>
   <nav class="navegacion navList" id="navList">
     <ul class="estilos-ventana">
@@ -124,7 +123,7 @@ grid-template-columns: 1fr auto 1fr;
     display: flex;
     gap: 1.5rem;
   }
-  a {
+   a {
     color: rgb(0, 0, 0);
     text-decoration: none;
     font-size: 1.5rem;
@@ -139,8 +138,13 @@ grid-template-columns: 1fr auto 1fr;
 
     
   }
+  .name a{
+font-family: 'Kabla', "Google Sans", sans-serif;
+font-size: 2.4rem ;
+letter-spacing: .2rem;
+  }
 
-  @media screen and (max-width: 414px) {
+  @media screen and (max-width: 426px) {
      .estilos-ventana {
     display: flex;
     flex-direction: column;
@@ -173,6 +177,7 @@ grid-template-columns: 1fr auto 1fr;
   nav a:focus {
   outline: none;
 }
+
  
 </style>
 

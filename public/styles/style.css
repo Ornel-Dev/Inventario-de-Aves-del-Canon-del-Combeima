@@ -5,6 +5,18 @@
   --gris-parrafos: rgb(61, 61, 61) ;
 }
 
+@font-face {
+    /* El nombre que tú elijas para usarla después */
+    font-family: 'Kabla'; 
+    
+    /* La ruta relativa hacia tu archivo .ttf */
+    src: url('../fuentes/Kablammo.ttf') format('truetype');
+    
+    /* Opcional: define el peso y el estilo por defecto */
+    font-weight: normal;
+    font-style: normal;
+}
+
 html {
   box-sizing: border-box;
 }
