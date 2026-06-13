@@ -4,10 +4,7 @@ import Footer from "../componentes/footer.astro";
 ---
 
 <html lang="es">
-<head>
-   
-
-    
+  <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="icon" href="/favicon.ico" />
@@ -16,194 +13,413 @@ import Footer from "../componentes/footer.astro";
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Google+Sans+Flex:opsz,wght@6..144,1..1000&family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Lexend:wght@100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
-      rel="stylesheet"/>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Google+Sans+Flex:opsz,wght@6..144,1..1000&family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Lexend:wght@100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="/styles/style.css" />
     <link rel="manifest" href="/manifest.json" />
 
     <title>Contacto | Aurea | Inventario de aves del cañon del Combeima</title>
-</head>
-<body>
-<Header/>
-<div class="card">
+  </head>
+  <body>
+    <Header />
+    <div class="hero">
+      <h1>Contactanos</h1>
+    </div>
+
+    <main class="contenedor-principal">
+        <h2>Llena el formulario y nos comunicaremos contigo</h2>
+      <div class="formulario">
+        <form class="formulario-contenido" action="" method="post">
+          <fieldset>
+              <legend>¿Quien eres?</legend>
+
+            <div class="form-grupo">
+              <label for="nombre">Nombre</label>
+              <input
+                type="text"
+                name="nombre"
+                id="nombre"
+                placeholder="Tu nombre"
+                required
+              />
+            </div>
+          </fieldset>
+
+          <fieldset>
+            <legend>¿Como te contactamos?</legend>
+            <div class="form-grupo">
+              <label for="celular">Celular</label>
+              <input
+                type="tel"
+                name="celular"
+                id="celular"
+                placeholder="Ej: 302 1235600"
+                required
+              />
+            </div>
+            <div class="form-grupo">
+              <label for="correo">Correo</label>
+              <input
+                type="email"
+                name="correo"
+                id="correo"
+                placeholder="hola@gmail.com"
+              />
+            </div>
+          </fieldset>
+          <fieldset>
+            <legend>¿En qué estás interesado?</legend>
+            <div class="form-grupo">
+              <label for="interes">Me interesa</label>
+              <select name="interes" id="interes" required>
+                <option value="" disabled selected hidden
+                  >Selecciona la opción de tu interés</option
+                >
+
+                <optgroup label="Viajes">
+                  <option value="v-cascada-plata"
+                    >Hacer la ruta de la cascada La Plata</option
+                  >
+                  <option value="v-ruta-fruta">Hacer la ruta de La Fruta</option
+                  >
+                  <option value="v-termales-rancho"
+                    >Hacer la ruta de los termales El Rancho</option
+                  >
+                  <option value="v-otros">Hacer otros viajes y rutas</option>
+                </optgroup>
+
+                <optgroup label="Desarrollo Web">
+                  <option value="dw-pagina-empresa"
+                    >Tener una página web para mi empresa/emprendimiento</option
+                  >
+                  <option value="dw-app-similar"
+                    >Desarrollar una app web similar a esta</option
+                  >
+                  <option value="dw-aprender">Aprender desarrollo Web</option>
+                  <option value="dw-otro">(Tengo otro interés)</option>
+                </optgroup>
+              </select>
+            </div>
+        <div class="form-grupo">
+
+            <label for="mensaje">Mensaje</label>
+            <textarea
+              name="mensaje"
+              id="mensaje"
+              rows="4"
+              maxlength="500"
+              placeholder="Me gustaría..."></textarea>
+                      </div>
+
+          </fieldset>
+        </form>
+      </div>
+
+      <h2>Comunicate directamente con nosotros</h2>
+
+      <div class="card">
         <div class="card-header">
-            <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=500&auto=format&fit=crop&q=80" alt="Foto de perfil" class="card-img">
+          <img
+            src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=500&auto=format&fit=crop&q=80"
+            alt="Foto de perfil"
+            class="card-img"
+          />
         </div>
 
         <div class="card-body">
-            <h2 class="card-name">Alex Torres</h2>
-            <p class="card-role">Desarrollador Web & Diseñador UI</p>
-            
-            <p class="card-description">
-                Escríbeme si necesitas digitalizar tu negocio, optimizar tu sitio web actual o crear interfaces atractivas y funcionales que conecten con tus clientes.
-            </p>
+          <h2 class="card-name">Jhonatan Avila</h2>
+          <p class="card-role">Operador y guía de turismo</p>
 
-            <div class="social-links">
-                <a href="#" aria-label="TikTok" class="social-icon"><i class="fa-brands fa-tiktok"></i></a>
-                <a href="#" aria-label="Facebook" class="social-icon"><i class="fa-brands fa-facebook-f"></i></a>
-                <a href="#" aria-label="Instagram" class="social-icon"><i class="fa-brands fa-instagram"></i></a>
-            </div>
+          <p class="card-description">Escríbeme si necesitas</p>
 
-            <button class="btn-whatsapp" id="whatsappBtn">
-                <i class="fa-brands fa-whatsapp"></i> Contactar por WhatsApp
-            </button>
+          <div class="social-links">
+            <a href="#" aria-label="TikTok" class="social-icon"
+              ><i class="fa-brands fa-tiktok"></i></a
+            >
+            <a href="#" aria-label="Facebook" class="social-icon"
+              ><i class="fa-brands fa-facebook-f"></i></a
+            >
+            <a href="#" aria-label="Instagram" class="social-icon"
+              ><i class="fa-brands fa-instagram"></i></a
+            >
+          </div>
+
+          <button class="btn-whatsapp" id="whatsappBtn">
+            <i class="fa-brands fa-whatsapp"></i> Contactar por WhatsApp
+          </button>
         </div>
-    </div>
+      </div>
 
-<Footer/> 
-</body>
+      <div class="card">
+        <div class="card-header">
+          <img
+            src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=500&auto=format&fit=crop&q=80"
+            alt="Foto de perfil"
+            class="card-img"
+          />
+        </div>
 
-</html>
-<style>
-  /* Variables de color y reset básico */
-:root {
-    --bg-main: #0f172a;       /* Fondo de la pantalla */
-    --bg-card: #1e293b;       /* Fondo de la tarjeta */
-    --text-primary: #f8fafc;
-    --text-secondary: #94a3b8;
-    --accent-color: #38bdf8;  /* Azul brillante para destacar */
-    --whatsapp-color: #25d366;
-}
+        <div class="card-body">
+          <h2 class="card-name">Jhonatan Avila</h2>
+          <p class="card-role">Operador y guía de turismo</p>
 
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-}
+          <p class="card-description">
+            Escríbeme si necesitas digitalizar tu negocio, optimizar tu sitio
+            web actual o crear interfaces atractivas y funcionales que conecten
+            con tus clientes.
+          </p>
 
+          <div class="social-links">
+            <a href="#" aria-label="TikTok" class="social-icon"
+              ><i class="fa-brands fa-tiktok"></i></a
+            >
+            <a href="#" aria-label="Facebook" class="social-icon"
+              ><i class="fa-brands fa-facebook-f"></i></a
+            >
+            <a href="#" aria-label="Instagram" class="social-icon"
+              ><i class="fa-brands fa-instagram"></i></a
+            >
+          </div>
 
+          <button class="btn-whatsapp" id="whatsappBtn">
+            <i class="fa-brands fa-whatsapp"></i> Contactar por WhatsApp
+          </button>
+        </div>
+      </div>
+    </main>
 
-/* Tarjeta Principal */
-.card {
-    background-color: var(--bg-card);
-    border-radius: 20px;
-    width: 100%;
-    max-width: 350px;
-    overflow: hidden;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
-}
-
-/* Cabecera con efecto de desvanecimiento hacia el fondo */
-.card-header {
-    position: relative;
-    width: 100%;
-    height: 250px;
-}
-
-.card-img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    /* Máscara que hace que la imagen se vuelva transparente abajo */
-    -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 65%, rgba(0,0,0,0) 100%);
-    mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 65%, rgba(0,0,0,0) 100%);
-}
-
-/* Cuerpo de la tarjeta */
-.card-body {
-    padding: 0 24px 24px 24px;
+    <Footer />
+    <style>
+      .contenedor-principal {
+        margin: 2rem auto;
+      }
+      .hero {
+        background-color: var(--verde-oscuro);
+        width: 100%;
+        height: 40rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        /* border-bottom-left-radius:2rem ; */
+        /* border-bottom-right-radius: 1.6rem; */
+      }
+      .hero h1 {
+        font-size: 4rem;
+        color: #ffff;
+        font-weight: bold;
+      }
+h2{
     text-align: center;
+    font-size: 2rem;
+    margin-bottom: 2rem;
+    color: var(--verde-oscuro);
 }
-
-.card-name {
-    color: var(--text-primary);
-    font-size: 1.5rem;
-    font-weight: 700;
-    margin-bottom: 4px;
-}
-
-.card-role {
-    color: var(--accent-color);
-    font-size: 0.9rem;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    margin-bottom: 16px;
-}
-
-.card-description {
-    color: var(--text-secondary);
-    font-size: 0.95rem;
-    line-height: 1.5;
-    margin-bottom: 24px;
-}
-
-/* Redes Sociales */
-.social-links {
-    display: flex;
-    justify-content: center;
-    gap: 16px;
-    margin-bottom: 24px;
-}
-
-.social-icon {
-    color: var(--text-secondary);
-    font-size: 1.2rem;
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    background-color: rgba(255, 255, 255, 0.05);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-decoration: none;
-    transition: all 0.3s ease;
-}
-
-.social-icon:hover {
-    color: var(--text-primary);
-    background-color: rgba(255, 255, 255, 0.15);
-    transform: scale(1.1);
-}
-
-/* Botón de WhatsApp */
-.btn-whatsapp {
-    width: 100%;
-    background-color: var(--whatsapp-color);
-    color: #ffffff;
-    border: none;
-    padding: 12px 20px;
-    font-size: 1rem;
-    font-weight: 600;
-    border-radius: 10px;
-    cursor: pointer;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 8px;
-    transition: background-color 0.3s ease, transform 0.2s ease;
-}
-
-.btn-whatsapp:hover {
-    background-color: #20ba5a;
-}
-
-.btn-whatsapp:active {
-    transform: scale(0.98);
-}
-</style>
-<script>
-  document.addEventListener('DOMContentLoaded', () => {
-    const whatsappBtn = document.getElementById('whatsappBtn');
-
-    whatsappBtn?.addEventListener('click', () => {
-        // Reemplaza con tu número (incluye código de país, ej: 57 para Colombia)
-        const telefono = "573001234567"; 
+      .formulario-contenido {
+        display: flex;
+        flex-direction: column;
+      }
+      form{
+        font-size: 1.4rem;
+      }
+      legend{
+        font-size: 1.6rem;
+      }
+      
+      fieldset {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        border-radius: 1rem;
+        border-color: var(--verde-oscuro);
+        margin: 1rem 0;
+      }
+      .form-grupo{
+        display: flex;
+        margin: 1rem;
+        gap: .5rem;
+        align-items: center;
         
-        // Mensaje predeterminado formateado para URL
-        const mensaje = encodeURIComponent("¡Hola! Vi tu tarjeta de contacto y me gustaría obtener más información sobre tus servicios.");
-        
-        // Detectar si es dispositivo móvil para usar la app o la web
-        const url = `https://wa.me/${telefono}?text=${mensaje}`;
-        
-        // Abrir en una nueva pestaña
-        window.open(url, '_blank');
-    });
-});
-</script>
+      }
+      input{
+        width: 100%;
+        border-radius: .5rem;
+        padding: .3rem;
+        outline: none;
+
+      }
+      input:focus{
+      border-color: ;
+      }
+
+      select{
+        width: 73%;
+      }
+
+      /* Variables de color y reset básico */
+      :root {
+        --bg-main: #0f172a; /* Fondo de la pantalla */
+        --bg-card: #1e293b; /* Fondo de la tarjeta */
+        --text-primary: #f8fafc;
+        --text-secondary: #94a3b8;
+        --accent-color: #38bdf8; /* Azul brillante para destacar */
+        --whatsapp-color: #25d366;
+      }
+
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      /* Tarjeta Principal */
+      .card {
+        background-color: var(--bg-card);
+        border-radius: 20px;
+        width: 100%;
+        max-width: 350px;
+        overflow: hidden;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        transition:
+          transform 0.3s ease,
+          box-shadow 0.3s ease;
+      }
+
+      .card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+      }
+
+      /* Cabecera con efecto de desvanecimiento hacia el fondo */
+      .card-header {
+        position: relative;
+        width: 100%;
+        height: 250px;
+      }
+
+      .card-img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        /* Máscara que hace que la imagen se vuelva transparente abajo */
+        -webkit-mask-image: linear-gradient(
+          to bottom,
+          rgba(0, 0, 0, 1) 65%,
+          rgba(0, 0, 0, 0) 100%
+        );
+        mask-image: linear-gradient(
+          to bottom,
+          rgba(0, 0, 0, 1) 65%,
+          rgba(0, 0, 0, 0) 100%
+        );
+      }
+
+      /* Cuerpo de la tarjeta */
+      .card-body {
+        padding: 0 24px 24px 24px;
+        text-align: center;
+      }
+
+      .card-name {
+        color: var(--text-primary);
+        font-size: 1.5rem;
+        font-weight: 700;
+        margin-bottom: 4px;
+      }
+
+      .card-role {
+        color: var(--accent-color);
+        font-size: 0.9rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        margin-bottom: 16px;
+      }
+
+      .card-description {
+        color: var(--text-secondary);
+        font-size: 0.95rem;
+        line-height: 1.5;
+        margin-bottom: 24px;
+      }
+
+      /* Redes Sociales */
+      .social-links {
+        display: flex;
+        justify-content: center;
+        gap: 16px;
+        margin-bottom: 24px;
+      }
+
+      .social-icon {
+        color: var(--text-secondary);
+        font-size: 1.2rem;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background-color: rgba(255, 255, 255, 0.05);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-decoration: none;
+        transition: all 0.3s ease;
+      }
+
+      .social-icon:hover {
+        color: var(--text-primary);
+        background-color: rgba(255, 255, 255, 0.15);
+        transform: scale(1.1);
+      }
+
+      /* Botón de WhatsApp */
+      .btn-whatsapp {
+        width: 100%;
+        background-color: var(--whatsapp-color);
+        color: #ffffff;
+        border: none;
+        padding: 12px 20px;
+        font-size: 1rem;
+        font-weight: 600;
+        border-radius: 10px;
+        cursor: pointer;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 8px;
+        transition:
+          background-color 0.3s ease,
+          transform 0.2s ease;
+      }
+
+      .btn-whatsapp:hover {
+        background-color: #20ba5a;
+      }
+
+      .btn-whatsapp:active {
+        transform: scale(0.98);
+      }
+    </style>
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const whatsappBtn = document.getElementById("whatsappBtn");
+
+        whatsappBtn?.addEventListener("click", () => {
+          // Reemplaza con tu número (incluye código de país, ej: 57 para Colombia)
+          const telefono = "573001234567";
+
+          // Mensaje predeterminado formateado para URL
+          const mensaje = encodeURIComponent(
+            "¡Hola! Vi tu tarjeta de contacto y me gustaría obtener más información sobre tus servicios.",
+          );
+
+          // Detectar si es dispositivo móvil para usar la app o la web
+          const url = `https://wa.me/${telefono}?text=${mensaje}`;
+
+          // Abrir en una nueva pestaña
+          window.open(url, "_blank");
+        });
+      });
+    </script>
+  </body>
+</html>

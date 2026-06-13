@@ -63,7 +63,7 @@ const avesFiltradas3 = listAvesTarget.filter((ave) =>
         <h2>Aves que puedes ver en esta ruta:</h2>
 
     
-<div class="galeria">
+<div class="galeria grid-4">
   {/* 1. La condición completa debe ir entre paréntesis */}
   {(ruta.slug === "ruta-de-la-fruta" || ruta.slug === "cascada-la-plata") ? (
     
@@ -118,8 +118,7 @@ const avesFiltradas3 = listAvesTarget.filter((ave) =>
       </div>
     </div>
     <script is:inline>
-  const isDev = ['localhost', '127.0.0.1', '::1'].includes(location.hostname);
-  if (!isDev && 'serviceWorker' in navigator) {
+  if (import.meta.env.PROD && 'serviceWorker' in navigator) {
     window.addEventListener('load', () => {
       navigator.serviceWorker.register('/sw.js')
         .then(registration => console.log('SW registrado correctamente'))
@@ -133,8 +132,14 @@ const avesFiltradas3 = listAvesTarget.filter((ave) =>
 </html>
 
 <style>
-  .Info-ruta {
+  @media (min-width: 768px ) {
+    .galeria.grid-4{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
   }
+  }
+ 
+  
   .Info-ruta img {
     margin-top: 2rem;
     width: 100%;

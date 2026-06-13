@@ -59,8 +59,7 @@ import Footer from "../componentes/footer.astro";
     </main>
     <script src="/scrips/app.js" is:inline></script>
     <script is:inline>
-  const isDev = ['localhost', '127.0.0.1', '::1'].includes(location.hostname);
-  if (!isDev && 'serviceWorker' in navigator) {
+  if (import.meta.env.PROD && 'serviceWorker' in navigator) {
     window.addEventListener('load', () => {
       navigator.serviceWorker.register('/sw.js')
         .then(registration => console.log('SW registrado correctamente'))
