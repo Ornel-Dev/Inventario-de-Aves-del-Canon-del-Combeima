@@ -111,3 +111,10 @@ i{
   color: #d8f3e8 ;
 }
 
+@media (min-width: 1440px) {
+   html, body{
+    font-size: 100%;
+
+  }
+ 
+}

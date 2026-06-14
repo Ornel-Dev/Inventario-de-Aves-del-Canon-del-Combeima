@@ -28,189 +28,209 @@ import Footer from "../componentes/footer.astro";
       <h1>Contactanos</h1>
     </div>
 
-    <main class="contenedor-principal">
-      <h2>Llena el formulario y nos comunicaremos contigo</h2>
-      <div class="formulario">
-        <form
-          id="form"
-          class="formulario-contenido"
-          action="https://api.web3forms.com/submit"
-          method="post"
-        >
-          <fieldset>
-            <legend>¿Quien eres?</legend>
+    <main class="contenedor-principal tres-caja">
+      <div class="formulariocaja">
+        <h2>Llena el formulario y nos comunicaremos contigo</h2>
+        <div class="formulario">
+          <form
+            id="form"
+            class="formulario-contenido"
+            action="https://api.web3forms.com/submit"
+            method="post"
+          >
+            <fieldset>
+              <legend>¿Quien eres?</legend>
 
-            <div class="form-grupo">
-              <label for="nombre">Nombre</label>
-              <input
-                type="text"
-                name="nombre"
-                id="nombre"
-                placeholder="Tu nombre"
-                required
-              />
-            </div>
-          </fieldset>
+              <div class="form-grupo">
+                <label for="nombre">Nombre</label>
+                <input
+                  type="text"
+                  name="nombre"
+                  id="nombre"
+                  placeholder="Tu nombre"
+                  required
+                />
+              </div>
+            </fieldset>
 
-          <fieldset>
-            <legend>¿Como te contactamos?</legend>
-            <div class="form-grupo">
-              <label for="celular">Celular</label>
-              <input
-                type="tel"
-                name="celular"
-                id="celular"
-                placeholder="Ej: 302 1235600"
-                required
+            <fieldset>
+              <legend>¿Como te contactamos?</legend>
+              <div class="form-grupo">
+                <label for="celular">Celular</label>
+                <input
+                  type="tel"
+                  name="celular"
+                  id="celular"
+                  placeholder="Ej: 302 1235600"
+                  required
+                />
+              </div>
+              <div class="form-grupo">
+                <label for="correo">Correo</label>
+                <input
+                  type="email"
+                  name="correo"
+                  id="correo"
+                  placeholder="hola@gmail.com"
+                />
+              </div>
+            </fieldset>
+            <fieldset>
+              <legend>¿En qué estás interesado?</legend>
+              <div class="form-grupo">
+                <label for="interes">Me interesa</label>
+                <select name="interes" id="interes" required>
+                  <option value="" disabled selected hidden
+                    >Selecciona la opción de tu interés</option
+                  >
+
+                  <optgroup label="Viajes">
+                    <option value="v-cascada-plata"
+                      >Hacer la ruta de la cascada La Plata</option
+                    >
+                    <option value="v-ruta-fruta"
+                      >Hacer la ruta de La Fruta</option
+                    >
+                    <option value="v-termales-rancho"
+                      >Hacer la ruta de los termales El Rancho</option
+                    >
+                    <option value="v-otros">Hacer otros viajes y rutas</option>
+                  </optgroup>
+
+                  <optgroup label="Desarrollo Web">
+                    <option value="dw-pagina-empresa"
+                      >Tener una página web para mi empresa/emprendimiento</option
+                    >
+                    <option value="dw-app-similar"
+                      >Desarrollar una app web similar a esta</option
+                    >
+                    <option value="dw-aprender">Aprender desarrollo Web</option>
+                    <option value="dw-otro">(Tengo otro interés)</option>
+                  </optgroup>
+                </select>
+              </div>
+              <div class="form-grupo no-center">
+                <label for="mensaje">Mensaje</label>
+                <textarea
+                  name="mensaje"
+                  id="mensaje"
+                  rows="4"
+                  maxlength="500"
+                  placeholder="Me gustaría..."></textarea>
+              </div>
+            </fieldset>
+
+            <!-- From Uiverse.io by KINGFRESS -->
+
+            <button type="submit">
+              <span class="circle1"></span>
+              <span class="circle2"></span>
+              <span class="circle3"></span>
+              <span class="circle4"></span>
+              <span class="circle5"></span>
+              <span class="text">Enviar</span>
+            </button>
+
+            <p class="mensaje hide" id="mensajeform">
+              Gracias por enviar el formulario. Nos comunicaremos contigo en
+              brevedad
+            </p>
+          </form>
+        </div>
+      </div>
+
+      <div class="tarjetas-caja">
+        <h2>Comunicate directamente con nosotros</h2>
+
+        <div class="tarjetas">
+          <div class="card">
+            <div class="card-header">
+              <img
+                src="/imgs/contacto/jhonatan.avif"
+                alt="Foto de perfil"
+                class="card-img"
               />
             </div>
-            <div class="form-grupo">
-              <label for="correo">Correo</label>
-              <input
-                type="email"
-                name="correo"
-                id="correo"
-                placeholder="hola@gmail.com"
-              />
-            </div>
-          </fieldset>
-          <fieldset>
-            <legend>¿En qué estás interesado?</legend>
-            <div class="form-grupo">
-              <label for="interes">Me interesa</label>
-              <select name="interes" id="interes" required>
-                <option value="" disabled selected hidden
-                  >Selecciona la opción de tu interés</option
+
+            <div class="card-body">
+              <h2 class="card-name">Jhonatan Avila</h2>
+              <p class="card-role">Operador y guía de turismo</p>
+
+              <p class="card-description">Escríbeme si necesitas viajar por el Tolima y toda Colombia, cotizar pasadías y experiencias ecoturisticas, o servicios de guianza profesional de alta calidad.</p>
+
+              <div class="social-links">
+                <a href="https://www.tiktok.com/@colombiaandotours?_r=1&_t=ZS-97BwklTk6vk" aria-label="TikTok" class="social-icon"
+                  ><svg style="color: #ffff;" height="200" width="200" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+	<path d="M12 2a10 10 0 1 0 10 10A10.01 10.01 0 0 0 12 2m5.939 7.713v.646a.37.37 0 0 1-.38.37a5.364 5.364 0 0 1-2.903-1.108v4.728a3.938 3.938 0 0 1-1.18 2.81a4.011 4.011 0 0 1-2.87 1.17a4.103 4.103 0 0 1-2.862-1.17a3.98 3.98 0 0 1-1.026-3.805c.159-.642.48-1.232.933-1.713a3.58 3.58 0 0 1 2.79-1.313h.82v1.703a.348.348 0 0 1-.39.348a1.918 1.918 0 0 0-1.23 3.631c.27.155.572.246.882.267c.24.01.48-.02.708-.092a1.928 1.928 0 0 0 1.313-1.816V5.754a.359.359 0 0 1 .359-.36h1.415a.359.359 0 0 1 .359.34a3.303 3.303 0 0 0 1.282 2.245a3.25 3.25 0 0 0 1.641.636a.37.37 0 0 1 .338.35z" fill="currentColor"/>
+</svg></a
                 >
+                <a href="https://www.facebook.com/share/1JqG3D3tkb/" aria-label="Facebook" class="social-icon"
+                  > <svg fill="#ffffff" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M12 2.03998C6.5 2.03998 2 6.52998 2 12.06C2 17.06 5.66 21.21 10.44 21.96V14.96H7.9V12.06H10.44V9.84998C10.44 7.33998 11.93 5.95998 14.22 5.95998C15.31 5.95998 16.45 6.14998 16.45 6.14998V8.61998H15.19C13.95 8.61998 13.56 9.38998 13.56 10.18V12.06H16.34L15.89 14.96H13.56V21.96C15.9164 21.5878 18.0622 20.3855 19.6099 18.57C21.1576 16.7546 22.0054 14.4456 22 12.06C22 6.52998 17.5 2.03998 12 2.03998Z"></path> </g></svg></a   >
+                <a href="https://www.instagram.com/colombiaandotours?igsh=MWZ6aDdsN2I3NXU3NQ==" aria-label="Instagram" class="social-icon"
+                  ><svg style="color: #ffff;" height="200" width="200" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+	<path d="M13.61 12.243a1.6 1.6 0 1 1-1.56-1.63a1.62 1.62 0 0 1 1.56 1.63" fill="currentColor"/>
+	<path d="M14.763 7.233H9.338a2.024 2.024 0 0 0-2.024 2.024v5.547a2.024 2.024 0 0 0 2.024 2.024h5.425a2.024 2.024 0 0 0 2.024-2.024V9.267a2.026 2.026 0 0 0-2.024-2.034m-2.713 7.723a2.703 2.703 0 1 1 2.642-2.703a2.672 2.672 0 0 1-2.642 2.703m2.936-5.405a.496.496 0 0 1-.496-.506a.506.506 0 1 1 1.012 0a.496.496 0 0 1-.557.506z" fill="currentColor"/>
+	<path d="M12.05 2a10 10 0 1 0-.1 20a10 10 0 0 0 .1-20m6.073 12.702a3.39 3.39 0 0 1-3.41 3.411H9.389a3.392 3.392 0 0 1-3.411-3.41V9.378a3.39 3.39 0 0 1 3.41-3.411h5.325a3.39 3.39 0 0 1 3.41 3.41z" fill="currentColor"/>
+</svg></a
+                >
+              </div>
 
-                <optgroup label="Viajes">
-                  <option value="v-cascada-plata"
-                    >Hacer la ruta de la cascada La Plata</option
-                  >
-                  <option value="v-ruta-fruta">Hacer la ruta de La Fruta</option
-                  >
-                  <option value="v-termales-rancho"
-                    >Hacer la ruta de los termales El Rancho</option
-                  >
-                  <option value="v-otros">Hacer otros viajes y rutas</option>
-                </optgroup>
-
-                <optgroup label="Desarrollo Web">
-                  <option value="dw-pagina-empresa"
-                    >Tener una página web para mi empresa/emprendimiento</option
-                  >
-                  <option value="dw-app-similar"
-                    >Desarrollar una app web similar a esta</option
-                  >
-                  <option value="dw-aprender">Aprender desarrollo Web</option>
-                  <option value="dw-otro">(Tengo otro interés)</option>
-                </optgroup>
-              </select>
+              <button class="btn-whatsapp">
+                <i class="fa-brands fa-whatsapp"></i> Contactar por WhatsApp
+              </button>
             </div>
-            <div class="form-grupo no-center">
-              <label for="mensaje">Mensaje</label>
-              <textarea
-                name="mensaje"
-                id="mensaje"
-                rows="4"
-                maxlength="500"
-                placeholder="Me gustaría..."></textarea>
-            </div>
-          </fieldset>
-
-          <!-- From Uiverse.io by KINGFRESS -->
-
-          <button type="submit">
-            <span class="circle1"></span>
-            <span class="circle2"></span>
-            <span class="circle3"></span>
-            <span class="circle4"></span>
-            <span class="circle5"></span>
-            <span class="text">Enviar</span>
-          </button>
-
-          <p class="mensaje hide" id="mensajeform">
-            Gracias por enviar el formulario. Nos comunicaremos contigo en
-            brevedad
-          </p>
-        </form>
-      </div>
-
-      <h2>Comunicate directamente con nosotros</h2>
-
-      <div class="card">
-        <div class="card-header">
-          <img
-            src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=500&auto=format&fit=crop&q=80"
-            alt="Foto de perfil"
-            class="card-img"
-          />
-        </div>
-
-        <div class="card-body">
-          <h2 class="card-name">Jhonatan Avila</h2>
-          <p class="card-role">Operador y guía de turismo</p>
-
-          <p class="card-description">Escríbeme si necesitas</p>
-
-          <div class="social-links">
-            <a href="#" aria-label="TikTok" class="social-icon"
-              ><i class="fa-brands fa-tiktok"></i></a
-            >
-            <a href="#" aria-label="Facebook" class="social-icon"
-              ><i class="fa-brands fa-facebook-f"></i></a
-            >
-            <a href="#" aria-label="Instagram" class="social-icon"
-              ><i class="fa-brands fa-instagram"></i></a
-            >
           </div>
 
-          <button class="btn-whatsapp">
-            <i class="fa-brands fa-whatsapp"></i> Contactar por WhatsApp
-          </button>
-        </div>
-      </div>
+          <div class="card">
+            <div class="card-header">
+              <img
+                src="/imgs/contacto/ornel.avif"
+                alt="Foto de perfil"
+                class="card-img"
+              />
+            </div>
 
-      <div class="card">
-        <div class="card-header">
-          <img
-            src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=500&auto=format&fit=crop&q=80"
-            alt="Foto de perfil"
-            class="card-img"
-          />
-        </div>
+            <div class="card-body">
+              <h2 class="card-name">Ornel P. Serpa</h2>
+              <p class="card-role">Desarrollador Web y Guia de Turismo</p>
 
-        <div class="card-body">
-          <h2 class="card-name">Jhonatan Avila</h2>
-          <p class="card-role">Operador y guía de turismo</p>
+              <p class="card-description">
+                Escríbeme si necesitas digitalizar tu negocio, optimizar tu
+                sitio web actual o crear interfaces atractivas y funcionales que
+                conecten con tus clientes.
+              </p>
 
-          <p class="card-description">
-            Escríbeme si necesitas digitalizar tu negocio, optimizar tu sitio
-            web actual o crear interfaces atractivas y funcionales que conecten
-            con tus clientes.
-          </p>
+              <div class="social-links">
+                <a href="https://www.tiktok.com/@opsdeveloper?_r=1&_t=ZS-97Bx34tX6Jw" aria-label="TikTok" class="social-icon"
+                  ><svg style="color: #ffff;" height="200" width="200" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+	<path d="M12 2a10 10 0 1 0 10 10A10.01 10.01 0 0 0 12 2m5.939 7.713v.646a.37.37 0 0 1-.38.37a5.364 5.364 0 0 1-2.903-1.108v4.728a3.938 3.938 0 0 1-1.18 2.81a4.011 4.011 0 0 1-2.87 1.17a4.103 4.103 0 0 1-2.862-1.17a3.98 3.98 0 0 1-1.026-3.805c.159-.642.48-1.232.933-1.713a3.58 3.58 0 0 1 2.79-1.313h.82v1.703a.348.348 0 0 1-.39.348a1.918 1.918 0 0 0-1.23 3.631c.27.155.572.246.882.267c.24.01.48-.02.708-.092a1.928 1.928 0 0 0 1.313-1.816V5.754a.359.359 0 0 1 .359-.36h1.415a.359.359 0 0 1 .359.34a3.303 3.303 0 0 0 1.282 2.245a3.25 3.25 0 0 0 1.641.636a.37.37 0 0 1 .338.35z" fill="currentColor"/>
+</svg></a>
+                <a href="https://www.facebook.com/share/1F8KsRNwGF/" aria-label="Facebook" class="social-icon"
+                  ><svg fill="#ffffff" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M12 2.03998C6.5 2.03998 2 6.52998 2 12.06C2 17.06 5.66 21.21 10.44 21.96V14.96H7.9V12.06H10.44V9.84998C10.44 7.33998 11.93 5.95998 14.22 5.95998C15.31 5.95998 16.45 6.14998 16.45 6.14998V8.61998H15.19C13.95 8.61998 13.56 9.38998 13.56 10.18V12.06H16.34L15.89 14.96H13.56V21.96C15.9164 21.5878 18.0622 20.3855 19.6099 18.57C21.1576 16.7546 22.0054 14.4456 22 12.06C22 6.52998 17.5 2.03998 12 2.03998Z"></path> </g></svg> </a
+                >
+                <a href="https://www.instagram.com/ornel_serpa02?igsh=MTF1b29ncWY3ZTNyeQ==" aria-label="Instagram" class="social-icon"
+                  ><svg style="color: #ffff;" height="200" width="200" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+	<path d="M13.61 12.243a1.6 1.6 0 1 1-1.56-1.63a1.62 1.62 0 0 1 1.56 1.63" fill="currentColor"/>
+	<path d="M14.763 7.233H9.338a2.024 2.024 0 0 0-2.024 2.024v5.547a2.024 2.024 0 0 0 2.024 2.024h5.425a2.024 2.024 0 0 0 2.024-2.024V9.267a2.026 2.026 0 0 0-2.024-2.034m-2.713 7.723a2.703 2.703 0 1 1 2.642-2.703a2.672 2.672 0 0 1-2.642 2.703m2.936-5.405a.496.496 0 0 1-.496-.506a.506.506 0 1 1 1.012 0a.496.496 0 0 1-.557.506z" fill="currentColor"/>
+	<path d="M12.05 2a10 10 0 1 0-.1 20a10 10 0 0 0 .1-20m6.073 12.702a3.39 3.39 0 0 1-3.41 3.411H9.389a3.392 3.392 0 0 1-3.411-3.41V9.378a3.39 3.39 0 0 1 3.41-3.411h5.325a3.39 3.39 0 0 1 3.41 3.41z" fill="currentColor"/>
+</svg></a
+                >
+              </div>
 
-          <div class="social-links">
-            <a href="#" aria-label="TikTok" class="social-icon"
-              ><i class="fa-brands fa-tiktok"></i></a
-            >
-            <a href="#" aria-label="Facebook" class="social-icon"
-              ><i class="fa-brands fa-facebook-f"></i></a
-            >
-            <a href="#" aria-label="Instagram" class="social-icon"
-              ><i class="fa-brands fa-instagram"></i></a
-            >
+              <button class="btn-whatsapp">
+                <i class="fa-brands fa-whatsapp"></i> Contactar por WhatsApp
+              </button>
+            </div>
           </div>
-
-          <button class="btn-whatsapp">
-            <i class="fa-brands fa-whatsapp"></i> Contactar por WhatsApp
-          </button>
         </div>
       </div>
     </main>
 
     <Footer />
     <style>
+      body {
+        margin: 0 0 9rem 0;
+      }
       .contenedor-principal {
         margin: 2rem auto;
       }
@@ -273,6 +293,9 @@ import Footer from "../componentes/footer.astro";
         padding: 0.3rem;
         border: 0.1rem solid #cccc;
         outline: none;
+      }
+      select{
+        border-radius: .5rem;
       }
       input:focus,
       select:focus,
@@ -361,18 +384,11 @@ import Footer from "../componentes/footer.astro";
 
       /* Variables de color y reset básico */
       :root {
-        --bg-main: #0f172a; /* Fondo de la pantalla */
-        --bg-card: #1e293b; /* Fondo de la tarjeta */
+        --bg-card: #123618; /* Fondo de la tarjeta */
         --text-primary: #f8fafc;
-        --text-secondary: #94a3b8;
-        --accent-color: #38bdf8; /* Azul brillante para destacar */
+        --text-secondary: #d0d3d0;
+        --accent-color: #00ccff; /* Azul brillante para destacar */
         --whatsapp-color: #25d366;
-      }
-
-      * {
-        box-sizing: border-box;
-        margin: 0;
-        padding: 0;
       }
 
       /* Tarjeta Principal */
@@ -397,7 +413,7 @@ import Footer from "../componentes/footer.astro";
       .card-header {
         position: relative;
         width: 100%;
-        height: 250px;
+        height: 20rem;
       }
 
       .card-img {
@@ -500,6 +516,36 @@ import Footer from "../componentes/footer.astro";
 
       .btn-whatsapp:active {
         transform: scale(0.98);
+      }
+.tarjetas{
+      width: 100%;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+
+          gap: 2rem;
+}
+      @media (min-width: 768px) {
+        .tres-caja {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: 3rem;
+        }
+        .tarjetas {
+          flex-direction: row;
+        }
+       html{
+        font-size: 60%;
+       }
+        }
+      @media (min-width: 1440px) {
+       html{
+        font-size: 100%;
+       }
+       input, select{
+        height: 3rem;
+       }
       }
     </style>
     <script>
