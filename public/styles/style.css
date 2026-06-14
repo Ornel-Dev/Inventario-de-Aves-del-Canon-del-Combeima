@@ -5,6 +5,9 @@
   --gris-parrafos: rgb(61, 61, 61) ;
 }
 
+* {
+  -webkit-tap-highlight-color: transparent;
+}
 @font-face {
     /* El nombre que tú elijas para usarla después */
     font-family: 'Kabla'; 
