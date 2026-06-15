@@ -1,6 +1,6 @@
 const CACHE_NAME = 'aves-tolima-v3.0.2'; // Incrementamos la versión para forzar la limpieza en los celulares
 //Comentario de version aumentada
-//1506.1
+//1506.2
 const CORE_ASSETS = [
     '/',
     '/manifest.json',
@@ -8,7 +8,9 @@ const CORE_ASSETS = [
     '/favicon.svg',
     '/icons/icon-192.png',
     '/icons/icon-512.png',
-    '/icons/logo.png'
+    '/icons/logo.png',
+    '/fuentes/Kablammo.ttf'
+
 ];
 
 // Mantén aquí EXACTAMENTE tu mismo array con tus 29 aves, audios e imágenes

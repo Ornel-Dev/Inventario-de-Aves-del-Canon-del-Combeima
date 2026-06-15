@@ -50,10 +50,17 @@ const avesFiltradas3 = listAvesTarget.filter((ave) =>
   <body>
     <Header />
     <div class="contenedor-principal">
-      <main class="Info-ruta">
+
+      <main class="Info-ruta ">
+
         <h1>Ruta: {ruta.name}</h1>
+        <div class="grid">
+
         <img src={ruta.img} alt={`Imagen de la ruta ${ruta.name}`} />
+
         <p>{ruta.descripcion}</p>
+        </div>
+
       </main>
       <div class="mapa">
         <h2>Mapa de la ruta</h2>
@@ -143,8 +150,10 @@ const avesFiltradas3 = listAvesTarget.filter((ave) =>
   .Info-ruta img {
     margin-top: 2rem;
     width: 100%;
-    height: 50rem;
+    height: 40rem;
     border-radius: 2rem;
+    object-fit: cover;
+    object-position: center;
   }
   .Info-ruta h1 {
     font-size: 2.4rem;
@@ -175,9 +184,11 @@ const avesFiltradas3 = listAvesTarget.filter((ave) =>
     grid-template-columns: repeat(2, 1fr);
     grid-gap: 1rem;
     margin-bottom: 12rem;
-  }
+   .nombreCientifico {
+  } }
   .tarjetaAves {
     width: 100%;
+    box-sizing: border-box;
     height: 20rem;
     background-position: center;
     background-size: cover;
@@ -190,12 +201,10 @@ const avesFiltradas3 = listAvesTarget.filter((ave) =>
     
   }
 
-  .nombre,
-  .nombreCientifico {
-    padding-left: 2rem;
-  }
+  
+
   .nombre {
-    margin: 0;
+    margin: 0.1rem 0;
     font-size: 1.3rem;
   }
   .nombreCientifico {
@@ -212,7 +221,6 @@ const avesFiltradas3 = listAvesTarget.filter((ave) =>
   .estado{
 display: flex;
 align-items: center;
-padding-right: 1rem;
 }
 .estado-logo{
     padding: .3rem;
@@ -246,6 +254,20 @@ padding-right: 1rem;
 .galeria>a{
   text-decoration: none;
   cursor: pointer;
+display: block;
+  width: 100%;
+  min-width: 0;
 }
+@media (min-width: 768px) {
+ .grid{
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+}
+.grid img{
+  height: 37rem;
+}
+}
+
 
 </style>

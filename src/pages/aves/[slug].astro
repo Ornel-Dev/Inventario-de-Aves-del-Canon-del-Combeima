@@ -39,6 +39,8 @@ const { ave } = Astro.props;
 
     <main class="detalle-ave contenedor-principal">
       <Volver />
+<div class="grid-2">
+<div class="grid-contenedor-1">
 
       <div class="contenedor-foto">
         <img src={ave.Imagen} alt={`Imagen del ave ${ave.nombreComun}`} />
@@ -77,6 +79,9 @@ const { ave } = Astro.props;
           </div>
         </div>
       </section>
+</div>
+
+<div class="grid-contenedor-2">
 
       {/* Estilo para la tarjeta DE ESTADO */}
       <section class={`target t-estado fondo-${ave.Estado.toLowerCase()}`}>
@@ -88,6 +93,10 @@ const { ave } = Astro.props;
           <p class="contenido-uicn">{ave.Uicn}</p>
         </div>
       </section>
+</div>
+
+<div class="grid-contenedor-3">
+
 
       {/* Estilo para la tarjeta DE DESCRIPCION*/}
       <section class={`target t-descripcion`}>
@@ -254,6 +263,10 @@ const { ave } = Astro.props;
           </div>
         </div>
       </section>
+      </div>
+</div>
+
+
 
       <section class="target">
         <div class="contenido-target contenido-qr">
@@ -591,6 +604,34 @@ COMPARTIR FICHA
   .btn-compartir svg{
 width: 2.4rem;
 height: 2.4rem;
+  }
+
+
+  @media (min-width: 1024px) {
+   .grid-2{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr ;
+    grid-a;
+    gap: 2rem;
+   }
+   
+   .grid-contenedor-1{
+grid-column: 1 / 2;
+grid-row: 1 / 2;
+   }
+      .grid-contenedor-2{
+    grid-column: 1 / -1;
+
+    
+      }
+      .grid-contenedor-3{
+        grid-column: 2 / 3;
+  grid-row: 1 / 2;
+transform: translateY(-1.37rem);
+align-self: self-start;
+
+      }
   }
 </style>
 
