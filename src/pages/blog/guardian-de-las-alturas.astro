@@ -1,0 +1,169 @@
+---
+import Header from "../../componentes/Header.astro";
+import Footer from "../../componentes/footer.astro";
+---
+
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" href="/favicon.ico" />
+    <meta name="viewport" content="width=device-width initial-scale=1.0" />
+    <meta name="generator" content={Astro.generator} />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Google+Sans+Flex:opsz,wght@6..144,1..1000&family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Lexend:wght@100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/styles/style.css" />
+    <link rel="manifest" href="/manifest.json" />
+
+    <title>Blog | Aurea | Inventario de aves del Cañon del Combeima</title>
+  </head>
+  <body>
+    <Header />
+    <div class="hero">
+      <h1 class="blog-title">
+        El guardián de las alturas: En busca del Colibrí Cabecicastaño en el
+        Cañón del Combeima
+      </h1>
+    </div>
+    <main class="contenedor-principal">
+      <article class="blog-post">
+        <div class="autor">
+          <p>Escrito por:</p>
+          <img src="/imgs/contacto/ornel.avif" alt="Imagen del autor" />
+          <div class="nombre">Ornel P. Serpa</div>
+          <p class="fecha">14/06/2026</p>
+        </div>
+
+        <p>
+          La biogeografía de los Andes centrales de Colombia se distingue por un
+          fenómeno de aislamiento evolutivo que ha propiciado el desarrollo de
+          especies únicas en el mundo. En el Cañón del Combeima, la presencia de
+          barreras geográficas naturales y la diversidad climática han
+          convertido a la cuenca en un laboratorio evolutivo. Sin embargo, la
+          divulgación de estas riquezas biológicas a menudo enfrenta
+          imprecisiones debido a las superposiciones de nombres comunes en la
+          avifauna local. Un ejemplo patente es la denominación sugerida de
+          "colibrí cabeciazul" (<em>Hylocharis grayi</em>), una especie de
+          vistosa cabeza azulada que transita las zonas de menor elevación del
+          cañón; no obstante, el verdadero baluarte del endemismo estricto en la
+          región es el <strong>colibrí cabecicastaño del Tolima</strong> o colibrí
+          florido del Tolima (<em>Anthocephala berlepschi</em>).
+        </p>
+
+        <p>
+          Originalmente clasificado como una subespecie de <em
+            >Anthocephala floriceps</em
+          > (junto con la población endémica de la Sierra Nevada de Santa Marta),
+          estudios genéticos y morfológicos determinaron que <em
+            >Anthocephala berlepschi</em
+          > es una especie monotípica plenamente diferenciada. Este pequeño troquílido,
+          de aproximadamente 8.4 cm a 10 cm de longitud, se caracteriza por poseer
+          un pico negro y recto de proporciones cortas. El macho adulto exhibe una
+          corona de color castaño rojizo rufo, una frente de tonalidad blancuzco-crema,
+          partes superiores de color verde brillante y partes inferiores de matiz
+          ante grisáceo. La hembra, por su parte, presenta una corona de coloración
+          marrón menos llamativa, consistente con las estrategias de camuflaje necesarias
+          para la incubación de su nidada.
+        </p>
+
+        <p>
+          La relevancia ecológica de este colibrí en el ecosistema del Cañón del
+          Combeima radica en su especializado nicho alimenticio y en su
+          comportamiento reproductivo. Las observaciones de campo sistemáticas
+          efectuadas en reservas locales como el Ukuku Rural Lodge, ubicado a
+          una altitud de 1890 m sobre el nivel del mar, revelan que no defiende
+          territorios de alimentación de forma agresiva frente a otros
+          colibríes. Por el contrario, se comporta como una especie "sin
+          fronteras" o <em>trapliner</em>, trazando rutas recurrentes y
+          ordenadas de forrajeo entre parches florales dispersos en el
+          sotobosque húmedo. Sus fuentes primarias de néctar incluyen plantas
+          vasculares de gran importancia ecológica como la mermelada (<em
+            >Streptosolen jamesonii</em
+          >), el corazón de pollo (<em>Iochroma gesnerioides</em>), la verbena
+          morada y rosada (<em>Stachytarpheta cayanensis</em>) y la especie
+          invasora naturalizada ojo de poeta (<em>Thunbergia alata</em>).
+        </p>
+
+        <p>
+          Adicionalmente, el canto de los machos, descrito acústicamente como
+          una serie prolongada de notas repetitivas tipo "tsip", se produce en
+          estructuras de agregación social denominadas <em>leks</em> ubicadas bajo
+          el dosel cerrado, donde compiten acústicamente para atraer a las hembras.
+        </p>
+
+        <p>
+          Actualmente, el colibrí cabecicastaño está catalogado como <strong
+            >Vulnerable (VU)</strong
+          > por la Unión Internacional para la Conservación de la Naturaleza (UICN).
+          Su población global se encuentra en decadencia y se estima en menos de 4500
+          individuos maduros. Esta alarmante tendencia responde a la degradación de
+          su hábitat debido a la tala de bosques primarios y secundarios viejos para
+          el establecimiento de monocultivos agrícolas. Por ello, el Cañón del Combeima
+          constituye un refugio de supervivencia crítico para evitar la extinción
+          de este polinizador evolutivamente irreemplazable. Conoce la ficha del colibrí cabecicastaño <a href="../../aves/colibri-del-tolima">aqui. </a>
+        </p>
+
+       
+      </article>
+    </main>
+
+    <Footer />
+  </body>
+  <style>
+    main {
+      margin-bottom: 8rem;
+    }
+    .hero {
+      background-image:
+        linear-gradient(
+          to top,
+          rgba(0, 0, 0, 0.8) 0%,
+          rgba(0, 0, 0, 0.26) 40%,
+          rgba(0, 0, 0, 0) 100%
+        ),
+        url("/imgs/colibricabecicastano.jpg");
+      background-position: center;
+      background-size: cover;
+      height: 80vh;
+      width: 100%;
+      background-repeat: no-repeat;
+      display: flex;
+      align-items: end;
+      color: #ffff;
+    }
+    .hero h1 {
+      margin: 3rem auto;
+      width: 90%;
+    }
+    p {
+      font-size: 1.6rem;
+      color: var(--gris-parrafos);
+    }
+
+    .autor {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin: 2rem 0;
+    }
+    .nombre{
+        font-weight: bold; 
+    }
+    .autor p, .nombre {
+      font-size: 1.2rem;
+    }
+    .autor img {
+      border-radius: 50%;
+      width: 4rem;
+      height: 4rem;
+    }
+    strong{
+        font-weight: bold;
+    }
+  </style>
+</html>

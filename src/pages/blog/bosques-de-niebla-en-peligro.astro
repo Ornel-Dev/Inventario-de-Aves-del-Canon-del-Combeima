@@ -1,0 +1,210 @@
+---
+import Header from "../../componentes/Header.astro";
+import Footer from "../../componentes/footer.astro";
+---
+
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" href="/favicon.ico" />
+    <meta name="viewport" content="width=device-width initial-scale=1.0" />
+    <meta name="generator" content={Astro.generator} />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Google+Sans+Flex:opsz,wght@6..144,1..1000&family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Lexend:wght@100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/styles/style.css" />
+    <link rel="manifest" href="/manifest.json" />
+
+    <title>Blog | Aurea | Inventario de aves del Cañon del Combeima</title>
+  </head>
+  <body>
+    <Header />
+    <div class="hero">
+      <h1 class="blog-title">
+        Bosques de niebla en peligro: ¿Cómo proteger el hogar de nuestra
+        avifauna?
+      </h1>
+    </div>
+    <main class="contenedor-principal">
+      <article class="blog-post">
+        <div class="autor">
+          <p>Escrito por:</p>
+          <img src="/imgs/contacto/jhonatan.avif" alt="Imagen del autor" />
+          <div class="nombre">Jhonatan Avila</div>
+          <p class="fecha">06/06/2026</p>
+        </div>
+
+        <p>
+          El bosque de niebla andino del Cañón del Combeima es uno de los
+          ecosistemas forestales con mayor vulnerabilidad ecológica del
+          continente americano. Estos sistemas montanos desempeñan una función
+          reguladora crítica al interceptar la humedad atmosférica en
+          suspensión, canalizándola hacia el suelo para alimentar la cuenca del
+          río Combeima, la cual abastece de agua potable a más del 80% de los
+          habitantes de la ciudad de Ibagué. A pesar de su importancia hídrica y
+          ecológica, el cañón enfrenta amenazas de degradación ambiental severas
+          que comprometen la viabilidad a largo plazo de su avifauna residente y
+          migratoria.
+        </p>
+
+        <p>
+          Los principales factores de tensión ambiental que impactan
+          negativamente la biodiversidad del cañón se detallan en tres frentes
+          de intervención urgente:
+        </p>
+
+        <ul>
+          <li>
+            <strong
+              >Fragmentación del Hábitat por Actividades Agropecuarias:</strong
+            > La expansión de la frontera agrícola, motivada principalmente por el
+            cultivo de papa en zonas de altitud, junto con la introducción de ganadería
+            bovina lechera en el bosque altoandino y subpáramo, genera una severa
+            pérdida de cobertura vegetal nativa. El bosque continuo se divide en parches
+            inconexos aislados por pasturas, lo que restringe el flujo genético de
+            especies de sotobosque con rangos de vuelo limitados, como la caminera
+            tolimense (<em>Leptotila conoveri</em>) y el colibrí cabecicastaño (<em
+              >Anthocephala berlepschi</em
+            >).
+          </li>
+          <li>
+            <strong
+              >Presión por Turismo de Naturaleza Masivo No Planificado:</strong
+            > La proliferación de infraestructura hotelera y de ocio en el corregimiento
+            de Juntas, junto con el tránsito descontrolado de peatones y vehículos
+            motorizados por senderos ecológicos, perturba los periodos reproductivos
+            de la avifauna. La contaminación acústica interfiere con los cantos territoriales
+            de cortejo, mientras que la inadecuada disposición de residuos y el vertimiento
+            directo de aguas residuales domésticas e industriales contaminan las corrientes
+            hídricas donde habitan especies de alta sensibilidad ecológica como el
+            pato de torrentes (<em>Merganetta armata</em>).
+          </li>
+          <li>
+            <strong>Efectos Sinérgicos del Cambio Climático:</strong> El retroceso
+            glaciar del Nevado del Tolima altera la escorrentía superficial de la
+            cuenca hídrica. Además, el incremento paulatino de las temperaturas ambientales
+            provoca un desplazamiento de los rangos de distribución de las aves hacia
+            altitudes superiores en busca de sus pisos térmicos de confort, un fenómeno
+            que puede provocar cuellos de botella poblacionales en áreas altoandinas
+            reducidas o fragmentadas.
+          </li>
+        </ul>
+
+        <p>
+          Frente a esta coyuntura, la recopilación sistemática de datos
+          biológicos estructurados es la herramienta científica más contundente
+          para contrarrestar la degradación ecosistémica. El registro preciso de
+          la presencia de aves andinas actúa como un indicador de la salud del
+          bosque de niebla. El mapeo de la abundancia de especies amenazadas
+          permite identificar y priorizar áreas de alto valor de conservación
+          biológica, aportando la evidencia técnica necesaria para que las
+          autoridades ambientales (como Cortolima) restrinjan actividades
+          agropecuarias perjudiciales y fortalezcan las regulaciones de la zona
+          de amortiguación del Parque Nacional Natural Los Nevados.
+        </p>
+      </article>
+    </main>
+
+    <Footer />
+  </body>
+  <style>
+    main {
+      margin-bottom: 8rem;
+    }
+    .hero {
+      background-image:
+        linear-gradient(
+          to top,
+          rgba(0, 0, 0, 0.8) 0%,
+          rgba(0, 0, 0, 0.26) 40%,
+          rgba(0, 0, 0, 0) 100%
+        ),
+        url("/imgs/blogs/bosques.webp");
+      background-position: center;
+      background-size: cover;
+      height: 80vh;
+      width: 100%;
+      background-repeat: no-repeat;
+      display: flex;
+      align-items: end;
+      color: #ffff;
+    }
+    .hero h1 {
+      margin: 3rem auto;
+      width: 90%;
+    }
+    p,
+    li {
+      font-size: 1.6rem;
+      color: var(--gris-parrafos);
+    }
+
+    .autor {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin: 2rem 0;
+    }
+    .nombre {
+      font-weight: bold;
+    }
+    .autor p,
+    .nombre {
+      font-size: 1.2rem;
+    }
+    .autor img {
+      border-radius: 50%;
+      width: 4rem;
+      height: 4rem;
+    }
+    strong {
+      font-weight: bold;
+    }
+
+    /* Flujo de datos (Diagrama de texto) */
+    .data-flow {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+      background: #fdfaf6;
+      border: 0.1rem dashed var(--accent-color);
+      padding: 2rem;
+      border-radius: 0.8rem;
+      margin: 2rem 0;
+      font-weight: bold;
+      text-align: center;
+    }
+
+    .data-flow span.arrow {
+      color: var(--verde-oscuro);
+      font-size: 1.2rem;
+    }
+
+    /* Responsividad */
+    @media (max-width: 600px) {
+      .data-flow {
+        flex-direction: column;
+      }
+      .data-flow span.arrow {
+        transform: rotate(90deg);
+      }
+    }
+
+    .cta-box {
+      background-color: #eaf2eb;
+      font-size: 1.3rem;
+      border-left: 5px solid var(--verde-oscuro);
+      padding: 2rem;
+      margin-top: 3rem;
+      border-radius: 0 0.5rem 0.5rem 0;
+      font-style: italic;
+    }
+  </style>
+</html>

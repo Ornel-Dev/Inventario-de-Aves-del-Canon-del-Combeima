@@ -1,0 +1,163 @@
+---
+import Header from "../../componentes/Header.astro";
+import Footer from "../../componentes/footer.astro";
+---
+
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" href="/favicon.ico" />
+    <meta name="viewport" content="width=device-width initial-scale=1.0" />
+    <meta name="generator" content={Astro.generator} />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Google+Sans+Flex:opsz,wght@6..144,1..1000&family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Lexend:wght@100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/styles/style.css" />
+    <link rel="manifest" href="/manifest.json" />
+
+    <title>Blog | Aurea | Inventario de aves del Cañon del Combeima</title>
+  </head>
+  <body>
+    <Header />
+    <div class="hero">
+      <h1 class="blog-title">
+         Cómo un destello de plumas se convierte en datos: El nacimiento
+                de Áurea.
+      </h1>
+    </div>
+    <main class="contenedor-principal">
+      <article class="blog-post">
+        <div class="autor">
+          <p>Escrito por:</p>
+          <img src="/imgs/contacto/ornel.avif" alt="Imagen del autor" />
+          <div class="nombre">Ornel P. Serpa</div>
+          <p class="fecha">14/06/2026</p>
+        </div>
+  <p>La recolección sistemática de datos biológicos ha sido históricamente una tarea compleja y costosa, supeditada a expediciones científicas limitadas en el tiempo y el espacio. En zonas con dinámicas ecológicas complejas como el Cañón del Combeima, la falta de información continua representaba un vacío estructural para el diseño de políticas públicas de protección ambiental. Ante este panorama, el nacimiento del proyecto Aurea no obedeció a una directriz corporativa o gubernamental, sino al esfuerzo colaborativo de un colectivo de programadores de software, guías de turismo rural y profesionales en biología asentados en el corregimiento de Juntas.</p>
+
+        <p>La iniciativa germinó a partir del trabajo de campo liderado por biólogos como David Bejarano ("Truman") y Annie Jiménez, directores del Ukuku Rural Lodge, quienes durante más de una década documentaron la biodiversidad local y formaron a guías comunitarios en el avistamiento ético de aves. Al percibir que cientos de observaciones de alta calidad realizadas por visitantes nacionales y extranjeros se quedaban sin sistematizar en cámaras fotográficas o redes sociales privadas, se planteó el diseño de una base de datos unificada, de código abierto e interoperable, capaz de traducir una experiencia recreativa en un insumo técnico estandarizado.</p>
+
+        <p>El proceso que transforma la simple visualización de un ave en un dato científico útil para la conservación ambiental sigue un riguroso protocolo digital integrado en la arquitectura de Aurea:</p>
+
+        <div class="data-flow">
+            <span>Captura en campo (Foto/Audio)</span>
+            <span class="arrow">&rarr;</span>
+            <span>Extracción automática de metadatos (Hora, Coordenadas, Altitud)</span>
+            <span class="arrow">&rarr;</span>
+            <span>Validación taxonómica (Pares expertos)</span>
+            <span class="arrow">&rarr;</span>
+            <span>Publicación de datos libres</span>
+        </div>
+
+        <p>Este flujo metodológico garantiza que cada registro incidental se convierta en un punto de presencia geográfica georreferenciado, compatible con repositorios de información científica globales. Al descentralizar y democratizar la recolección de información biológica, Aurea empodera a las comunidades campesinas y a los operadores turísticos del cañón, demostrando que la conservación efectiva no solo depende de las instituciones académicas tradicionales, sino de la participación social informada y de la soberanía tecnológica de código abierto.</p>
+
+        <div class="cta-box">
+            Se sugiere a los desarrolladores, programadores y entusiastas de la tecnología revisar el repositorio público de código abierto de Aurea en GitHub para proponer mejoras en los sistemas de procesamiento de datos. Enlace <a href="https://github.com/Ornel-Dev/Inventario-de-Aves-del-Canon-del-Combeima.git">aquí <a/>
+        </div>
+      </article>
+    </main>
+
+    <Footer />
+  </body>
+  <style>
+    main {
+      margin-bottom: 8rem;
+    }
+    .hero {
+      background-image:
+        linear-gradient(
+          to top,
+          rgba(0, 0, 0, 0.8) 0%,
+          rgba(0, 0, 0, 0.26) 40%,
+          rgba(0, 0, 0, 0) 100%
+        ),
+        url("/imgs/blogs/aurea.webp");
+      background-position: center;
+      background-size: cover;
+      height: 80vh;
+      width: 100%;
+      background-repeat: no-repeat;
+      display: flex;
+      align-items: end;
+      color: #ffff;
+    }
+    .hero h1 {
+      margin: 3rem auto;
+      width: 90%;
+    }
+    p, li {
+      font-size: 1.6rem;
+      color: var(--gris-parrafos);
+    }
+
+    .autor {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin: 2rem 0;
+    }
+    .nombre{
+        font-weight: bold; 
+    }
+    .autor p, .nombre {
+      font-size: 1.2rem;
+    }
+    .autor img {
+      border-radius: 50%;
+      width: 4rem;
+      height: 4rem;
+    }
+    strong{
+        font-weight: bold;
+    }
+
+
+    
+        /* Flujo de datos (Diagrama de texto) */
+        .data-flow {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            background: #fdfaf6;
+            border: .1rem dashed var(--accent-color);
+            padding: 2rem;
+            border-radius: .8rem;
+            margin: 2rem 0;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        .data-flow span.arrow {
+            color: var(--verde-oscuro);
+            font-size: 1.2rem;
+        }
+
+        /* Responsividad */
+        @media (max-width: 600px) {
+          
+            .data-flow {
+                flex-direction: column;
+            }
+            .data-flow span.arrow {
+                transform: rotate(90deg);
+            }
+        }
+
+             .cta-box {
+            background-color: #eaf2eb;
+            font-size: 1.3rem;
+            border-left: 5px solid var(--verde-oscuro);
+            padding: 2rem;
+            margin-top: 3rem;
+            border-radius: 0 .5rem .5rem 0;
+            font-style: italic;
+        }
+  </style>
+</html>

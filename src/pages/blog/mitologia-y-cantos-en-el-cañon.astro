@@ -1,0 +1,199 @@
+---
+import Header from "../../componentes/Header.astro";
+import Footer from "../../componentes/footer.astro";
+---
+
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" href="/favicon.ico" />
+    <meta name="viewport" content="width=device-width initial-scale=1.0" />
+    <meta name="generator" content={Astro.generator} />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Google+Sans+Flex:opsz,wght@6..144,1..1000&family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Lexend:wght@100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/styles/style.css" />
+    <link rel="manifest" href="/manifest.json" />
+
+    <title>Blog | Aurea | Inventario de aves del Cañon del Combeima</title>
+  </head>
+  <body>
+    <Header />
+    <div class="hero">
+      <h1 class="blog-title">
+        Mitología y cantos: Historias de la comunidad del Cañón a través de sus
+        aves.
+      </h1>
+    </div>
+    <main class="contenedor-principal">
+      <article class="blog-post">
+        <div class="autor">
+          <p>Escrito por:</p>
+          <img src="/imgs/contacto/jhonatan.avif" alt="Imagen del autor" />
+          <div class="nombre">Jhonatan Avila</div>
+          <p class="fecha">06/06/2026</p>
+        </div>
+
+        <p>
+          El valor biológico del Cañón del Combeima no puede desvincularse de la
+          dimensión biocultural de sus habitantes rurales. El conocimiento
+          ecológico tradicional, preservado a través de mitos, leyendas y la
+          interpretación campesina del comportamiento animal, constituye una
+          manifestación inmaterial que ha regulado de forma histórica el uso y
+          la protección de los recursos naturales en la región. Para las
+          comunidades andinas del cañón, las aves no son únicamente organismos
+          sujetos de estudio zoológico; son consideradas actores fundamentales
+          de la memoria histórica y del ordenamiento simbólico del territorio.
+        </p>
+
+        <p>
+          En las dinámicas de la vida agraria tradicional, las aves han
+          desempeñado el rol de predictoras climáticas y cronometradoras de la
+          naturaleza. Variaciones específicas en la frecuencia de los cantos de
+          mirlas de montaña o vuelos inusuales de especies de colibríes en zonas
+          despejadas del bosque de niebla han sido interpretados por
+          generaciones de agricultores como señales inequívocas del cambio
+          estacional o de la proximidad de lluvias torrenciales. Estos presagios
+          climáticos guiaban las etapas del calendario de siembras y cosechas,
+          minimizando pérdidas en los cultivos de montaña.
+        </p>
+
+        <p>
+          La narrativa oral del departamento del Tolima conserva, además,
+          leyendas que relacionan la acústica de la avifauna con presagios
+          sociales y advertencias existenciales. Un ejemplo sumamente arraigado
+          es el mito acústico del "Pollo Malo". Esta criatura incorpórea del
+          folclor local infunde terror en los arrieros y caminantes nocturnos a
+          través de un silbido peculiar que desafía la percepción espacial
+          ordinaria. La sabiduría popular advierte que si el canto del Pollo
+          Malo se percibe lejano, la entidad amenazante se halla de hecho
+          extremadamente cerca, mientras que si el piar se escucha en las
+          inmediaciones del sendero, se puede transitar con tranquilidad ya que
+          el espectro se encuentra a gran distancia. De igual manera, relatos
+          sobre el "Silvador" o "Silbador" asocian su agudo silbido con
+          presagios mortuorios veredales, variando el significado según la
+          intensidad y suavidad de su emisión acústica.
+        </p>
+
+        <p>
+          Este folclor aviar no constituye un conjunto de supersticiones
+          aisladas; funciona como un código ético-ambiental implícito de
+          conservación. Personajes míticos protectores de los ecosistemas, como
+          la Madremonte, la Patasola y el Indio de Agua, son descritos en la
+          tradición como defensores encarnizados de las selvas y ríos. Estas
+          leyendas advierten que la destrucción sistemática del bosque andino,
+          el desvío inadecuado de nacimientos de agua o la captura e
+          introducción de aves silvestres en jaulas atraen el castigo implacable
+          de estas fuerzas de la naturaleza. Al infundir respeto sagrado hacia
+          la vida silvestre, la mitología tradicional del Combeima actuaba como
+          un freno cultural contra la sobreexplotación de los recursos
+          naturales, una herencia biocultural indispensable que la ciencia
+          ciudadana moderna busca rescatar e integrar en sus estrategias
+          educativas.
+        </p>
+      </article>
+    </main>
+
+    <Footer />
+  </body>
+  <style>
+    main {
+      margin-bottom: 8rem;
+    }
+    .hero {
+      background-image:
+        linear-gradient(
+          to top,
+          rgba(0, 0, 0, 0.8) 0%,
+          rgba(0, 0, 0, 0.26) 40%,
+          rgba(0, 0, 0, 0) 100%
+        ),
+        url("/imgs/blogs/mitologiayaves.webp");
+      background-position: center;
+      background-size: cover;
+      height: 80vh;
+      width: 100%;
+      background-repeat: no-repeat;
+      display: flex;
+      align-items: end;
+      color: #ffff;
+    }
+    .hero h1 {
+      margin: 3rem auto;
+      width: 90%;
+    }
+    p,
+    li {
+      font-size: 1.6rem;
+      color: var(--gris-parrafos);
+    }
+
+    .autor {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin: 2rem 0;
+    }
+    .nombre {
+      font-weight: bold;
+    }
+    .autor p,
+    .nombre {
+      font-size: 1.2rem;
+    }
+    .autor img {
+      border-radius: 50%;
+      width: 4rem;
+      height: 4rem;
+    }
+    strong {
+      font-weight: bold;
+    }
+
+    /* Flujo de datos (Diagrama de texto) */
+    .data-flow {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+      background: #fdfaf6;
+      border: 0.1rem dashed var(--accent-color);
+      padding: 2rem;
+      border-radius: 0.8rem;
+      margin: 2rem 0;
+      font-weight: bold;
+      text-align: center;
+    }
+
+    .data-flow span.arrow {
+      color: var(--verde-oscuro);
+      font-size: 1.2rem;
+    }
+
+    /* Responsividad */
+    @media (max-width: 600px) {
+      .data-flow {
+        flex-direction: column;
+      }
+      .data-flow span.arrow {
+        transform: rotate(90deg);
+      }
+    }
+
+    .cta-box {
+      background-color: #eaf2eb;
+      font-size: 1.3rem;
+      border-left: 5px solid var(--verde-oscuro);
+      padding: 2rem;
+      margin-top: 3rem;
+      border-radius: 0 0.5rem 0.5rem 0;
+      font-style: italic;
+    }
+  </style>
+</html>

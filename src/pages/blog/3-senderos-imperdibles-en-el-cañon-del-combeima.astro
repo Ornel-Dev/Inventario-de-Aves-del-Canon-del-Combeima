@@ -1,0 +1,115 @@
+---
+import Header from "../../componentes/Header.astro";
+import Footer from "../../componentes/footer.astro";
+---
+
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" href="/favicon.ico" />
+    <meta name="viewport" content="width=device-width initial-scale=1.0" />
+    <meta name="generator" content={Astro.generator} />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Google+Sans+Flex:opsz,wght@6..144,1..1000&family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Lexend:wght@100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/styles/style.css" />
+    <link rel="manifest" href="/manifest.json" />
+
+    <title>Blog | Aurea | Inventario de aves del Cañon del Combeima</title>
+  </head>
+  <body>
+    <Header />
+    <div class="hero">
+      <h1 class="blog-title">
+       3 senderos imperdibles del Cañón del Combeima para los amantes de las aves
+      </h1>
+    </div>
+    <main class="contenedor-principal">
+      <article class="blog-post">
+        <div class="autor">
+          <p>Escrito por:</p>
+          <img src="/imgs/contacto/ornel.avif" alt="Imagen del autor" />
+          <div class="nombre">Ornel P. Serpa</div>
+          <p class="fecha">14/06/2026</p>
+        </div>
+
+       
+        <p>El relieve accidentado del Cañón del Combeima genera un marcado gradiente altitudinal que condiciona de manera directa el clima, la vegetación y, en consecuencia, la distribución espacial de la avifauna. Al ascender por el cañón, las variaciones térmicas delimitan diferentes pisos ecológicos donde habitan comunidades avifaunísticas muy disímiles. A continuación, se detallan tres rutas estratégicas que abarcan diferentes altitudes del cañón, optimizadas para el avistamiento de aves altoandinas.</p>
+
+        <h2 class="section-subtitle">Sendero 1: Ruta de la fruta</h2>
+        <p>Este sendero se desplaza en un rango altitudinal de 1400 m a 1700 m sobre el nivel del mar. El paisaje está caracterizado por una matriz de cultivos tradicionales de café bajo sombra, parcelas de plátano, pastizales y remanentes boscosos de la subcuenca del río Coello. Esta ruta es de especial importancia, ya que en la Quebrada Cay se ha registrado sistemáticamente la presencia de la paloma caminera tolimense (<em>Leptotila conoveri</em>), una especie endémica altamente amenazada que forrajea de manera solitaria en suelos degradados y sistemas agroforestales cafeteros. Además de la caminera, los caminantes pueden registrar tángaras de colores vivos, atrapamoscas y especies riparias que aprovechan los recursos fluviales de la zona.</p>
+
+        <h2 class="section-subtitle">Sendero 2: La Puerta a la Alta Montaña (Corregimiento de Juntas a Ukuku Rural Lodge)</h2>
+        <p>Situado en una elevación intermedia de 1800 m a 2400 m de altitud, este corredor conecta el centro urbano de Juntas con la reserva privada Ukuku. La vegetación predominante corresponde al bosque húmedo andino, caracterizado por una constante presencia de niebla y una alta diversidad de plantas epífitas y arbustos melíferos. En esta franja ecológica, donde se han registrado formalmente 183 especies de aves, se localiza el hábitat reproductivo y de forrajeo del colibrí cabecicastaño del Tolima (<em>Anthocephala berlepschi</em>). El río Combeima, que bordea el sendero, ofrece además una oportunidad inmejorable para la observación de parejas de patos de torrentes (<em>Merganetta armata</em>) posados sobre las grandes rocas expuestas en la corriente de agua rápida.</p>
+
+        <h2 class="section-subtitle">Sendero 3: Termales el Rancho</h2>
+        <p>Ubicado en la parte alta de la cuenca, en un gradiente que va desde los 2600 m en El Silencio hasta superar los 3400 m en las zonas de amortiguación del Parque Nacional Natural Los Nevados, este sendero transita por el bosque altoandino de niebla y áreas arbustivas del subpáramo. En este piso térmico frío, la avifauna muestra adaptaciones notables a la altitud y las bajas temperaturas. El principal objetivo de observación en este sector es la catarnica de páramo (<em>Leptosittaca branickii</em>), especie vulnerable registrada en la Quebrada Las Perlas que depende fuertemente de los rodales de palma de cera altoandina para su alimentación y anidación. Asimismo, este trayecto es ideal para documentar la presencia de grandes aves rapaces y el planeo de cóndores andinos (<em>Vultur gryphus</em>).</p>
+
+      </article>
+    </main>
+
+    <Footer />
+  </body>
+  <style>
+    main {
+      margin-bottom: 8rem;
+    }
+    .hero {
+      background-image:
+        linear-gradient(
+          to top,
+          rgba(0, 0, 0, 0.8) 0%,
+          rgba(0, 0, 0, 0.26) 40%,
+          rgba(0, 0, 0, 0) 100%
+        ),
+        url("/imgs/blogs/rutas.webp");
+      background-position: center;
+      background-size: cover;
+      height: 80vh;
+      width: 100%;
+      background-repeat: no-repeat;
+      display: flex;
+      align-items: end;
+      color: #ffff;
+    }
+    .hero h1 {
+      margin: 3rem auto;
+      width: 90%;
+    }
+    p, li {
+      font-size: 1.6rem;
+      color: var(--gris-parrafos);
+    }
+
+    .autor {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin: 2rem 0;
+    }
+    .nombre{
+        font-weight: bold; 
+    }
+    .autor p, .nombre {
+      font-size: 1.2rem;
+    }
+    .autor img {
+      border-radius: 50%;
+      width: 4rem;
+      height: 4rem;
+    }
+    strong{
+        font-weight: bold;
+    }
+
+
+
+    /* TABLA DE TEXTO */
+    
+  </style>
+</html>

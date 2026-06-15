@@ -4,10 +4,7 @@ import Footer from "../../componentes/footer.astro";
 ---
 
 <html lang="es">
-<head>
-   
-
-    
+  <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="icon" href="/favicon.ico" />
@@ -16,18 +13,295 @@ import Footer from "../../componentes/footer.astro";
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Google+Sans+Flex:opsz,wght@6..144,1..1000&family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Lexend:wght@100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
-      rel="stylesheet"/>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Google+Sans+Flex:opsz,wght@6..144,1..1000&family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Lexend:wght@100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="/styles/style.css" />
     <link rel="manifest" href="/manifest.json" />
 
-    <title>Blog | Aurea | Inventario de aves del cañon del Combeima</title>
-</head>
-<body>
-<Header/>
+    <title>Blog | Aurea | Inventario de aves del Cañon del Combeima</title>
+  </head>
+  <body>
+    <Header />
+    <div class="hero">
+      <h1>Blog</h1>
+      <svg
+        height="200"
+        width="200"
+        viewBox="0 0 16 16"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M10 14a2 2 0 1 1-4 0a2 2 0 0 1 4 0Zm1.78-8.841a.75.75 0 0 0-1.06 0l-1.97 1.97V.75a.75.75 0 0 0-1.5 0v6.379l-1.97-1.97a.75.75 0 0 0-1.06 1.06l3.25 3.25L8 10l.53-.53l3.25-3.25a.75.75 0 0 0 0-1.061Z"
+          fill="currentColor"></path>
+      </svg>
+    </div>
+    <main class="contenedor-principal">
+      <h2>Blogs Recientes</h2>
+      <p>
+        Lee nuestras entradas y conoce más del Cañon del Combeima y del proyecto
+        Áurea
+      </p>
 
+      <div class="entradas">
+        <!-- ENTRADA 1 -->
+        <a href="/blog/guardian-de-las-alturas">
+          <div class="entrada-tarjeta">
+            <img
+              src="/imgs/colibricabecicastano.jpg"
+              alt="Imagen de la entrada 1"
+            />
+            <div class="tarjeta-contenido">
+              <h3>
+                El guardián de las alturas: En busca del Colibrí Cabecicastaño
+                en el Cañón del Combeima.
+              </h3>
+              <p>
+                Una entrada dedicada exclusivamente a las especies endémicas o
+                casi endémicas de la región, como el colibrí Cabecicastaño
+                (Anthocephala berlepschi).
+              </p>
+              <div class="autor">
+                <img src="/imgs/contacto/ornel.avif" alt="Imagen del autor" />
+                <div class="nombre">Ornel P. Serpa</div>
+                <p class="fecha">14/06/2026</p>
+              </div>
+            </div>
+          </div>
+        </a>
 
+        <!-- FIN ENTRADA 1 -->
+        <!-- ENTRADA 2 -->
+        <a href="/blog/como-empezar-en-el-aviturismo">
+          <div class="entrada-tarjeta">
+            <img
+              src="/imgs/blogs/avistadores.webp"
+              alt="Imagen de la entrada 1"
+            />
+            <div class="tarjeta-contenido">
+              <h3>
+                ¿Cómo empezar en el aviturismo? Guía básica para pajarear en el
+                Combeima.
+              </h3>
+              <p>
+                Un artículo introductorio con consejos prácticos para quienes
+                quieren iniciarse en la observación de aves. Qué llevar
+                (binoculares, ropa discreta), qué horas son las mejores y cómo
+                usar la plataforma de Aurea para registrar los avistamientos.
+              </p>
+              <div class="autor">
+                <img src="/imgs/contacto/jhonatan.avif" alt="Imagen del autor" />
+                <div class="nombre">Jhonatan Avila</div>
+                <p class="fecha">06/06/2026</p>
+              </div>
+            </div>
+          </div>
+        </a>
+        <!-- FIN ENTRADA 2-->
+        <!-- ENTRADA 3 -->
+        <a href="/blog/3-senderos-imperdibles-en-el-cañon-del-combeima">
+          <div class="entrada-tarjeta">
+            <img
+              src="/imgs/blogs/rutas.webp"
+              alt="Imagen de la entrada 1"
+            />
+            <div class="tarjeta-contenido">
+              <h3>
+                3 senderos imperdibles del Cañón del Combeima para los amantes
+                de las aves.
+              </h3>
+              <p>
+                Un recorrido geográfico por diferentes altitudes del cañón (por
+                ejemplo, desde las zonas más bajas hasta la ruta hacia el Nevado
+                o fincas agroturísticas locales enfocadas en conservación).
+                Detalla qué especies se pueden encontrar en cada piso térmico.
+              </p>
+              <div class="autor">
+                <img src="/imgs/contacto/ornel.avif" alt="Imagen del autor" />
+                <div class="nombre">Ornel P. Serpa</div>
+                <p class="fecha">14/06/2026</p>
+              </div>
+            </div>
+          </div></a
+        >
+        <!-- FIN ENTRADA 3 -->
+        <!-- ENTRADA 4 -->
+        <a href="/blog/el-nacimiento-de-aurea">
+          <div class="entrada-tarjeta">
+            <img
+              src="/imgs/blogs/aurea.webp"
+              alt="Imagen de la entrada 1"
+            />
+            <div class="tarjeta-contenido">
+              <h3>
+                Cómo un destello de plumas se convierte en datos: El nacimiento
+                de Aurea.
+              </h3>
+              <p>
+                Historia de como nacio y se dio forma al proyecto de inventario
+                de aves del cañon del combeima, Aurea. Contada desde la
+                perpectiva del desarrollador
+              </p>
+              <div class="autor">
+                <img src="/imgs/contacto/ornel.avif" alt="Imagen del autor" />
+                <div class="nombre">Ornel P. Serpa</div>
+                <p class="fecha">14/06/2026</p>
+              </div>
+            </div>
+          </div></a
+        >
+        <!-- FIN ENTRADA 4 -->
+        <!-- ENTRADA 5 -->
+        <a href="/blog/mitologia-y-cantos-en-el-cañon">
+          <div class="entrada-tarjeta">
+            <img
+              src="/imgs/blogs/mitologiayaves.webp"
+              alt="Imagen de la entrada 1"
+            />
+            <div class="tarjeta-contenido">
+              <h3>
+                Mitología y cantos: Historias de la comunidad del Cañón a través
+                de sus aves.
+              </h3>
+              <p>
+                Recopilación de historias, nombres locales antiguos y mitos que
+                los habitantes del cañón asocian con ciertas aves (como los
+                cantos que anuncian lluvia o leyendas de la zona).
+              </p>
+              <div class="autor">
+                <img src="/imgs/contacto/jhonatan.avif" alt="Imagen del autor" />
+                <div class="nombre">Jhonatan Avila</div>
+                <p class="fecha">06/06/2026</p>
+              </div>
+            </div>
+          </div></a
+        >
+        <!-- FIN ENTRADA 5 -->
+        <!-- ENTRADA 6 -->
+        <a href="/blog/bosques-de-niebla-en-peligro">
+          <div class="entrada-tarjeta">
+            <img
+              src="/imgs/blogs/bosques.webp"
+              alt="Imagen de la entrada 1"
+            />
+            <div class="tarjeta-contenido">
+              <h3>
+                Bosques de niebla en peligro: ¿Cómo proteger el hogar de nuestra
+                avifauna?
+              </h3>
+              <p>
+                Un artículo de concientización sobre los desafíos ecológicos que
+                enfrenta el Cañón (turismo masivo no regulado, pérdida de
+                hábitat, cambio climático) y cómo el registro riguroso de aves
+                ayuda a tomar decisiones de conservación
+              </p>
+              <div class="autor">
+                <img src="/imgs/contacto/jhonatan.avif" alt="Imagen del autor" />
+                <div class="nombre">Jhonatan Avila</div>
+                <p class="fecha">06/06/2026</p>
+              </div>
+            </div>
+          </div>
+        </a>
+        <!-- FIN ENTRADA 6 -->
+      </div>
+    </main>
 
-<Footer/> 
-</body>
+    <Footer />
+  </body>
+  <style>
+    a {
+      text-decoration: none;
+      color: black;
+    }
+    main {
+      margin-bottom: 10rem;
+    }
+    .hero {
+      color: #ffff;
+      background-color: var(--verde-oscuro);
+      width: 100%;
+      height: 80vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: end;
+      align-items: center;
+      /* border-bottom-left-radius:2rem ; */
+      /* border-bottom-right-radius: 1.6rem; */
+    }
+    .hero h1 {
+      font-size: 4rem;
+      color: #ffff;
+      font-weight: bold;
+      margin-bottom: 4rem;
+    }
+    .hero svg {
+      width: 3rem;
+    }
+
+    p {
+      font-size: 1.5rem;
+      color: var(--gris-parrafos);
+    }
+    .entradas {
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+        gap: 2rem;}
+        
+    @media (min-width: 768px) {
+      .entradas {
+        grid-template-columns: repeat(3, 1fr);
+        align-items: stretch;
+        /* recordar */
+      }
+    }
+    h2 {
+      font-size: 2.4rem;
+      color: var(--verde-oscuro);
+    }
+
+    .entrada-tarjeta {
+      display: flex;
+      flex-direction: column;
+      border-radius: 2rem;
+      box-shadow: 0px 0.4rem 0.6rem rgba(0, 0, 0, 0.09);
+      height: 100%;
+    }
+    .tarjeta-contenido {
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+      padding: 1rem;
+      height: 100%;
+    }
+    .entrada-tarjeta img {
+      width: 100%;
+      border-radius: 2rem;
+      object-fit: cover;
+      height: 25rem;
+      display: block;
+      flex-shrink: 0;
+      /* recordar */
+    }
+    .tarjeta-contenido p {
+      font-size: 1rem;
+      flex-grow: 1;
+    }
+    .tarjeta-contenido h3 {
+      font-size: 1.6rem;
+    }
+    .autor {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .autor img {
+      border-radios: 50%;
+      width: 3rem;
+      height: 3rem;
+      object-fit: cover;
+    }
+  </style>
 </html>

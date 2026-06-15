@@ -1,0 +1,110 @@
+---
+import Header from "../../componentes/Header.astro";
+import Footer from "../../componentes/footer.astro";
+---
+
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" href="/favicon.ico" />
+    <meta name="viewport" content="width=device-width initial-scale=1.0" />
+    <meta name="generator" content={Astro.generator} />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Google+Sans+Flex:opsz,wght@6..144,1..1000&family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Lexend:wght@100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/styles/style.css" />
+    <link rel="manifest" href="/manifest.json" />
+
+    <title>Blog | Aurea | Inventario de aves del Cañon del Combeima</title>
+  </head>
+  <body>
+    <Header />
+    <div class="hero">
+      <h1 class="blog-title">
+       ¿Cómo empezar en el aviturismo? Guía básica para pajarear en el Combeima
+      </h1>
+    </div>
+    <main class="contenedor-principal">
+      <article class="blog-post">
+        <div class="autor">
+          <p>Escrito por:</p>
+        <img src="/imgs/contacto/jhonatan.avif" alt="Imagen del autor" />
+                <div class="nombre">Jhonatan Avila</div>
+                <p class="fecha">06/06/2026</p>
+        </div>
+
+        <p>El aviturismo o la observación de aves se ha consolidado en Colombia como una de las herramientas de ciencia ciudadana y turismo de conservación más eficientes para la protección de la biodiversidad. El departamento del Tolima, que cuenta con más de 778 especies de aves registradas y 33 rutas priorizadas, ofrece condiciones inmejorables para la iniciación en esta actividad. Sin embargo, la transición de observador casual a monitor de biodiversidad requiere de la adquisición de buenas prácticas de campo y del uso adecuado de herramientas de registro digital.</p>
+
+        <p>Para quienes deciden adentrarse en los senderos del Cañón del Combeima, el equipamiento básico y la conducta en el campo son determinantes para garantizar una experiencia exitosa y respetuosa con el entorno. Se recomienda disponer de los siguientes elementos técnicos:</p>
+
+        <ul>
+            <li><strong>Óptica:</strong> Un binocular estándar con configuración de 10x50 aumentos es ideal para captar detalles taxonómicos (como la forma del pico o las franjas alares) en condiciones de dosel cerrado o baja luminosidad del bosque de niebla.</li>
+            <li><strong>Indumentaria Discreta:</strong> Es fundamental vestir prendas cómodas, preferiblemente de secado rápido, de colores claros, tierras u opacos (como el verde oliva o grisáceo). Los colores fluorescentes o muy brillantes son percibidos con facilidad por las aves, desencadenando comportamientos de huida. Asimismo, se sugiere el uso de camisas de manga larga y pantalones largos para protección contra la radiación solar e insectos vectores, además de contar con un morral pequeño de caminata y una toalla de uso personal.</li>
+            <li><strong>Temporalidad de la Observación:</strong> Las actividades deben concentrarse durante las horas de mayor actividad biológica. Las primeras horas de la mañana (de las 05:30 a las 09:00) y el final de la tarde (de las 16:00 a las 18:00) representan los picos de forrajeo y canto territorial de la avifauna, momentos idóneos para su avistamiento y registro acústico.</li>
+        </ul>
+
+        <p>El componente transformador de la observación moderna de aves es la capacidad de digitalizar la experiencia de campo a través de plataformas de ciencia ciudadana como Aurea. Al registrar un avistamiento, los usuarios no solo construyen una bitácora personal, sino que aportan datos geoespaciales invaluables para investigadores locales. Este esfuerzo participativo cobra especial relevancia considerando que Colombia se sitúa como el segundo país a nivel global con mayor cantidad de datos abiertos sobre biodiversidad, habiendo incorporado más de 15 millones de nuevos registros en su Sistema de Información sobre Biodiversidad (SiB) en los últimos años.</p>
+       
+      </article>
+    </main>
+
+    <Footer />
+  </body>
+  <style>
+    main {
+      margin-bottom: 8rem;
+    }
+    .hero {
+      background-image:
+        linear-gradient(
+          to top,
+          rgba(0, 0, 0, 0.8) 0%,
+          rgba(0, 0, 0, 0.26) 40%,
+          rgba(0, 0, 0, 0) 100%
+        ),
+        url("/imgs/blogs/avistadores.webp");
+      background-position: center;
+      background-size: cover;
+      height: 80vh;
+      width: 100%;
+      background-repeat: no-repeat;
+      display: flex;
+      align-items: end;
+      color: #ffff;
+    }
+    .hero h1 {
+      margin: 3rem auto;
+      width: 90%;
+    }
+    p, li {
+      font-size: 1.6rem;
+      color: var(--gris-parrafos);
+    }
+
+    .autor {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin: 2rem 0;
+    }
+    .nombre{
+        font-weight: bold; 
+    }
+    .autor p, .nombre {
+      font-size: 1.2rem;
+    }
+    .autor img {
+      border-radius: 50%;
+      width: 4rem;
+      height: 4rem;
+    }
+    strong{
+        font-weight: bold;
+    }
+  </style>
+</html>
