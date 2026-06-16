@@ -1,4 +1,4 @@
-const CACHE_NAME = 'aves-tolima-v3.0.2'; // Incrementamos la versión para forzar la limpieza en los celulares
+const CACHE_NAME = '1.0.5.0'; // Incrementamos la versión para forzar la limpieza en los celulares
 //Comentario de version aumentada
 //1606.1.1
 const CORE_ASSETS = [
