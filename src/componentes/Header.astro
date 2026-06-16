@@ -76,27 +76,36 @@ const navLinks = [
   .hamburger.open span:nth-child(3) {
     transform: translateY(-10px) rotate(-45deg);
   }
-
+.hamburger.open{
+  position: fixed;
+  top: 3rem;
+  right: 3.6rem;
+}
   .hamburger {
     display: none;
-  } 
+  }
 
 
 
   .main-header {
    display: flex;
    justify-content: center;
-
     background-color: #CCCCCC;
     width: 100%;
+ position: relative;  /* Cambia de static a relative */
+  z-index: 1000;  
+
   }
 .contenedor-header{
   margin: 0 auto;
-  width: 80%;
+  width: 90%;
    display: grid;
 grid-template-columns: 1fr auto 1fr;
    align-items: center;
     padding: 1rem 2rem;
+    position: relative;  /* Cambia de static a relative */
+  z-index: 1000;  
+
 
 }
 .logo{
@@ -110,6 +119,8 @@ grid-template-columns: 1fr auto 1fr;
 }
 .hamburguesa{
   justify-self: end;
+  position: relative;
+  z-index: 999;
 }
 
   .logo img {
@@ -143,7 +154,9 @@ font-family: 'Kabla', "Google Sans", sans-serif;
 font-size: 2.4rem ;
 letter-spacing: .2rem;
   }
-
+.estilos-ventana{
+  padding: 0;
+}
   @media screen and (max-width: 426px) {
      .estilos-ventana {
     display: flex;
@@ -158,6 +171,7 @@ letter-spacing: .2rem;
 
     .navList {
       position: fixed;
+
       top: 0;
       left: 0;
       width: 100%;
@@ -166,7 +180,6 @@ letter-spacing: .2rem;
       padding-top: 5rem;
       border-bottom-left-radius: 50px;
       border-bottom-right-radius: 50px;
-
       transform: translateY(-100%); /* Lo escondemos empujándolo 100% hacia afuera de la pantalla */
       transition: transform 0.3s ease-in-out; /* Hace que el deslizamiento sea suave en vez de instantáneo */
     }
@@ -174,11 +187,16 @@ letter-spacing: .2rem;
       transform: translateX(0px);
     }
   }
+
+  
   nav a:focus {
   outline: none;
 }
+/* escribe el codigo aquí */
+.navList{
+}
 
- 
+
 </style>
 
 <script>
