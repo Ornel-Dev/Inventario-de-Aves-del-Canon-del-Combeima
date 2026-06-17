@@ -124,15 +124,7 @@ const avesFiltradas3 = listAvesTarget.filter((ave) =>
 </div>
       </div>
     </div>
-    <script is:inline>
-  if (import.meta.env.PROD && 'serviceWorker' in navigator) {
-    window.addEventListener('load', () => {
-      navigator.serviceWorker.register('/sw.js')
-        .then(registration => console.log('SW registrado correctamente'))
-        .catch(err => console.log('Error en SW: ', err));
-    });
-  }
-</script>
+    <script src="/scrips/app.js" is:inline></script>
   </body>
 
   <Footer />

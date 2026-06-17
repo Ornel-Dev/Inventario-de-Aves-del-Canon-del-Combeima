@@ -58,7 +58,9 @@ import Footer from "../componentes/footer.astro";
       </footer>
     </main>
     <script src="/scrips/app.js" is:inline></script>
+    
     <script is:inline>
+
   if (import.meta.env.PROD && 'serviceWorker' in navigator) {
     window.addEventListener('load', () => {
       navigator.serviceWorker.register('/sw.js')

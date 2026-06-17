@@ -1,6 +1,6 @@
-const CACHE_NAME = '1.0.5.0'; // Incrementamos la versión para forzar la limpieza en los celulares
-//Comentario de version aumentada
-//1606.1.1
+const CACHE_NAME = 'aurea-pwa-v1.0.6'; // Versión única para diferentes dominios
+const TIMEOUT_DURATION = 8000; // 8 segundos de timeout por archivo
+
 const CORE_ASSETS = [
     '/',
     '/manifest.json',
@@ -10,7 +10,6 @@ const CORE_ASSETS = [
     '/icons/icon-512.png',
     '/icons/logo.png',
     '/fuentes/Kablammo.ttf'
-
 ];
 
 // Mantén aquí EXACTAMENTE tu mismo array con tus 29 aves, audios e imágenes
@@ -144,81 +143,159 @@ const MEDIA_ASSETS = [
 
 ];
 
-// 1. CORRECCIÓN EN INSTALL: Ahora sí obligamos al celular a esperar las descargas completas
+// Función auxiliar para descargar con timeout
+async function cacheWithTimeout(cache, url) {
+    return new Promise(async (resolve) => {
+        const timeout = setTimeout(() => {
+            console.warn(`⏱️ Timeout descargando: ${url}`);
+            resolve(false);
+        }, TIMEOUT_DURATION);
+
+        try {
+            await cache.add(url);
+            clearTimeout(timeout);
+            console.log(`✅ Cacheado: ${url}`);
+            resolve(true);
+        } catch (error) {
+            clearTimeout(timeout);
+            console.warn(`❌ Error cacheando ${url}:`, error);
+            resolve(false);
+        }
+    });
+}
+
+// 1. EVENT INSTALL: Descarga todo al instalar
 self.addEventListener('install', event => {
+    console.log('🔧 Service Worker instalando...');
+    
     event.waitUntil(
         caches.open(CACHE_NAME).then(async (cache) => {
-            // Guardamos el núcleo de la app primero
-            await cache.addAll(CORE_ASSETS);
-
-            // CORRECCIÓN: Usamos un bucle for...of para que el 'await' realmente detenga 
-            // el proceso hasta que cada ave se descargue de forma segura.
-            for (const url of MEDIA_ASSETS) {
-                try {
-                    await cache.add(url);
-                } catch (error) {
-                    console.warn(`No se pudo precargar en celular: ${url}`);
-                }
+            console.log('📦 Cacheando archivos core...');
+            
+            // Instala archivos core primero
+            try {
+                await cache.addAll(CORE_ASSETS);
+                console.log('✅ Core assets cacheados');
+            } catch (error) {
+                console.error('❌ Error cacheando core:', error);
             }
+
+            // Descargas media assets con paciencia
+            console.log(`📥 Descargando ${MEDIA_ASSETS.length} recursos media (esto toma tiempo en primera instalación)...`);
+            let cached = 0;
+            
+            for (const url of MEDIA_ASSETS) {
+                const success = await cacheWithTimeout(cache, url);
+                if (success) cached++;
+            }
+            
+            console.log(`📊 Resultado: ${cached}/${MEDIA_ASSETS.length} recursos descargados`);
+            
+            // Notifica al cliente que está listo
+            self.clients.matchAll().then(clients => {
+                clients.forEach(client => {
+                    client.postMessage({
+                        type: 'INSTALL_COMPLETE',
+                        cached: cached,
+                        total: MEDIA_ASSETS.length
+                    });
+                });
+            });
         })
     );
-    self.skipWaiting(); // Fuerza a la nueva versión a tomar el control de inmediato
+    
+    self.skipWaiting(); // Toma control inmediatamente
 });
 
-// Limpieza automática de versiones viejas de caché (Vital para celulares)
+// 2. EVENT ACTIVATE: Limpia cachés viejos
 self.addEventListener('activate', event => {
+    console.log('🧹 Service Worker activando y limpiando...');
+    
     event.waitUntil(
         caches.keys().then(cacheNames => {
             return Promise.all(
-                cacheNames.map(cache => {
-                    if (cache !== CACHE_NAME) {
-                        console.log('Borrando caché antiguo obsoleto:', cache);
-                        return caches.delete(cache);
+                cacheNames.map(cacheName => {
+                    if (cacheName !== CACHE_NAME) {
+                        console.log(`🗑️ Eliminando caché antiguo: ${cacheName}`);
+                        return caches.delete(cacheName);
                     }
                 })
             );
         })
     );
+    
     self.clients.claim();
 });
 
-// 2. CORRECCIÓN EN FETCH: Tolerancia de barras (/) para evitar bloqueos de rutas
+// 3. EVENT FETCH: Estrategia Cache First con Network Fallback
 self.addEventListener('fetch', event => {
-    // Solo interceptamos peticiones GET de nuestra propia aplicación
-    if (event.request.method !== 'GET' || !event.request.url.startsWith(self.location.origin)) {
+    // Solo GET y de nuestra propia app
+    if (event.request.method !== 'GET') return;
+    
+    const url = new URL(event.request.url);
+    
+    // Si no es de nuestro dominio, ignora (importa para dominios múltiples)
+    if (!url.origin.includes('vercel.app') && !url.hostname === self.location.hostname) {
         return;
     }
 
     event.respondWith(
         caches.open(CACHE_NAME).then(cache => {
-            const url = new URL(event.request.url);
             const pathname = url.pathname;
-
-            // Paso A: Buscamos la coincidencia exacta tal cual la pidió el navegador
+            
+            // Estrategia: Busca en caché primero
             return cache.match(event.request).then(response => {
-                if (response) return response;
+                if (response) {
+                    console.log(`⚡ Desde caché: ${pathname}`);
+                    return response;
+                }
 
-                // Paso B: Si no se encuentra, normalizamos la barra final (/)
-                // Si pidió "/aves/barranquero/" busca "/aves/barranquero" y viceversa
-                const alternativePath = pathname.endsWith('/') ? pathname.slice(0, -1) : pathname + '/';
+                // Si no está en caché, normaliza la ruta (/ al final)
+                const alternatives = [
+                    pathname,
+                    pathname.endsWith('/') ? pathname.slice(0, -1) : pathname + '/'
+                ];
 
-                return cache.match(alternativePath).then(altResponse => {
-                    if (altResponse) return altResponse;
+                for (const alt of alternatives) {
+                    const match = cache.match(alt);
+                    if (match) {
+                        console.log(`⚡ Desde caché (alternativa): ${alt}`);
+                        return match;
+                    }
+                }
 
-                    // Paso C: Si no está en caché de ninguna forma, vamos a internet
-                    return fetch(event.request).then(networkResponse => {
-                        // Guardamos archivos dinámicos de Astro, imágenes o audios nuevos en caliente
-                        if (pathname.includes('/_astro/') || pathname.startsWith('/imgs/') || pathname.startsWith('/audios/')) {
+                // Si nada en caché, va a la red
+                console.log(`🌐 Fetch de red: ${pathname}`);
+                return fetch(event.request)
+                    .then(networkResponse => {
+                        // Cachea dinámicamente recursos nuevos (builds nuevas de Astro, imágenes, audios)
+                        if (pathname.includes('/_astro/') || 
+                            pathname.startsWith('/imgs/') || 
+                            pathname.startsWith('/audios/') ||
+                            pathname.endsWith('.webp') ||
+                            pathname.endsWith('.mp3')) {
                             cache.put(event.request, networkResponse.clone());
                         }
                         return networkResponse;
-                    }).catch(() => {
-                        // Si falla internet y es una página, redirigimos a la raíz como salvavidas offline
+                    })
+                    .catch(error => {
+                        console.warn(`❌ Fetch fallido: ${pathname}`, error);
+                        
+                        // Fallback offline: si es una navegación, vuelve a home
                         if (event.request.mode === 'navigate') {
-                            return cache.match('/');
+                            return cache.match('/').catch(() => {
+                                return new Response('Offline - No hay caché disponible', {
+                                    status: 503,
+                                    statusText: 'Service Unavailable'
+                                });
+                            });
                         }
+                        
+                        return new Response('Recurso no disponible', {
+                            status: 404,
+                            statusText: 'Not Found'
+                        });
                     });
-                });
             });
         })
     );
