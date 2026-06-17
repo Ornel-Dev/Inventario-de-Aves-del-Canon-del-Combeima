@@ -39,9 +39,18 @@ async function registerServiceWorker() {
         navigator.serviceWorker.addEventListener('message', (event) => {
             console.log('💬 Mensaje del SW:', event.data);
             
+            if (event.data.type === 'INSTALL_PROGRESS') {
+                const { cached, failed, total } = event.data;
+                const percentage = Math.round((cached / total) * 100);
+                console.log(`⏳ Progreso: ${percentage}% (${cached}/${total}, ${failed} fallos)`);
+                showInstallProgress(cached, total, failed, percentage);
+            }
+            
             if (event.data.type === 'INSTALL_COMPLETE') {
-                console.log(`📊 Instalación completada: ${event.data.cached}/${event.data.total}`);
-                showInstallProgress(event.data.cached, event.data.total);
+                const { cached, failed, total } = event.data;
+                const percentage = Math.round((cached / total) * 100);
+                console.log(`📊 Instalación completada: ${cached}/${total} (${failed} fallos)`);
+                showInstallProgress(cached, total, failed, percentage);
             }
         });
 
@@ -111,13 +120,13 @@ function notifyUpdateAvailable(registration) {
 }
 
 // 3. MUESTRA PROGRESO DE INSTALACIÓN
-function showInstallProgress(cached, total) {
-    const percentage = Math.round((cached / total) * 100);
-    console.log(`⏳ Progreso: ${percentage}% (${cached}/${total})`);
+function showInstallProgress(cached, total, failed = 0, percentage = 0) {
+    const finalPercentage = Math.round((cached / total) * 100);
+    console.log(`⏳ Progreso: ${finalPercentage}% (${cached}/${total} descargados${failed > 0 ? `, ${failed} fallos` : ''})`);
     
     // Aquí puedes actualizar un indicador visual en la UI
     const progressEvent = new CustomEvent('pwa-install-progress', {
-        detail: { cached, total, percentage }
+        detail: { cached, total, failed, percentage: finalPercentage }
     });
     window.dispatchEvent(progressEvent);
 }

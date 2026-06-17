@@ -1,5 +1,6 @@
-const CACHE_NAME = 'aurea-pwa-v1.0.6'; // Versión única para diferentes dominios
+const CACHE_NAME = 'aurea-pwa-v1.0.7'; // Versión v1.0.7 con descargas paralelas (50 simultáneos)
 const TIMEOUT_DURATION = 8000; // 8 segundos de timeout por archivo
+const PARALLEL_DOWNLOADS = 50; // Máximo de descargas simultáneas
 
 const CORE_ASSETS = [
     '/',
@@ -145,28 +146,77 @@ const MEDIA_ASSETS = [
 
 // Función auxiliar para descargar con timeout
 async function cacheWithTimeout(cache, url) {
-    return new Promise(async (resolve) => {
+    return new Promise((resolve) => {
         const timeout = setTimeout(() => {
             console.warn(`⏱️ Timeout descargando: ${url}`);
             resolve(false);
         }, TIMEOUT_DURATION);
 
-        try {
-            await cache.add(url);
-            clearTimeout(timeout);
-            console.log(`✅ Cacheado: ${url}`);
-            resolve(true);
-        } catch (error) {
-            clearTimeout(timeout);
-            console.warn(`❌ Error cacheando ${url}:`, error);
-            resolve(false);
-        }
+        cache.add(url)
+            .then(() => {
+                clearTimeout(timeout);
+                console.log(`✅ Cacheado: ${url}`);
+                resolve(true);
+            })
+            .catch(error => {
+                clearTimeout(timeout);
+                console.warn(`❌ Error cacheando ${url}:`, error);
+                resolve(false);
+            });
     });
 }
 
-// 1. EVENT INSTALL: Descarga todo al instalar
+// Función para descargar múltiples archivos en paralelo con límite
+async function downloadWithLimit(cache, urls, limit) {
+    let completed = 0;
+    let failed = 0;
+    let inProgress = 0;
+    const queue = [...urls];
+    const activePromises = [];
+
+    return new Promise((resolve) => {
+        const processNext = async () => {
+            if (queue.length === 0 && inProgress === 0) {
+                await Promise.all(activePromises);
+                resolve({ completed, failed, total: urls.length });
+                return;
+            }
+
+            if (queue.length > 0 && inProgress < limit) {
+                const url = queue.shift();
+                inProgress++;
+
+                const promise = cacheWithTimeout(cache, url)
+                    .then(success => {
+                        if (success) completed++;
+                        else failed++;
+                        inProgress--;
+                        // Reporta progreso cada archivo
+                        self.clients.matchAll().then(clients => {
+                            clients.forEach(client => {
+                                client.postMessage({
+                                    type: 'INSTALL_PROGRESS',
+                                    cached: completed,
+                                    failed: failed,
+                                    total: urls.length
+                                });
+                            });
+                        });
+                        processNext();
+                    });
+
+                activePromises.push(promise);
+                processNext();
+            }
+        };
+
+        processNext();
+    });
+}
+
+// 1. EVENT INSTALL: Descarga todo al instalar (en paralelo con límite de 50)
 self.addEventListener('install', event => {
-    console.log('🔧 Service Worker instalando...');
+    console.log('🔧 Service Worker instalando (modo paralelo - 50 simultáneos)...');
     
     event.waitUntil(
         caches.open(CACHE_NAME).then(async (cache) => {
@@ -180,24 +230,21 @@ self.addEventListener('install', event => {
                 console.error('❌ Error cacheando core:', error);
             }
 
-            // Descargas media assets con paciencia
-            console.log(`📥 Descargando ${MEDIA_ASSETS.length} recursos media (esto toma tiempo en primera instalación)...`);
-            let cached = 0;
+            // Descargas media assets EN PARALELO (máx 50 simultáneos)
+            console.log(`📥 Descargando ${MEDIA_ASSETS.length} recursos en paralelo (50 a la vez)...`);
             
-            for (const url of MEDIA_ASSETS) {
-                const success = await cacheWithTimeout(cache, url);
-                if (success) cached++;
-            }
+            const result = await downloadWithLimit(cache, MEDIA_ASSETS, PARALLEL_DOWNLOADS);
             
-            console.log(`📊 Resultado: ${cached}/${MEDIA_ASSETS.length} recursos descargados`);
+            console.log(`📊 Resultado: ${result.completed}/${result.total} descargados, ${result.failed} fallos`);
             
             // Notifica al cliente que está listo
             self.clients.matchAll().then(clients => {
                 clients.forEach(client => {
                     client.postMessage({
                         type: 'INSTALL_COMPLETE',
-                        cached: cached,
-                        total: MEDIA_ASSETS.length
+                        cached: result.completed,
+                        failed: result.failed,
+                        total: result.total
                     });
                 });
             });
