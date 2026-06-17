@@ -19,13 +19,10 @@ const avesFiltradas12 = listAvesTarget.filter(
   (ave) => ave.Piso && ave.Piso.includes("Cálido"),
 );
 
-
-const avesFiltradas3 = listAvesTarget.filter((ave) => 
-  ave.Piso && (ave.Piso.includes("Frío") || ave.Piso.includes("Templado"))
+const avesFiltradas3 = listAvesTarget.filter(
+  (ave) =>
+    ave.Piso && (ave.Piso.includes("Frío") || ave.Piso.includes("Templado")),
 );
-
-
-
 ---
 
 <!doctype html>
@@ -50,17 +47,13 @@ const avesFiltradas3 = listAvesTarget.filter((ave) =>
   <body>
     <Header />
     <div class="contenedor-principal">
-
-      <main class="Info-ruta ">
-
+      <main class="Info-ruta">
         <h1>Ruta: {ruta.name}</h1>
         <div class="grid">
+          <img src={ruta.img} alt={`Imagen de la ruta ${ruta.name}`} />
 
-        <img src={ruta.img} alt={`Imagen de la ruta ${ruta.name}`} />
-
-        <p>{ruta.descripcion}</p>
+          <p>{ruta.descripcion}</p>
         </div>
-
       </main>
       <div class="mapa">
         <h2>Mapa de la ruta</h2>
@@ -69,197 +62,190 @@ const avesFiltradas3 = listAvesTarget.filter((ave) =>
       <div class="listado-aves">
         <h2>Aves que puedes ver en esta ruta:</h2>
 
-    
-<div class="galeria grid-4">
-  {/* 1. La condición completa debe ir entre paréntesis */}
-  {(ruta.slug === "ruta-de-la-fruta" || ruta.slug === "cascada-la-plata") ? (
-    
-    // 2. IF VERDADERO (Usamos ?): Se renderiza avesFiltradas12
-    avesFiltradas12.map((ave) => (
-      <a href={`/aves/${ave.slug}`}>
-        <div
-          class="tarjetaAves"
-          style={`background-image: linear-gradient(to bottom, rgba(0,0,0,0.0), rgba(0,0,0,0.6)), url(${ave.Imagen})`}
-        >
-          <div class="info">
-            <div class="nombres">
-              <p class="nombre">{ave.nombreComun}</p>
-              <i class="nombreCientifico">{ave.nombreCientifico}</i>
-            </div>
-            <div class="estado">
-              <p class:list={["estado-logo", `estado-${ave.Estado.toLowerCase()}`]}>
-                {ave.Estado}
-              </p>
-            </div>
-          </div>
+        <div class="galeria grid-4">
+          {/* 1. La condición completa debe ir entre paréntesis */}
+          {
+            ruta.slug === "ruta-de-la-fruta" || ruta.slug === "cascada-la-plata"
+              ? // 2. IF VERDADERO (Usamos ?): Se renderiza avesFiltradas12
+                avesFiltradas12.map((ave) => (
+                  <a href={`/aves/${ave.slug}`}>
+                    <div
+                      class="tarjetaAves"
+                      style={`background-image: linear-gradient(to bottom, rgba(0,0,0,0.0), rgba(0,0,0,0.6)), url(${ave.Imagen})`}
+                    >
+                      <div class="info">
+                        <div class="nombres">
+                          <p class="nombre">{ave.nombreComun}</p>
+                          <i class="nombreCientifico">{ave.nombreCientifico}</i>
+                        </div>
+                        <div class="estado">
+                          <p
+                            class:list={[
+                              "estado-logo",
+                              `estado-${ave.Estado.toLowerCase()}`,
+                            ]}
+                          >
+                            {ave.Estado}
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </a>
+                ))
+              : // 3. ELSE (Usamos :): Se renderiza tu otra lista (ej. otraListaDeAves)
+                avesFiltradas3.map((ave) => (
+                  <a href={`/aves/${ave.slug}`}>
+                    <div
+                      class="tarjetaAves"
+                      style={`background-image: linear-gradient(to bottom, rgba(0,0,0,0.0), rgba(0,0,0,0.6)), url(${ave.Imagen})`}
+                    >
+                      <div class="info">
+                        <div class="nombres">
+                          <p class="nombre">{ave.nombreComun}</p>
+                          <i class="nombreCientifico">{ave.nombreCientifico}</i>
+                        </div>
+                        <div class="estado">
+                          <p
+                            class:list={[
+                              "estado-logo",
+                              `estado-${ave.Estado.toLowerCase()}`,
+                            ]}
+                          >
+                            {ave.Estado}
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </a>
+                ))
+          }
         </div>
-      </a>
-    ))
-
-  ) : (
-
-    // 3. ELSE (Usamos :): Se renderiza tu otra lista (ej. otraListaDeAves)
-    avesFiltradas3.map((ave) => (
-      <a href={`/aves/${ave.slug}`}>
-        <div
-          class="tarjetaAves"
-          style={`background-image: linear-gradient(to bottom, rgba(0,0,0,0.0), rgba(0,0,0,0.6)), url(${ave.Imagen})`}
-        >
-          <div class="info">
-            <div class="nombres">
-              <p class="nombre">{ave.nombreComun}</p>
-              <i class="nombreCientifico">{ave.nombreCientifico}</i>
-            </div>
-            <div class="estado">
-              <p class:list={["estado-logo", `estado-${ave.Estado.toLowerCase()}`]}>
-                {ave.Estado}
-              </p>
-            </div>
-          </div>
-        </div>
-      </a>
-    ))
-
-  )}
-</div>
       </div>
     </div>
-    <script src="/scrips/app.js" is:inline></script>
   </body>
 
   <Footer />
+
+  <style>
+    @media (min-width: 768px) {
+      .galeria.grid-4 {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+      }
+    }
+
+    .Info-ruta img {
+      margin-top: 2rem;
+      width: 100%;
+      height: 40rem;
+      border-radius: 2rem;
+      object-fit: cover;
+      object-position: center;
+    }
+    .Info-ruta h1 {
+      font-size: 2.4rem;
+      color: var(--verde-oscuro);
+      margin-bottom: 0;
+    }
+
+    .Info-ruta p {
+      font-size: 1.6rem;
+      color: var(--gris-parrafos);
+    }
+    h2 {
+      font-size: 2rem;
+      color: var(--verde-oscuro);
+    }
+    .listado-aves h2 {
+      text-align: center;
+    }
+
+    .mapa iframe {
+      width: 100%;
+      height: 90vh;
+      border: none;
+    }
+
+    .galeria {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      grid-gap: 1rem;
+      margin-bottom: 12rem;
+      .nombreCientifico {
+      }
+    }
+    .tarjetaAves {
+      width: 100%;
+      box-sizing: border-box;
+      height: 20rem;
+      background-position: center;
+      background-size: cover;
+      border-radius: 1rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: end;
+      color: #fff;
+      padding: 1rem;
+    }
+
+    .nombre {
+      margin: 0.1rem 0;
+      font-size: 1.3rem;
+    }
+    .nombreCientifico {
+      font-size: 1rem;
+      margin: 0;
+    }
+
+    .info {
+      display: flex;
+      justify-content: space-between;
+      height: fit-content;
+    }
+    .estado {
+      display: flex;
+      align-items: center;
+    }
+    .estado-logo {
+      padding: 0.3rem;
+      border-radius: 50%;
+      font-weight: bold;
+    }
+    .estado-lc {
+      background-color: green;
+    }
+    .estado-nt {
+      background-color: rgb(21, 248, 21);
+      color: black;
+    }
+    .estado-vu {
+      background-color: #e6ff04;
+      color: black;
+    }
+    .estado-en {
+      background-color: rgb(255, 102, 0);
+      color: black;
+    }
+    .estado-cr {
+      background-color: rgb(255, 0, 0);
+    }
+    .galeria > a {
+      text-decoration: none;
+      cursor: pointer;
+      display: block;
+      width: 100%;
+      min-width: 0;
+    }
+    @media (min-width: 768px) {
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2rem;
+      }
+      .grid img {
+        height: 37rem;
+      }
+    }
+  </style>
+  <script src="/scrips/app.js" is:inline></script>
 </html>
-
-<style>
-  @media (min-width: 768px ) {
-    .galeria.grid-4{
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-  }
-  }
- 
-  
-  .Info-ruta img {
-    margin-top: 2rem;
-    width: 100%;
-    height: 40rem;
-    border-radius: 2rem;
-    object-fit: cover;
-    object-position: center;
-  }
-  .Info-ruta h1 {
-    font-size: 2.4rem;
-    color: var(--verde-oscuro);
-    margin-bottom: 0;
-  }
-
-  .Info-ruta p {
-    font-size: 1.6rem;
-    color: var(--gris-parrafos);
-  }
-  h2 {
-    font-size: 2rem;
-    color: var(--verde-oscuro);
-  }
-  .listado-aves h2 {
-    text-align: center;
-  }
-
-  .mapa iframe {
-    width: 100%;
-    height: 90vh;
-    border: none;
-  }
-  
-  .galeria {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    grid-gap: 1rem;
-    margin-bottom: 12rem;
-   .nombreCientifico {
-  } }
-  .tarjetaAves {
-    width: 100%;
-    box-sizing: border-box;
-    height: 20rem;
-    background-position: center;
-    background-size: cover;
-    border-radius: 1rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: end;
-    color: #fff;
-    padding: 1rem;
-    
-  }
-
-  
-
-  .nombre {
-    margin: 0.1rem 0;
-    font-size: 1.3rem;
-  }
-  .nombreCientifico {
-    font-size: 1rem;
-    margin: 0;
-
-  }
- 
-  .info{
-    display: flex;
-    justify-content: space-between;
-    height: fit-content;
-  }
-  .estado{
-display: flex;
-align-items: center;
-}
-.estado-logo{
-    padding: .3rem;
-    border-radius: 50%;
-    font-weight: bold;
-}
-.estado-lc{
-        background-color: green ;
-
-}
-.estado-nt{
-        background-color: rgb(21, 248, 21) ;
-        color:black;
-
-
-}
-.estado-vu{
-        background-color: #e6ff04 ;
-        color:black;
-}
-.estado-en{
-        background-color: rgb(255, 102, 0) ;
-        color:black;
-
-
-}
-.estado-cr{
-        background-color: rgb(255, 0, 0) ;
-
-}
-.galeria>a{
-  text-decoration: none;
-  cursor: pointer;
-display: block;
-  width: 100%;
-  min-width: 0;
-}
-@media (min-width: 768px) {
- .grid{
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 2rem;
-}
-.grid img{
-  height: 37rem;
-}
-}
-
-
-</style>

@@ -1,7 +1,6 @@
-const CACHE_NAME = 'aurea-pwa-v1.0.7'; // Versión v1.0.7 con descargas paralelas (50 simultáneos)
-const TIMEOUT_DURATION = 8000; // 8 segundos de timeout por archivo
-const PARALLEL_DOWNLOADS = 50; // Máximo de descargas simultáneas
-
+const CACHE_NAME = '1.0.5.0'; // Incrementamos la versión para forzar la limpieza en los celulares
+//Comentario de version aumentada
+//1606.1.1
 const CORE_ASSETS = [
     '/',
     '/manifest.json',
@@ -11,6 +10,7 @@ const CORE_ASSETS = [
     '/icons/icon-512.png',
     '/icons/logo.png',
     '/fuentes/Kablammo.ttf'
+
 ];
 
 // Mantén aquí EXACTAMENTE tu mismo array con tus 29 aves, audios e imágenes
@@ -144,205 +144,81 @@ const MEDIA_ASSETS = [
 
 ];
 
-// Función auxiliar para descargar con timeout
-async function cacheWithTimeout(cache, url) {
-    return new Promise((resolve) => {
-        const timeout = setTimeout(() => {
-            console.warn(`⏱️ Timeout descargando: ${url}`);
-            resolve(false);
-        }, TIMEOUT_DURATION);
-
-        cache.add(url)
-            .then(() => {
-                clearTimeout(timeout);
-                console.log(`✅ Cacheado: ${url}`);
-                resolve(true);
-            })
-            .catch(error => {
-                clearTimeout(timeout);
-                console.warn(`❌ Error cacheando ${url}:`, error);
-                resolve(false);
-            });
-    });
-}
-
-// Función para descargar múltiples archivos en paralelo con límite
-async function downloadWithLimit(cache, urls, limit) {
-    let completed = 0;
-    let failed = 0;
-    let inProgress = 0;
-    const queue = [...urls];
-    const activePromises = [];
-
-    return new Promise((resolve) => {
-        const processNext = async () => {
-            if (queue.length === 0 && inProgress === 0) {
-                await Promise.all(activePromises);
-                resolve({ completed, failed, total: urls.length });
-                return;
-            }
-
-            if (queue.length > 0 && inProgress < limit) {
-                const url = queue.shift();
-                inProgress++;
-
-                const promise = cacheWithTimeout(cache, url)
-                    .then(success => {
-                        if (success) completed++;
-                        else failed++;
-                        inProgress--;
-                        // Reporta progreso cada archivo
-                        self.clients.matchAll().then(clients => {
-                            clients.forEach(client => {
-                                client.postMessage({
-                                    type: 'INSTALL_PROGRESS',
-                                    cached: completed,
-                                    failed: failed,
-                                    total: urls.length
-                                });
-                            });
-                        });
-                        processNext();
-                    });
-
-                activePromises.push(promise);
-                processNext();
-            }
-        };
-
-        processNext();
-    });
-}
-
-// 1. EVENT INSTALL: Descarga todo al instalar (en paralelo con límite de 50)
+// 1. CORRECCIÓN EN INSTALL: Ahora sí obligamos al celular a esperar las descargas completas
 self.addEventListener('install', event => {
-    console.log('🔧 Service Worker instalando (modo paralelo - 50 simultáneos)...');
-    
     event.waitUntil(
         caches.open(CACHE_NAME).then(async (cache) => {
-            console.log('📦 Cacheando archivos core...');
-            
-            // Instala archivos core primero
-            try {
-                await cache.addAll(CORE_ASSETS);
-                console.log('✅ Core assets cacheados');
-            } catch (error) {
-                console.error('❌ Error cacheando core:', error);
-            }
+            // Guardamos el núcleo de la app primero
+            await cache.addAll(CORE_ASSETS);
 
-            // Descargas media assets EN PARALELO (máx 50 simultáneos)
-            console.log(`📥 Descargando ${MEDIA_ASSETS.length} recursos en paralelo (50 a la vez)...`);
-            
-            const result = await downloadWithLimit(cache, MEDIA_ASSETS, PARALLEL_DOWNLOADS);
-            
-            console.log(`📊 Resultado: ${result.completed}/${result.total} descargados, ${result.failed} fallos`);
-            
-            // Notifica al cliente que está listo
-            self.clients.matchAll().then(clients => {
-                clients.forEach(client => {
-                    client.postMessage({
-                        type: 'INSTALL_COMPLETE',
-                        cached: result.completed,
-                        failed: result.failed,
-                        total: result.total
-                    });
-                });
-            });
+            // CORRECCIÓN: Usamos un bucle for...of para que el 'await' realmente detenga 
+            // el proceso hasta que cada ave se descargue de forma segura.
+            for (const url of MEDIA_ASSETS) {
+                try {
+                    await cache.add(url);
+                } catch (error) {
+                    console.warn(`No se pudo precargar en celular: ${url}`);
+                }
+            }
         })
     );
-    
-    self.skipWaiting(); // Toma control inmediatamente
+    self.skipWaiting(); // Fuerza a la nueva versión a tomar el control de inmediato
 });
 
-// 2. EVENT ACTIVATE: Limpia cachés viejos
+// Limpieza automática de versiones viejas de caché (Vital para celulares)
 self.addEventListener('activate', event => {
-    console.log('🧹 Service Worker activando y limpiando...');
-    
     event.waitUntil(
         caches.keys().then(cacheNames => {
             return Promise.all(
-                cacheNames.map(cacheName => {
-                    if (cacheName !== CACHE_NAME) {
-                        console.log(`🗑️ Eliminando caché antiguo: ${cacheName}`);
-                        return caches.delete(cacheName);
+                cacheNames.map(cache => {
+                    if (cache !== CACHE_NAME) {
+                        console.log('Borrando caché antiguo obsoleto:', cache);
+                        return caches.delete(cache);
                     }
                 })
             );
         })
     );
-    
     self.clients.claim();
 });
 
-// 3. EVENT FETCH: Estrategia Cache First con Network Fallback
+// 2. CORRECCIÓN EN FETCH: Tolerancia de barras (/) para evitar bloqueos de rutas
 self.addEventListener('fetch', event => {
-    // Solo GET y de nuestra propia app
-    if (event.request.method !== 'GET') return;
-    
-    const url = new URL(event.request.url);
-    
-    // Si no es de nuestro dominio, ignora (importa para dominios múltiples)
-    if (!url.origin.includes('vercel.app') && !url.hostname === self.location.hostname) {
+    // Solo interceptamos peticiones GET de nuestra propia aplicación
+    if (event.request.method !== 'GET' || !event.request.url.startsWith(self.location.origin)) {
         return;
     }
 
     event.respondWith(
         caches.open(CACHE_NAME).then(cache => {
+            const url = new URL(event.request.url);
             const pathname = url.pathname;
-            
-            // Estrategia: Busca en caché primero
+
+            // Paso A: Buscamos la coincidencia exacta tal cual la pidió el navegador
             return cache.match(event.request).then(response => {
-                if (response) {
-                    console.log(`⚡ Desde caché: ${pathname}`);
-                    return response;
-                }
+                if (response) return response;
 
-                // Si no está en caché, normaliza la ruta (/ al final)
-                const alternatives = [
-                    pathname,
-                    pathname.endsWith('/') ? pathname.slice(0, -1) : pathname + '/'
-                ];
+                // Paso B: Si no se encuentra, normalizamos la barra final (/)
+                // Si pidió "/aves/barranquero/" busca "/aves/barranquero" y viceversa
+                const alternativePath = pathname.endsWith('/') ? pathname.slice(0, -1) : pathname + '/';
 
-                for (const alt of alternatives) {
-                    const match = cache.match(alt);
-                    if (match) {
-                        console.log(`⚡ Desde caché (alternativa): ${alt}`);
-                        return match;
-                    }
-                }
+                return cache.match(alternativePath).then(altResponse => {
+                    if (altResponse) return altResponse;
 
-                // Si nada en caché, va a la red
-                console.log(`🌐 Fetch de red: ${pathname}`);
-                return fetch(event.request)
-                    .then(networkResponse => {
-                        // Cachea dinámicamente recursos nuevos (builds nuevas de Astro, imágenes, audios)
-                        if (pathname.includes('/_astro/') || 
-                            pathname.startsWith('/imgs/') || 
-                            pathname.startsWith('/audios/') ||
-                            pathname.endsWith('.webp') ||
-                            pathname.endsWith('.mp3')) {
+                    // Paso C: Si no está en caché de ninguna forma, vamos a internet
+                    return fetch(event.request).then(networkResponse => {
+                        // Guardamos archivos dinámicos de Astro, imágenes o audios nuevos en caliente
+                        if (pathname.includes('/_astro/') || pathname.startsWith('/imgs/') || pathname.startsWith('/audios/')) {
                             cache.put(event.request, networkResponse.clone());
                         }
                         return networkResponse;
-                    })
-                    .catch(error => {
-                        console.warn(`❌ Fetch fallido: ${pathname}`, error);
-                        
-                        // Fallback offline: si es una navegación, vuelve a home
+                    }).catch(() => {
+                        // Si falla internet y es una página, redirigimos a la raíz como salvavidas offline
                         if (event.request.mode === 'navigate') {
-                            return cache.match('/').catch(() => {
-                                return new Response('Offline - No hay caché disponible', {
-                                    status: 503,
-                                    statusText: 'Service Unavailable'
-                                });
-                            });
+                            return cache.match('/');
                         }
-                        
-                        return new Response('Recurso no disponible', {
-                            status: 404,
-                            statusText: 'Not Found'
-                        });
                     });
+                });
             });
         })
     );

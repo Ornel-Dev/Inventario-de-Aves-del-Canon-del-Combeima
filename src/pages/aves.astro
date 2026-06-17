@@ -40,18 +40,9 @@ import TargetAves from "../componentes/aves-listado.astro";
     <footer>
       <Footer />
     </footer>
-    <script src="/scrips/app.js" is:inline></script>
-    <script is:inline>
-  if (import.meta.env.PROD && 'serviceWorker' in navigator) {
-    window.addEventListener('load', () => {
-      navigator.serviceWorker.register('/sw.js')
-        .then(registration => console.log('SW registrado correctamente'))
-        .catch(err => console.log('Error en SW: ', err));
-    });
-  }
-</script>
+ 
   </body>
-</html>
+
 
 <style>
   h1 {
@@ -64,3 +55,15 @@ import TargetAves from "../componentes/aves-listado.astro";
     margin-bottom: 2rem;
   }
 </style>
+   <script src="/scrips/app.js" is:inline></script>
+    <script is:inline>
+  if (import.meta.env.PROD && 'serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register('/sw.js')
+        .then(registration => console.log('SW registrado correctamente'))
+        .catch(err => console.log('Error en SW: ', err));
+    });
+  }
+</script>
+
+</html>

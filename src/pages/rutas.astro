@@ -40,19 +40,8 @@ import BtnEspecies from "../componentes/ConteoEspecies.astro"
         <footer>
             <Footer />
         </footer>
-        <script src="/scrips/app.js" is:inline></script>
-        <script is:inline>
-  if (import.meta.env.PROD && 'serviceWorker' in navigator) {
-    window.addEventListener('load', () => {
-      navigator.serviceWorker.register('/sw.js')
-        .then(registration => console.log('SW registrado correctamente'))
-        .catch(err => console.log('Error en SW: ', err));
-    });
-  }
-</script>
-    </body>
 
-    </html>
+    </body>
 
     <style>
       main{
@@ -66,3 +55,16 @@ import BtnEspecies from "../componentes/ConteoEspecies.astro"
         color: rgb(61, 61, 61);
       }
     </style>
+    
+            <script src="/scrips/app.js" is:inline></script>
+        <script is:inline>
+  if (import.meta.env.PROD && 'serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register('/sw.js')
+        .then(registration => console.log('SW registrado correctamente'))
+        .catch(err => console.log('Error en SW: ', err));
+    });
+  }
+</script>
+
+    </html>
