@@ -53,7 +53,7 @@ import Footer from "../componentes/footer.astro";
         </div>
       </section>
       <!-- MENSAJE FLOTANTE -->
-      <div id="pwa-floating-bar" style="display: none; position: fixed; bottom: 20px; right: 20px; background: #121212; color: #ffffff; padding: 16px; border-radius: 8px; box-shadow: 0 4px 20px rgba(0,0,0,0.6); z-index: 9999; border: 1px solid #2e7d32; min-width: 260px; font-family: 'Lato', sans-serif;">
+      <div id="pwa-floating-bar" class="barra-flotante">
   <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
     <span style="font-size: 13px; font-weight: bold; letter-spacing: 0.5px;">Modo Offline</span>
     <span id="pwa-text-percentage" style="color: #2e7d32; font-weight: bold; font-size: 14px;">0%</span>
@@ -117,7 +117,7 @@ import Footer from "../componentes/footer.astro";
               barraFlotante.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
               barraFlotante.style.opacity = '0';
               barraFlotante.style.transform = 'translateY(20px)';
-              setTimeout(() => { barraFlotante.style.display = 'none'; }, 600);
+                setTimeout(() => { barraFlotante.style.display = 'none'; }, 600);
             }, 3500); // Se queda visible 3.5 segundos para informar al usuario
           }
         }
@@ -125,4 +125,22 @@ import Footer from "../componentes/footer.astro";
     });
   }
 </script>
+
+<style>
+  .barra-flotante{
+    display: none; 
+    position: fixed; 
+    bottom: 80px; 
+    right: 20px; 
+    background: #121212; 
+    color: #ffffff; 
+    padding: 16px; 
+    border-radius: 8px; 
+    box-shadow: 0 4px 20px rgba(0,0,0,0.6);
+     z-index: 9999;
+      border: 1px solid #2e7d32; 
+      min-width: 260px; 
+      font-family: 'Lato', sans-serif;"
+  }
+</style>
 </html>
