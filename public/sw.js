@@ -1,4 +1,4 @@
-const CACHE_NAME = '1.0.5.2'; // Incrementamos la versión para forzar la limpieza en los celulares
+const CACHE_NAME = '1.0.5.3'; // Incrementamos la versión para forzar la limpieza en los celulares
 //Comentario de version aumentada
 //1606.1.1
 const CORE_ASSETS = [
@@ -145,25 +145,44 @@ const MEDIA_ASSETS = [
 ];
 
 // 1. CORRECCIÓN EN INSTALL: Ahora sí obligamos al celular a esperar las descargas completas
+// sw.js (Reemplaza solo tu evento 'install' por este)
 self.addEventListener('install', event => {
     event.waitUntil(
         caches.open(CACHE_NAME).then(async (cache) => {
             // Guardamos el núcleo de la app primero
             await cache.addAll(CORE_ASSETS);
 
-            // CORRECCIÓN: Usamos un bucle for...of para que el 'await' realmente detenga 
-            // el proceso hasta que cada ave se descargue de forma segura.
+            let descargados = 0;
+            const totalArchivos = MEDIA_ASSETS.length;
+
             for (const url of MEDIA_ASSETS) {
                 try {
                     await cache.add(url);
                 } catch (error) {
                     console.warn(`No se pudo precargar en celular: ${url}`);
+                } finally {
+                    // Incrementamos SIEMPRE (incluso si falla) para que la barra no se quede trabada
+                    descargados++;
+                    const porcentaje = Math.round((descargados / totalArchivos) * 100);
+
+                    // Buscamos todas las pestañas abiertas de la app para enviarles el progreso
+                    const clients = await self.clients.matchAll({ includeUncontrolled: true });
+                    clients.forEach(client => {
+                        client.postMessage({
+                            type: 'PWA_DESCARGA_PROGRESO',
+                            progress: porcentaje,
+                            file: url
+                        });
+                    });
                 }
             }
         })
     );
-    self.skipWaiting(); // Fuerza a la nueva versión a tomar el control de inmediato
+    self.skipWaiting(); // Fuerza a la nueva versión a tomar el control 
 });
+
+
+
 
 // Limpieza automática de versiones viejas de caché (Vital para celulares)
 self.addEventListener('activate', event => {
