@@ -61,14 +61,21 @@ import Footer from "../componentes/footer.astro";
   </body>
     <script src="/scrips/app.js" is:inline></script>
     
-    <script>
-
+<script>
   if (import.meta.env.PROD && 'serviceWorker' in navigator) {
-    window.addEventListener('load', () => {
+    const registrarSW = () => {
       navigator.serviceWorker.register('/sw.js')
         .then(registration => console.log('SW registrado correctamente'))
         .catch(err => console.log('Error en SW: ', err));
-    });
+    };
+
+    // CORRECCIÓN: Si el HTML ya está listo (interactive/complete), registra ya mismo.
+    // No esperes a que terminen de bajar imágenes pesadas de fondo.
+    if (document.readyState === 'complete' || document.readyState === 'interactive') {
+      registrarSW();
+    } else {
+      window.addEventListener('load', registrarSW);
+    }
   }
 </script>
 
