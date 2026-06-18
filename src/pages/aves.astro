@@ -56,14 +56,6 @@ import TargetAves from "../componentes/aves-listado.astro";
   }
 </style>
    <script src="/scrips/app.js" is:inline></script>
-    <script>
-  if (import.meta.env.PROD && 'serviceWorker' in navigator) {
-    window.addEventListener('load', () => {
-      navigator.serviceWorker.register('/sw.js')
-        .then(registration => console.log('SW registrado correctamente'))
-        .catch(err => console.log('Error en SW: ', err));
-    });
-  }
-</script>
+ 
 
 </html>
