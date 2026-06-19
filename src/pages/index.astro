@@ -54,14 +54,14 @@ import Footer from "../componentes/footer.astro";
       </section>
       <!-- MENSAJE FLOTANTE -->
       <div id="pwa-floating-bar" class="barra-flotante">
-  <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
-    <span style="font-size: 13px; font-weight: bold; letter-spacing: 0.5px;">Modo Offline</span>
-    <span id="pwa-text-percentage" style="color: #2e7d32; font-weight: bold; font-size: 14px;">0%</span>
+  <div class="contenedor">
+    <span class="contenedor-titulo">Modo Offline</span>
+    <span id="pwa-text-percentage" class="porcentaje">0%</span>
   </div>
-  <div style="width: 100%; background: #222222; height: 6px; border-radius: 4px; overflow: hidden;">
-    <div id="pwa-progress-fill" style="width: 0%; background: #2e7d32; height: 100%; transition: width 0.2s ease;"></div>
+  <div class="barra">
+    <div class="progreso" id="pwa-progress-fill"></div>
   </div>
-  <p id="pwa-file-name" style="margin: 6px 0 0 0; font-size: 10px; color: #777777; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 230px;"></p>
+  <p class="texto" id="pwa-file-name"></p>
 </div>
       <footer>
 
@@ -128,19 +128,55 @@ import Footer from "../componentes/footer.astro";
 
 <style>
   .barra-flotante{
-    display: none; 
+    display: block; 
     position: fixed; 
-    bottom: 80px; 
-    right: 20px; 
-    background: #121212; 
+    bottom: 7.5rem; 
+    right: 1.9rem; 
+    background: rgb(22, 22, 22); 
     color: #ffffff; 
-    padding: 16px; 
-    border-radius: 8px; 
-    box-shadow: 0 4px 20px rgba(0,0,0,0.6);
+    padding: 1.6rem; 
+    border-radius: .8rem; 
+    box-shadow: 0 .4rem 2rem rgba(0,0,0,0.6);
      z-index: 9999;
-      border: 1px solid #2e7d32; 
-      min-width: 260px; 
+      border: .1rem solid #2e7d32; 
+      min-width: 26rem; 
       font-family: 'Lato', sans-serif;"
   }
+  .contenedor{
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center;
+     margin-bottom: .8rem;
+  }
+  .contenedor-titulo{
+    font-size: 1.3rem; 
+    font-weight: bold;
+     letter-spacing: 0.05rem;
+  }
+.porcentaje{
+  color: #2e7d32;
+   font-weight: bold; 
+   font-size: 1.4rem;
+}
+.barra{
+width: 100%; background: #222222; height: .6rem; border-radius: .4rem; overflow: hidden;
+}
+.progreso{
+  width: 0%;
+   background: #2e7d32; 
+   height: 100%; 
+   transition: width 0.2s ease;
+}
+.texto{
+  margin: .6rem 0 0 0; 
+  font-size: 1rem; 
+  color: #777777; 
+  white-space: nowrap;
+  overflow: hidden; 
+  text-overflow: ellipsis; 
+  max-width: 23rem;
+}
+
 </style>
+
 </html>
