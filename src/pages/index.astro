@@ -139,6 +139,65 @@ import Footer from "../componentes/footer.astro";
       }
     });
   }
+
+
+  // 1. Interfaz para que TypeScript entienda el evento
+  interface BeforeInstallPromptEvent extends Event {
+    readonly platforms: Array<string>;
+    readonly userChoice: Promise<{
+      outcome: 'accepted' | 'dismissed';
+      platform: string;
+    }>;
+    prompt(): Promise<void>;
+  }
+
+  // 2. Variables para este componente específico
+  let indexDeferredPrompt: BeforeInstallPromptEvent | null = null;
+  const installContainer = document.getElementById('inline-install-container');
+  const installBtn = document.getElementById('inline-install-btn');
+
+  // 3. Escuchar el evento de instalación
+  window.addEventListener('beforeinstallprompt', (e) => {
+    // Evitamos el comportamiento por defecto
+    e.preventDefault();
+    
+    // Guardamos el evento localmente en este script
+    indexDeferredPrompt = e as BeforeInstallPromptEvent;
+
+    // Como sabemos que la app es instalable, mostramos el texto quitando la clase 'hidden'
+    if (installContainer) {
+      installContainer.classList.remove('hidden');
+    }
+  });
+
+  // 4. Lógica al hacer clic en "Instala la app aquí"
+  if (installBtn) {
+    installBtn.addEventListener('click', async () => {
+      if (indexDeferredPrompt) {
+        // Disparamos la ventana predeterminada del navegador
+        indexDeferredPrompt.prompt();
+        
+        // Esperamos a ver qué elige el usuario
+        const { outcome } = await indexDeferredPrompt.userChoice;
+        
+        if (outcome === 'accepted') {
+          console.log('El usuario instaló la app desde el enlace del index');
+          // Si instala, ocultamos el texto porque ya no lo necesita
+          installContainer?.classList.add('hidden');
+        }
+        
+        // Limpiamos la variable
+        indexDeferredPrompt = null;
+      }
+    });
+  }
+
+  // 5. Si la app se instala por cualquier medio, ocultamos este texto
+  window.addEventListener('appinstalled', () => {
+    if (installContainer) {
+      installContainer.classList.add('hidden');
+    }
+  });
 </script>
 
 <style>
