@@ -157,80 +157,80 @@
 </style>
 
 <script>
-// 1. Le explicamos a TypeScript la estructura del evento de instalación
-  interface BeforeInstallPromptEvent extends Event {
-    readonly platforms: Array<string>;
-    readonly userChoice: Promise<{
-      outcome: 'accepted' | 'dismissed';
-      platform: string;
-    }>;
-    prompt(): Promise<void>;
-  }
+  // 1. Le explicamos a TypeScript la estructura del evento de instalación
+interface BeforeInstallPromptEvent extends Event {
+  readonly platforms: Array<string>;
+  readonly userChoice: Promise<{
+    outcome: 'accepted' | 'dismissed';
+    platform: string;
+  }>;
+  prompt(): Promise<void>;
+}
 
-  // 2. Tipamos la variable y la inicializamos como null
-  let deferredPrompt: BeforeInstallPromptEvent | null = null;
-    const banner = document.getElementById('pwa-install-banner');
-  const btnInstall = document.getElementById('btn-install-pwa');
-  const btnClose = document.getElementById('btn-close-banner');
+// 2. Tipamos la variable y la inicializamos como null
+let deferredPrompt: BeforeInstallPromptEvent | null = null;
+const banner = document.getElementById('pwa-install-banner');
+const btnInstall = document.getElementById('btn-install-pwa');
+const btnClose = document.getElementById('btn-close-banner');
 
-  // 1. Verificamos en localStorage si el usuario ya decidió ocultar el banner
-  const bannerDismissed = localStorage.getItem('aurea_pwa_dismissed') === 'true';
+// 3. Escuchamos el evento de instalación nativo
+window.addEventListener('beforeinstallprompt', (e) => {
+  // Evitamos el mini-infobar nativo de Chrome inmediatamente
+  e.preventDefault();
+  
+  // Guardamos el evento para poder dispararlo luego con el botón
+  deferredPrompt = e as BeforeInstallPromptEvent;
 
-  // 2. Escuchamos el evento de instalación nativo
-  window.addEventListener('beforeinstallprompt', (e) => {
-    // Evitamos el mini-infobar nativo de Chrome
-    e.preventDefault();
-    
-    // Guardamos el evento para poder dispararlo luego con el botón
-    deferredPrompt = e as BeforeInstallPromptEvent;
+  // MODIFICACIÓN: Retrasamos la aparición del banner 10 segundos (10000 milisegundos)
+  setTimeout(() => {
+    // Verificamos localStorage JUSTO AQUÍ dentro por si el estado cambió en esos 10 segundos
+    const bannerDismissed = localStorage.getItem('aurea_pwa_dismissed') === 'true';
 
-    // Si el usuario no lo ha cerrado antes, mostramos nuestro banner minimalista
+    // Si el usuario no lo ha cerrado antes y el banner existe, lo mostramos
     if (!bannerDismissed && banner) {
       banner.classList.remove('hidden');
     }
-  });
+  }, 10000); // 10000 ms = 10 segundos
+});
 
-  // 3. Acción de Instalar
-  if (btnInstall) {
-    btnInstall.addEventListener('click', async () => {
-      // Ocultamos el banner inmediatamente por UX
-      banner?.classList.add('hidden');
+// 4. Acción de Instalar
+if (btnInstall) {
+  btnInstall.addEventListener('click', async () => {
+    // Ocultamos el banner inmediatamente por UX
+    banner?.classList.add('hidden');
+    
+    if (deferredPrompt) {
+      // Mostramos el prompt nativo de instalación
+      deferredPrompt.prompt();
       
-      if (deferredPrompt) {
-        // Mostramos el prompt nativo de instalación
-        deferredPrompt.prompt();
-        
-        // Esperamos la respuesta del usuario (Aceptó o Canceló)
-        const { outcome } = await deferredPrompt.userChoice;
-        
-        if (outcome === 'accepted') {
-          console.log('Instalación aceptada');
-          // Si acepta, ya no necesitamos mostrar el banner en el futuro
-          localStorage.setItem('aurea_pwa_dismissed', 'true');
-        } else {
-          // Si cancela, podemos volver a intentarlo después o guardarlo en localStorage para no molestar.
-          // Por ahora, lo dejamos en null para este ciclo.
-        }
-        
-        // Limpiamos la variable
-        deferredPrompt = null;
+      // Esperamos la respuesta del usuario (Aceptó o Canceló)
+      const { outcome } = await deferredPrompt.userChoice;
+      
+      if (outcome === 'accepted') {
+        console.log('Instalación aceptada');
+        // Si acepta, ya no necesitamos mostrar el banner en el futuro
+        localStorage.setItem('aurea_pwa_dismissed', 'true');
       }
-    });
-  }
-
-  // 4. Acción de Cerrar (Dismiss)
-  if (btnClose) {
-    btnClose.addEventListener('click', () => {
-      banner?.classList.add('hidden');
-      // Guardamos la preferencia en el navegador para que no vuelva a salir al cambiar de página
-      localStorage.setItem('aurea_pwa_dismissed', 'true');
-    });
-  }
-
-  // 5. Escuchar si se instaló exitosamente (incluso si lo hizo desde el menú del navegador)
-  window.addEventListener('appinstalled', () => {
-    if (banner) banner.classList.add('hidden');
-    localStorage.setItem('aurea_pwa_dismissed', 'true');
-    deferredPrompt = null;
+      
+      // Limpiamos la variable
+      deferredPrompt = null;
+    }
   });
+}
+
+// 5. Acción de Cerrar (Dismiss)
+if (btnClose) {
+  btnClose.addEventListener('click', () => {
+    banner?.classList.add('hidden');
+    // Guardamos la preferencia en el navegador para que no vuelva a salir al cambiar de página
+    localStorage.setItem('aurea_pwa_dismissed', 'true');
+  });
+}
+
+// 6. Escuchar si se instaló exitosamente
+window.addEventListener('appinstalled', () => {
+  if (banner) banner.classList.add('hidden');
+  localStorage.setItem('aurea_pwa_dismissed', 'true');
+  deferredPrompt = null;
+});
 </script>
