@@ -53,15 +53,15 @@ import Footer from "../componentes/footer.astro";
         </div>
       </section>
       <!-- MENSAJE FLOTANTE -->
-      <div id="pwa-floating-bar" class="barra-flotante">
-  <div class="contenedor">
-    <span class="contenedor-titulo">Modo Offline</span>
-    <span id="pwa-text-percentage" class="porcentaje">0%</span>
+     <div id="pwa-barra-flotante">
+  <div class="pwa-encabezado">
+    <span class="pwa-titulo">Modo Offline</span>
+    <span id="pwa-texto-porcentaje">0%</span>
   </div>
-  <div class="barra">
-    <div class="progreso" id="pwa-progress-fill"></div>
+  <div class="pwa-barra-fondo">
+    <div id="pwa-barra-relleno"></div>
   </div>
-  <p class="texto" id="pwa-file-name"></p>
+  <p id="pwa-nombre-archivo"></p>
 </div>
       <footer>
 
@@ -72,7 +72,7 @@ import Footer from "../componentes/footer.astro";
   </body>
     <script src="/scrips/app.js" is:inline></script>
 
-    <script>
+<script>
   if (import.meta.env.PROD && 'serviceWorker' in navigator) {
     
     // 1. Registro optimizado inmediato
@@ -91,34 +91,39 @@ import Footer from "../componentes/footer.astro";
     // 2. Escuchar el progreso enviado desde el sw.js
     navigator.serviceWorker.addEventListener('message', event => {
       if (event.data && event.data.type === 'PWA_DESCARGA_PROGRESO') {
-        const barraFlotante = document.getElementById('pwa-floating-bar');
-        const textoPorcentaje = document.getElementById('pwa-text-percentage');
-        const rellenoBarra = document.getElementById('pwa-progress-fill');
-        const textoArchivo = document.getElementById('pwa-file-name');
+        const barraFlotante = document.getElementById('pwa-barra-flotante');
+        const textoPorcentaje = document.getElementById('pwa-texto-porcentaje');
+        const rellenoBarra = document.getElementById('pwa-barra-relleno');
+        const textoArchivo = document.getElementById('pwa-nombre-archivo');
 
         if (barraFlotante && textoPorcentaje && rellenoBarra) {
-          // Hacemos visible la barra al recibir el primer dato
+          // Hacemos visible la barra al recibir el primer progreso
           barraFlotante.style.display = 'block';
           
           const progreso = event.data.progress;
           textoPorcentaje.innerText = `${progreso}%`;
           rellenoBarra.style.width = `${progreso}%`;
 
-          // Opcional: Muestra de forma limpia qué archivo se está bajando
+          // Muestra de forma limpia el nombre del archivo actual
           if (textoArchivo && event.data.file) {
             const nombreLimpio = event.data.file.split('/').pop() || 'procesando...';
             textoArchivo.innerText = `Descargando: ${nombreLimpio}`;
           }
 
-          // Al llegar al 100%, notificamos y ocultamos elegantemente
+          // Al completarse el 100%, informamos y ocultamos con animación
           if (progreso === 100) {
-            if (textoArchivo) textoArchivo.innerText = '¡Contenido listo para usar sin internet!';
+            if (textoArchivo) textoArchivo.innerText = '¡Áurea está lista para usarse sin internet!';
+            
             setTimeout(() => {
               barraFlotante.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
               barraFlotante.style.opacity = '0';
               barraFlotante.style.transform = 'translateY(20px)';
-                setTimeout(() => { barraFlotante.style.display = 'none'; }, 600);
-            }, 3500); // Se queda visible 3.5 segundos para informar al usuario
+              
+              // Esperamos a que termine la animación para quitarla del flujo de renderizado
+              setTimeout(() => { 
+                barraFlotante.style.display = 'none'; 
+              }, 600);
+            }, 3500);
           }
         }
       }
@@ -127,56 +132,68 @@ import Footer from "../componentes/footer.astro";
 </script>
 
 <style>
-  .barra-flotante{
-    display: none; 
-    position: fixed; 
-    bottom: 7.5rem; 
-    right: 1.9rem; 
-    background: rgb(22, 22, 22); 
-    color: #ffffff; 
-    padding: 1.6rem; 
-    border-radius: .8rem; 
-    box-shadow: 0 .4rem 2rem rgba(0,0,0,0.6);
-     z-index: 9999;
-      border: .1rem solid #2e7d32; 
-      min-width: 26rem; 
-      font-family: 'Lato', sans-serif;"
+  body{
+    margin-bottom: 13rem;
   }
-  .contenedor{
-    display: flex; 
-    justify-content: space-between; 
-    align-items: center;
-     margin-bottom: .8rem;
+  #pwa-barra-flotante {
+    display: none;
+    position: fixed;
+    bottom: 7.5rem;
+    right: 1.9rem;
+    background: #121212;
+    color: #ffffff;
+    padding: 16px;
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
+    z-index: 9999;
+    border: 1px solid #2e7d32;
+    min-width: 260px;
+    font-family: 'Lato', sans-serif;
   }
-  .contenedor-titulo{
-    font-size: 1.3rem; 
-    font-weight: bold;
-     letter-spacing: 0.05rem;
-  }
-.porcentaje{
-  color: #2e7d32;
-   font-weight: bold; 
-   font-size: 1.4rem;
-}
-.barra{
-width: 100%; background: #222222; height: .6rem; border-radius: .4rem; overflow: hidden;
-}
-.progreso{
-  width: 0%;
-   background: #2e7d32; 
-   height: 100%; 
-   transition: width 0.2s ease;
-}
-.texto{
-  margin: .6rem 0 0 0; 
-  font-size: 1rem; 
-  color: #777777; 
-  white-space: nowrap;
-  overflow: hidden; 
-  text-overflow: ellipsis; 
-  max-width: 23rem;
-}
 
+  .pwa-encabezado {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+  }
+
+  .pwa-titulo {
+    font-size: 13px;
+    font-weight: bold;
+    letter-spacing: 0.5px;
+  }
+
+  #pwa-texto-porcentaje {
+    color: #2e7d32;
+    font-weight: bold;
+    font-size: 14px;
+  }
+
+  .pwa-barra-fondo {
+    width: 100%;
+    background: #222222;
+    height: 6px;
+    border-radius: 4px;
+    overflow: hidden;
+  }
+
+  #pwa-barra-relleno {
+    width: 0%;
+    background: #2e7d32;
+    height: 100%;
+    transition: width 0.2s ease;
+  }
+
+  #pwa-nombre-archivo {
+    margin: 6px 0 0 0;
+    font-size: 10px;
+    color: #777777;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 230px;
+  }
 </style>
 
 </html>

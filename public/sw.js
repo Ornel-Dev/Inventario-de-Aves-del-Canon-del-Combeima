@@ -1,4 +1,4 @@
-const CACHE_NAME = '1.0.5.6'; // Incrementamos la versión para forzar la limpieza en los celulares
+const CACHE_NAME = '1.0.5.7'; // Incrementamos la versión para forzar la limpieza en los celulares
 //Comentario de version aumentada
 //1606.1.1
 const CORE_ASSETS = [
@@ -9,7 +9,8 @@ const CORE_ASSETS = [
     '/icons/icon-192.png',
     '/icons/icon-512.png',
     '/icons/logo.png',
-    '/fuentes/Kablammo.ttf'
+    '/fuentes/Kablammo.ttf',
+    '/scrips/app.js'
 
 ];
 

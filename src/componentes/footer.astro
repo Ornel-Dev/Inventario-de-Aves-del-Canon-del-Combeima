@@ -1,107 +1,236 @@
 <div class="footer">
-          <a href="/" class="footer-link">
-            <div class="items-footer inicio">
-              <svg 
-                xmlns="http://www.w3.org/2000/svg"
-                width="200"
-                height="200"
-                viewBox="0 0 48 48"
-                fill="#0066cc"
-                ><g
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-linejoin="round"
-                  stroke-width="4"
-                  ><path d="m18 10l14 28H4l14-28Z"></path><path
-                    stroke-linecap="round"
-                    d="m28 29l5.647-7L44 38H32M12 22h12m-10-4l-4 8m12-8l4 8"
-                  ></path></g
-                ></svg
-              >
-              <p>Inicio</p>
-            </div>
-          </a>
+  <a href="/" class="footer-link">
+    <div class="items-footer inicio">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="200"
+        height="200"
+        viewBox="0 0 48 48"
+        fill="#0066cc"
+        ><g
+          fill="none"
+          stroke="currentColor"
+          stroke-linejoin="round"
+          stroke-width="4"
+          ><path d="m18 10l14 28H4l14-28Z"></path><path
+            stroke-linecap="round"
+            d="m28 29l5.647-7L44 38H32M12 22h12m-10-4l-4 8m12-8l4 8"></path></g
+        ></svg
+      >
+      <p>Inicio</p>
+    </div>
+  </a>
 
-          <a href="/aves" class="footer-link">
-            <div class="items-footer">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="200"
-                height="200"
-                viewBox="0 0 24 24"
-                ><path
-                  fill="currentColor"
+  <a href="/aves" class="footer-link">
+    <div class="items-footer">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="200"
+        height="200"
+        viewBox="0 0 24 24"
+        ><path
+          fill="currentColor"
+          d="m23 11.5l-3.05-1.13c-.26-1.15-.91-1.81-.91-1.81a4.189 4.189 0 0 0-5.93 0l-1.48 1.48L5 3c-1 4 0 8 2.45 11.22L2 19.5s8.89 2 14.07-2.05c2.76-2.16 3.38-3.42 3.77-4.75L23 11.5m-5.29.22c-.39.39-1.03.39-1.42 0a.996.996 0 0 1 0-1.41c.39-.39 1.03-.39 1.42 0c.39.39.39 1.02 0 1.41Z"
+        ></path></svg
+      >
+      <p>Aves</p>
+    </div>
+  </a>
+  <a href="/rutas" class="footer-link">
+    <div class="items-footer">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="200"
+        height="200"
+        viewBox="0 0 24 24"
+        ><path
+          fill="none"
+          stroke="currentColor"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M12 18.5L9 17l-6 3V7l6-3l6 3l6-3v7.5M9 4v13m6-10v5.5m6.121 7.621a3 3 0 1 0-4.242 0c.418.419 1.125 1.045 2.121 1.879c1.051-.89 1.759-1.516 2.121-1.879zM19 18v.01"
+        ></path></svg
+      >
+      <p>Rutas</p>
+    </div>
+  </a>
 
-                  d="m23 11.5l-3.05-1.13c-.26-1.15-.91-1.81-.91-1.81a4.189 4.189 0 0 0-5.93 0l-1.48 1.48L5 3c-1 4 0 8 2.45 11.22L2 19.5s8.89 2 14.07-2.05c2.76-2.16 3.38-3.42 3.77-4.75L23 11.5m-5.29.22c-.39.39-1.03.39-1.42 0a.996.996 0 0 1 0-1.41c.39-.39 1.03-.39 1.42 0c.39.39.39 1.02 0 1.41Z"
-                ></path></svg
-              >
-              <p>Aves</p>
-            </div>
-          </a>
-          <a href="/rutas" class="footer-link">
-            <div class="items-footer">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="200"
-                height="200"
-                viewBox="0 0 24 24"
-                ><path
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M12 18.5L9 17l-6 3V7l6-3l6 3l6-3v7.5M9 4v13m6-10v5.5m6.121 7.621a3 3 0 1 0-4.242 0c.418.419 1.125 1.045 2.121 1.879c1.051-.89 1.759-1.516 2.121-1.879zM19 18v.01"
-                ></path></svg
-              >
-              <p>Rutas</p>
-            </div>
-          </a>
-        </div>
+</div>
+<div id="pwa-install-banner" class="install-banner hidden">
+  <div class="banner-content">
+    <span>¿Quieres llevar el inventario de Áurea en tu bolsillo para consultarlo en el campo?</span>
+    <div class="banner-actions">
+      <button id="btn-install-pwa" class="btn-primary">Instalar</button>
+      <button id="btn-close-banner" class="btn-secondary" aria-label="Cerrar">✕</button>
+    </div>
+  </div>
+</div>
 
-  <script src="/scrips/app.js" is:inline></script>
+<script src="/scrips/app.js" is:inline></script>
 
-        <style>
+<style>
+  .footer {
+    display: flex;
+    justify-content: space-evenly;
+    background-color: #cccccc;
+    border-top-left-radius: 2rem;
+    border-top-right-radius: 2rem;
+    height: 5rem;
+    padding: 0.5rem;
+    height: auto;
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
 
-            .footer{
-  display: flex;
-  justify-content: space-evenly;
-  background-color: #cccccc;
-  border-top-left-radius: 2rem;
-  border-top-right-radius: 2rem;
-  height: 5rem;
-  padding: .5rem ;
-  height: auto;
-  position: fixed;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  
-}
+  .items-footer {
+    font-size: 1.3rem;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+    height: 6rem;
+    width: 6rem;
+  }
+  .items-footer p {
+    margin: 0rem;
+  }
 
-.items-footer{
-  font-size: 1.3rem;
-  justify-content: center;
-  align-items: center;
-  display: flex;
-  flex-direction: column;
-  padding: 1rem;
-  height: 6rem;
-  width: 6rem;
-
-}
-.items-footer p{
-  margin: 0rem;
-
-}
-
-a{
+  a {
     text-decoration: none;
     color: #000000;
-}
+  }
 
-svg{
-  color: #1b4332;
-}
+  svg {
+    color: #1b4332;
+  }
 
-        </style>
+  /* Estilos minimalistas de ejemplo */
+  .install-banner {
+    position: fixed;
+    bottom: 80px; /* Ajusta según el alto de tu footer real */
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #ffffff;
+    border: 1px solid #e5e7eb;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    padding: 16px;
+    z-index: 50;
+    max-width: 90%;
+    width: 400px;
+    transition: opacity 0.3s ease;
+  }
+  .banner-content {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    font-size: 0.9rem;
+    color: #374151;
+  }
+  .banner-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 8px;
+  }
+  .hidden {
+    display: none;
+  }
+  .btn-primary {
+    background-color:var(--verde-oscuro);
+    color: white;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  .btn-secondary {
+    background: transparent;
+    border: none;
+    color: #6b7280;
+    cursor: pointer;
+    padding: 6px 8px;
+  }
+</style>
+
+<script>
+// 1. Le explicamos a TypeScript la estructura del evento de instalación
+  interface BeforeInstallPromptEvent extends Event {
+    readonly platforms: Array<string>;
+    readonly userChoice: Promise<{
+      outcome: 'accepted' | 'dismissed';
+      platform: string;
+    }>;
+    prompt(): Promise<void>;
+  }
+
+  // 2. Tipamos la variable y la inicializamos como null
+  let deferredPrompt: BeforeInstallPromptEvent | null = null;
+    const banner = document.getElementById('pwa-install-banner');
+  const btnInstall = document.getElementById('btn-install-pwa');
+  const btnClose = document.getElementById('btn-close-banner');
+
+  // 1. Verificamos en localStorage si el usuario ya decidió ocultar el banner
+  const bannerDismissed = localStorage.getItem('aurea_pwa_dismissed') === 'true';
+
+  // 2. Escuchamos el evento de instalación nativo
+  window.addEventListener('beforeinstallprompt', (e) => {
+    // Evitamos el mini-infobar nativo de Chrome
+    e.preventDefault();
+    
+    // Guardamos el evento para poder dispararlo luego con el botón
+    deferredPrompt = e as BeforeInstallPromptEvent;
+
+    // Si el usuario no lo ha cerrado antes, mostramos nuestro banner minimalista
+    if (!bannerDismissed && banner) {
+      banner.classList.remove('hidden');
+    }
+  });
+
+  // 3. Acción de Instalar
+  if (btnInstall) {
+    btnInstall.addEventListener('click', async () => {
+      // Ocultamos el banner inmediatamente por UX
+      banner?.classList.add('hidden');
+      
+      if (deferredPrompt) {
+        // Mostramos el prompt nativo de instalación
+        deferredPrompt.prompt();
+        
+        // Esperamos la respuesta del usuario (Aceptó o Canceló)
+        const { outcome } = await deferredPrompt.userChoice;
+        
+        if (outcome === 'accepted') {
+          console.log('Instalación aceptada');
+          // Si acepta, ya no necesitamos mostrar el banner en el futuro
+          localStorage.setItem('aurea_pwa_dismissed', 'true');
+        } else {
+          // Si cancela, podemos volver a intentarlo después o guardarlo en localStorage para no molestar.
+          // Por ahora, lo dejamos en null para este ciclo.
+        }
+        
+        // Limpiamos la variable
+        deferredPrompt = null;
+      }
+    });
+  }
+
+  // 4. Acción de Cerrar (Dismiss)
+  if (btnClose) {
+    btnClose.addEventListener('click', () => {
+      banner?.classList.add('hidden');
+      // Guardamos la preferencia en el navegador para que no vuelva a salir al cambiar de página
+      localStorage.setItem('aurea_pwa_dismissed', 'true');
+    });
+  }
+
+  // 5. Escuchar si se instaló exitosamente (incluso si lo hizo desde el menú del navegador)
+  window.addEventListener('appinstalled', () => {
+    if (banner) banner.classList.add('hidden');
+    localStorage.setItem('aurea_pwa_dismissed', 'true');
+    deferredPrompt = null;
+  });
+</script>
