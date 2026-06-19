@@ -1,4 +1,4 @@
-const CACHE_NAME = '1.0.5.8'; // Incrementamos la versión para forzar la limpieza en los celulares
+const CACHE_NAME = '1.0.5.9'; // Incrementamos la versión para forzar la limpieza en los celulares
 //Comentario de version aumentada
 //1606.1.1
 const CORE_ASSETS = [

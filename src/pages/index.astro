@@ -51,6 +51,13 @@ import Footer from "../componentes/footer.astro";
         <div class="rutas">
           <Ruta />
         </div>
+
+        <div id="inline-install-container" class="hidden inline-install">
+  <p>
+    ¿Quieres consultar el inventario sin señal? 
+    <button id="inline-install-btn" class="text-btn">Instala la app aquí</button>
+  </p>
+</div>
       </section>
       <!-- MENSAJE FLOTANTE -->
      <div id="pwa-barra-flotante">
@@ -63,6 +70,9 @@ import Footer from "../componentes/footer.astro";
   </div>
   <p id="pwa-nombre-archivo"></p>
 </div>
+
+
+
       <footer>
 
         <Footer />
@@ -133,7 +143,7 @@ import Footer from "../componentes/footer.astro";
 
 <style>
   body{
-    margin-bottom: 13rem;
+    margin-bottom: 10rem;
   }
   #pwa-barra-flotante {
     display: none;
@@ -193,6 +203,35 @@ import Footer from "../componentes/footer.astro";
     overflow: hidden;
     text-overflow: ellipsis;
     max-width: 230px;
+  }
+
+
+
+  .inline-install {
+    text-align: center;
+    padding: 2rem 1rem;
+    font-size: 0.95rem;
+    color: #4b5563; /* Un gris oscuro sutil */
+  }
+  
+  .text-btn {
+    background: none;
+    border: none;
+    color: #2563eb; /* Color de enlace clásico o ajusta al color primario de Áurea */
+    text-decoration: underline;
+    font-weight: 600;
+    cursor: pointer;
+    padding: 0;
+    font-size: inherit;
+    font-family: inherit;
+  }
+
+  .text-btn:hover {
+    color: #1e40af;
+  }
+
+  .hidden {
+    display: none;
   }
 </style>
 
