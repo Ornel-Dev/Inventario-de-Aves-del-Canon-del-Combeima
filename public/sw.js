@@ -1,4 +1,4 @@
-const CACHE_NAME = '1.0.5.92'; // Incrementamos la versión para forzar la limpieza en los celulares
+const CACHE_NAME = '1.0.6.0'; // Incrementamos la versión para forzar la limpieza en los celulares
 //Comentario de version aumentada
 //1606.1.1
 const CORE_ASSETS = [
@@ -25,6 +25,13 @@ const MEDIA_ASSETS = [
 
     '/blog',
     '/blog/',
+    // enlaces de las paginas de blog
+'/blog/3-senderos-imperdibles-en-el-cañon-del-combeima.astro',
+'/blog/bosques-de-niebla-en-peligro.astro',
+'/blog/como-empezar-en-el-aviturismo.astro',
+'/blog/el-nacimiento-de-aurea.astro',
+'/blog/guardian-de-las-alturas.astro',
+'/blog/mitologia-y-cantos-en-el-cañon.astro',
 
 
     '/aves/tangara-azuleja',
@@ -141,7 +148,12 @@ const MEDIA_ASSETS = [
     '/audios/XC907183-Aratingaorejigualda-Ognorhynchusicterotis.mp3',
     '/audios/XC836991-Saltaríncabecidorado-Ceratopipraerythrocephala.mp3',
 
-
+// Otras imagenes 
+'imgs/blogs/aurea.webp',
+'imgs/blogs/avistadores.webp',
+'imgs/blogs/bosques.webp',
+'imgs/blogs/mitologiayaves.webp',
+'imgs/blogs/rutas.webp'
 
 ];
 
