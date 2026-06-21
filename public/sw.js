@@ -1,4 +1,4 @@
-const CACHE_NAME = '1.0.6.0'; // Incrementamos la versión para forzar la limpieza en los celulares
+const CACHE_NAME = '1.0.6.2'; // Incrementamos la versión para forzar la limpieza en los celulares
 //Comentario de version aumentada
 //1606.1.1
 const CORE_ASSETS = [
@@ -22,6 +22,9 @@ const MEDIA_ASSETS = [
     '/rutas/',
     '/nosotros',
     '/nosotros/',
+    '/contacto',
+    '/contacto/',
+
 
     '/blog',
     '/blog/',
@@ -153,7 +156,10 @@ const MEDIA_ASSETS = [
 'imgs/blogs/avistadores.webp',
 'imgs/blogs/bosques.webp',
 'imgs/blogs/mitologiayaves.webp',
-'imgs/blogs/rutas.webp'
+'imgs/blogs/rutas.webp',
+'imgs/contacto/ornel.avif',
+'imgs/contacto/jhonatan.avif',
+
 
 ];
 
