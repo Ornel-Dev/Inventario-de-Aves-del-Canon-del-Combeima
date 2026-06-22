@@ -1,4 +1,4 @@
-const CACHE_NAME = '1.0.6.2'; // Incrementamos la versión para forzar la limpieza en los celulares
+const CACHE_NAME = '1.0.6.3'; // Incrementamos la versión para forzar la limpieza en los celulares
 //Comentario de version aumentada
 //1606.1.1
 const CORE_ASSETS = [
@@ -29,12 +29,12 @@ const MEDIA_ASSETS = [
     '/blog',
     '/blog/',
     // enlaces de las paginas de blog
-'/blog/3-senderos-imperdibles-en-el-cañon-del-combeima.astro',
-'/blog/bosques-de-niebla-en-peligro.astro',
-'/blog/como-empezar-en-el-aviturismo.astro',
-'/blog/el-nacimiento-de-aurea.astro',
-'/blog/guardian-de-las-alturas.astro',
-'/blog/mitologia-y-cantos-en-el-cañon.astro',
+'/blog/3-senderos-imperdibles-en-el-cañon-del-combeima',
+'/blog/bosques-de-niebla-en-peligro',
+'/blog/como-empezar-en-el-aviturismo',
+'/blog/el-nacimiento-de-aurea',
+'/blog/guardian-de-las-alturas',
+'/blog/mitologia-y-cantos-en-el-cañon',
 
 
     '/aves/tangara-azuleja',
